@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recebido — Onna Core</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Pixel (trocar PIXEL_ID) -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', 'PIXEL_ID');
+    fbq('track', 'PageView');
+    fbq('track', 'CompleteRegistration');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=PIXEL_ID&ev=PageView&noscript=1" />
+  </noscript>
+
+  <style>
+    body{margin:0;font-family:Arial,system-ui;background:#0b0b0f;color:#e9e9f1;min-height:100vh;display:grid;place-items:center;padding:24px}
+    .box{max-width:720px;width:100%;border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:24px;background:rgba(255,255,255,.03)}
+    h1{margin:0 0 10px 0;font-size:28px}
+    p{margin:0 0 10px 0;line-height:1.5;opacity:.92}
+    a{color:#e9e9f1}
+  </style>
+</head>
+<body>
+  <main class="box">
+    <h1>Recebido.</h1>
+    <p>Seu envio foi registrado.</p>
+    <p>Se fizer sentido, você recebe o próximo passo por e-mail.</p>
+    <p><a href="/">Voltar ao site</a></p>
+  </main>
+</body>
+</html>
