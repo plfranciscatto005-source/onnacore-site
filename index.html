@@ -35,6 +35,45 @@
       --track: -0.04em;
     }
 
+    --track: -0.04em;
+}
+
+/* ===== BRAND LOCKUP ===== */
+
+.brand__lockup{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.brand__logo{
+  height:28px;
+  width:auto;
+  display:block;
+}
+
+.brand__stack{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.brand__name{
+  font-weight:700;
+  letter-spacing:.12em;
+  font-size:12px;
+  line-height:1;
+}
+
+.brand__tagline{
+  margin-top:6px;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+html, body { background: var(--surface); color: var(--ink); }
     html, body { background: var(--surface); color: var(--ink); }
 
     /* Fundo “caro”: grid + blobs sutis */
@@ -183,11 +222,12 @@
       <div class="h-[72px] flex items-center justify-between gap-4">
         
 <div class="brand">
-  <div class="brand__text">
-   <div class="brand__name">
-    <img src="/logo.svg" alt="Onna" style="height:26px; width:auto; display:block;"
-   </div>  
-   <div class="brand__tagline">Margem · Gestão · Liderança</div>
+  <div class="brand__lockup">
+    <img class="brand__logo" src="/logo.svg" alt="Onna">
+    <div class="brand__stack">
+      <div class="brand__name">ONNA</div>
+      <div class="brand__tagline">Margem · Gestão · Liderança</div>
+    </div>
   </div>
 </div>
 
