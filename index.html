@@ -53,9 +53,6 @@ src="https://www.facebook.com/tr?id=924726467166743&ev=PageView&noscript=1"
       --track: -0.04em;
     }
 
-    --track: -0.04em;
-}
-
 /* ===== BRAND LOCKUP ===== */
 
 .brand__lockup{
@@ -601,9 +598,9 @@ html, body { background: var(--surface); color: var(--ink); }
             </p>
 
             <div class="mt-7 flex flex-col sm:flex-row gap-3">
-            <div class="mt-7 flex flex-col sm:flex-row gap-3">
 
-              <a class="px-5 py-3 btn-primary text-base"
+              <a id="cta-diagnostico"
+                 class="px-5 py-3 btn-primary text-base"
                  data-tf-popup="LfVDGfZD"
                  data-tf-size="70"
                  data-tf-opacity="100"
@@ -657,6 +654,13 @@ html, body { background: var(--surface); color: var(--ink); }
       </div>
     </footer>
   </main>
+  <script>
+  document.getElementById('cta-diagnostico')?.addEventListener('click', function () {
+    if (typeof fbq === 'function') {
+      fbq('trackCustom', 'CTA_Diagnostico_Click');
+    }
+  });
+</script>
 <script src="https://embed.typeform.com/next/embed.js"></script>
 </body>
 </html>
