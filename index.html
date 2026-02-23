@@ -649,12 +649,39 @@ html, body { background: var(--surface); color: var(--ink); }
     </footer>
   </main>
   <script>
-  document.getElementById('cta-diagnostico')?.addEventListener('click', function () {
-    if (typeof fbq === 'function') {
-      fbq('trackCustom', 'CTA_Diagnostico_Click');
+ <script>
+document.getElementById('cta-diagnostico')?.addEventListener('click', function () {
+  if (typeof fbq === 'function') {
+    fbq('trackCustom', 'CTA_Diagnostico_Click');
+  }
+});
+</script>
+
+<script src="https://embed.typeform.com/next/embed.js"></script>
+
+<script>
+  window.addEventListener("message", function (event) {
+    try {
+      const data = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
+
+      const isSubmit =
+        data?.type === "form-submit" ||
+        data?.event === "form-submit" ||
+        data?.type === "form_response" ||
+        data?.event === "form_response" ||
+        data?.type === "tf:submit" ||
+        data?.event === "tf:submit";
+
+      if (isSubmit && typeof fbq === "function") {
+        fbq("track", "Lead");
+      }
+    } catch (e) {
+      if (event?.data?.type === "form-submit" && typeof fbq === "function") {
+        fbq("track", "Lead");
+      }
     }
   });
 </script>
-<script src="https://embed.typeform.com/next/embed.js"></script>
+
 </body>
 </html>
