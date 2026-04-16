@@ -4,684 +4,770 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ONNA — Diagnóstico Inteligente</title>
+  <meta name="description" content="Descubra onde seu faturamento está virando custo. Diagnóstico gratuito. Resposta em até 12 horas." />
 
-  <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '924726467166743');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=924726467166743&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-  <!-- Prototipagem rápida (CDN). Se quiser “produção”, depois a gente troca por build. -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Typeform Embed SDK -->
+  <script src="https://embed.typeform.com/next/embed.js"></script>
 
-  <style>:root{
-      --ink:#121317;
-      --muted:#45474D;
-      --subtle:#6A6A71;
+  <!-- Meta Pixel (trocar PIXEL_ID) -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', 'PIXEL_ID');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=PIXEL_ID&ev=PageView&noscript=1" />
+  </noscript>
 
-      --surface:#FFFFFF;
-      --surface-2:#F8F9FC;
-      --surface-3:#EFF2F7;
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-      --line: rgba(33,34,38,.08);
-      --line-2: rgba(33,34,38,.12);
-
-      --accent:#121317; /* Onna = preto firme */
-      --accent-2:#2F3034;
-
-      --radius-xl: 24px;
-      --radius-pill: 9999px;
-
-      --page: 72px;
-      --gutter: 48px;
-
-      --hero: clamp(40px, 4.8vw, 72px);
-      --lead: 17.5px;
-      --lh: 25.5px;
-      --track: -0.04em;
+    :root {
+      --dark: #0F0F11;
+      --dark-2: #18181B;
+      --dark-3: #222225;
+      --ink: #121317;
+      --ink-soft: #2F3034;
+      --muted: #5A5B61;
+      --subtle: #8A8B91;
+      --light: #E8E6E0;
+      --light-2: #C8C6C0;
+      --surface: #FFFFFF;
+      --surface-warm: #FAFAF8;
+      --line-dark: rgba(255,255,255,0.06);
+      --line-light: rgba(18,19,23,0.07);
+      --accent: #A0825A;
+      --accent-hover: #B8975F;
+      --accent-glow: rgba(160,130,90,0.25);
     }
 
-/* ===== BRAND LOCKUP ===== */
-
-.brand__lockup{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.brand__logo{
-  height:28px;
-  width:auto;
-  display:block;
-}
-
-.brand__stack{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-}
-
-.brand__name{
-  font-weight:700;
-  letter-spacing:.12em;
-  font-size:12px;
-  line-height:1;
-}
-
-.brand__tagline{
-  margin-top:6px;
-  font-size:12px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:var(--muted);
-}
-
-html, body { background: var(--surface); color: var(--ink); }
-    html, body { background: var(--surface); color: var(--ink); }
-
-    /* Fundo “caro”: grid + blobs sutis */
-    .bg-grid {
-      position: relative;
-      isolation: isolate;
-      background:
-        radial-gradient(1200px 700px at 10% 10%, rgba(50,121,249,.10), transparent 55%),
-        radial-gradient(900px 600px at 85% 15%, rgba(18,19,23,.06), transparent 55%),
-        radial-gradient(900px 700px at 70% 85%, rgba(50,121,249,.08), transparent 60%),
-        linear-gradient(#fff, #fff);
-    }
-    .bg-grid:before{
-      content:"";
-      position:absolute; inset:0;
-      background:
-        repeating-linear-gradient(to right, rgba(33,34,38,.05) 0 1px, transparent 1px 64px),
-        repeating-linear-gradient(to bottom, rgba(33,34,38,.04) 0 1px, transparent 1px 64px);
-      opacity:.35;
-      z-index:-1;
-      mask-image: radial-gradient(900px 500px at 20% 0%, #000 40%, transparent 75%);
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Barra superior premium */
+    body {
+      font-family: 'Poppins', system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--surface);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    @media (min-width: 768px) { .container { padding: 0 48px; } }
+
+    /* ══════════ TOPBAR ══════════ */
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 50;
-      backdrop-filter: blur(12px);
-      background: rgba(255,255,255,.72);
-      border-bottom: 1px solid var(--line);
+      z-index: 100;
+      background: rgba(15,15,17,0.92);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--line-dark);
     }
 
-    .container-x{
-      max-width: 1240px;
-      margin: 0 auto;
-      padding-left: var(--page);
-      padding-right: var(--page);
-    }
-    @media (max-width: 900px){
-      .container-x{ padding-left: 20px; padding-right: 20px; }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
     }
 
-    .pill{
-      border-radius: var(--radius-pill);
-      border: 1px solid var(--line);
-      background: rgba(248,249,252,.85);
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    .btn-primary{
-      border-radius: var(--radius-pill);
+    .brand-logo {
+      height: 30px;
+      width: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.85;
+    }
+
+    .brand-text { line-height: 1; }
+
+    .brand-name {
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      color: var(--light);
+    }
+
+    .brand-tagline {
+      font-size: 9px;
+      color: var(--subtle);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .topbar-cta {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 20px;
       background: var(--accent);
       color: #fff;
-      border: 1px solid rgba(18,19,23,.1);
-      box-shadow: 0 10px 30px rgba(18,19,23,.10);
-      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
     }
-    .btn-primary:hover{
+
+    .topbar-cta:hover {
+      background: var(--accent-hover);
       transform: translateY(-1px);
-      background: var(--accent-2);
-      box-shadow: 0 14px 38px rgba(18,19,23,.14);
+      box-shadow: 0 6px 20px var(--accent-glow);
     }
-    .btn-secondary{
-      border-radius: var(--radius-pill);
-      background: rgba(248,249,252,.9);
-      border: 1px solid var(--line-2);
+
+    /* ══════════ HERO ══════════ */
+    .hero {
+      position: relative;
+      background: var(--dark);
+      padding: 100px 0 88px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(to right, rgba(255,255,255,0.02) 0 1px, transparent 1px 80px),
+        repeating-linear-gradient(to bottom, rgba(255,255,255,0.015) 0 1px, transparent 1px 80px);
+      mask-image: radial-gradient(ellipse 70% 60% at 30% 30%, #000 10%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 60% at 30% 30%, #000 10%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: -15%;
+      right: -5%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(160,130,90,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5.5vw, 58px);
+      font-weight: 800;
+      line-height: 1.06;
+      letter-spacing: -0.035em;
+      color: var(--light);
+    }
+
+    .hero-punch {
+      margin-top: 24px;
+      font-size: clamp(15px, 2vw, 18px);
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.01em;
+      line-height: 1.4;
+    }
+
+    .hero-sub {
+      margin-top: 28px;
+      font-size: clamp(15px, 1.8vw, 17px);
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--light-2);
+      max-width: 540px;
+    }
+
+    .hero-cta-group {
+      margin-top: 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 17px 40px;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      box-shadow:
+        0 4px 24px var(--accent-glow),
+        0 1px 4px rgba(160,130,90,0.2);
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      background: var(--accent-hover);
+      box-shadow:
+        0 8px 40px rgba(160,130,90,0.35),
+        0 2px 8px rgba(160,130,90,0.25);
+    }
+
+    .btn-gold:active { transform: translateY(0); }
+
+    .hero-meta {
+      font-size: 12px;
+      color: var(--subtle);
+      letter-spacing: 0.04em;
+    }
+
+    .hero-meta span {
+      margin: 0 8px;
+      opacity: 0.3;
+    }
+
+    .hero-alt {
+      font-size: 12px;
+      color: rgba(200,198,192,0.5);
+      margin-top: 4px;
+    }
+
+    .hero-alt a {
+      color: rgba(200,198,192,0.65);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(200,198,192,0.2);
+      transition: all 0.15s;
+    }
+
+    .hero-alt a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ══════════ TRANSITION ══════════ */
+    .transition-strip {
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent) 0%, rgba(160,130,90,0.1) 100%);
+    }
+
+    /* ══════════ FILTER (ICP) ══════════ */
+    .filter-section {
+      padding: 72px 0;
+      background: var(--surface);
+      position: relative;
+    }
+
+    .filter-wrapper {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .filter-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .filter-text {
+      font-size: clamp(18px, 2.3vw, 24px);
+      font-weight: 400;
+      line-height: 1.6;
+      color: var(--ink-soft);
+    }
+
+    .filter-text strong {
       color: var(--ink);
-      transition: transform .15s ease, background .15s ease;
-    }
-    .btn-secondary:hover{ transform: translateY(-1px); background: rgba(239,242,247,.95); }
-
-    /* Cards e divisores */
-    .card{
-      border: 1px solid var(--line);
-      border-radius: var(--radius-xl);
-      background: rgba(255,255,255,.78);
-      box-shadow: 0 18px 50px rgba(18,19,23,.06);
-    }
-    .divider{
-      border-top: 1px solid var(--line);
+      font-weight: 600;
     }
 
-    /* Tipografia “produto” */
-    .h1{
-      font-size: var(--hero);
-      line-height: 1.02;
-      letter-spacing: var(--track);
-      font-weight: 520;
+    .filter-line {
+      width: 48px;
+      height: 2px;
+      background: var(--accent);
+      margin: 28px auto 0;
+      border-radius: 1px;
     }
-    .lead{ font-size: var(--lead); line-height: var(--lh); color: var(--muted); }
-    .micro{ font-size: 12.5px; color: var(--subtle); letter-spacing: .08em; text-transform: uppercase; }
 
-    /* “Chip” sutil */
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap:.5rem;
-      padding:.4rem .75rem;
-      border-radius: var(--radius-pill);
-      border: 1px solid var(--line);
-      background: rgba(248,249,252,.85);
-      font-size: 12.5px;
+    /* ══════════ DELIVERABLES ══════════ */
+    .deliverables {
+      padding: 72px 0 80px;
+      background: var(--surface-warm);
+      border-top: 1px solid var(--line-light);
+      border-bottom: 1px solid var(--line-light);
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .deliverables-title {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 48px;
+    }
+
+    .deliverables-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 640px) {
+      .deliverables-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .d-card {
+      padding: 32px 24px 28px;
+      border: 1px solid var(--line-light);
+      border-radius: 14px;
+      background: var(--surface);
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .d-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 24px;
+      right: 24px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 0 0 2px 2px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .d-card:hover {
+      border-color: rgba(160,130,90,0.2);
+      box-shadow: 0 12px 40px rgba(18,19,23,0.05);
+    }
+
+    .d-card:hover::before { opacity: 1; }
+
+    .d-number {
+      font-size: 32px;
+      font-weight: 800;
+      color: rgba(160,130,90,0.15);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .d-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .d-desc {
+      font-size: 14px;
       color: var(--muted);
+      line-height: 1.6;
     }
 
-    /* Pequena “linha narrativa” lateral */
-    .aside-note{
-      border-left: 2px solid rgba(18,19,23,.14);
-      padding-left: 14px;
+    .deliverables-cta {
+      margin-top: 56px;
+      text-align: center;
+    }
+
+    .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 17px 40px;
+      background: var(--ink);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(18,19,23,0.1);
+    }
+
+    .btn-dark:hover {
+      transform: translateY(-2px);
+      background: var(--ink-soft);
+      box-shadow: 0 8px 32px rgba(18,19,23,0.15);
+    }
+
+    /* ══════════ FAQ ══════════ */
+    .faq {
+      padding: 64px 0 80px;
+      background: var(--surface);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    @media (min-width: 640px) {
+      .faq-grid { grid-template-columns: repeat(2, 1fr); }
+      .faq-item--wide { grid-column: 1 / -1; }
+    }
+
+    .faq-item {
+      padding: 24px;
+      border: 1px solid var(--line-light);
+      border-radius: 12px;
+      background: var(--surface-warm);
+    }
+
+    .faq-q {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .faq-a {
+      font-size: 14px;
       color: var(--muted);
-      font-size: 14.5px;
-      line-height: 21px;
+      line-height: 1.6;
     }
 
-    /* Scroll target com offset por causa da barra sticky */
-    section { scroll-margin-top: 90px; }
-  
-/* --- ONNA brand mark in navbar --- */
-.brand{display:flex;align-items:center;gap:12px}
-.brand__mark{height:34px;width:auto;display:block;filter:grayscale(1);opacity:.92}
-.brand__text{line-height:1}
-.brand__name{font-weight:650;letter-spacing:.02em}
-.brand__tagline{margin-top:4px;font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+    .faq-a a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(160,130,90,0.3);
+      transition: all 0.15s;
+    }
 
-/* --- Trilha ONNA (hero) --- */
-.trail{margin-top:26px;text-align:center}
-@media (max-width: 640px){
-  .brand__tagline{display:none}
-}
+    .faq-a a:hover {
+      border-bottom-color: var(--accent);
+    }
 
+    /* ══════════ FOOTER ══════════ */
+    .footer {
+      padding: 36px 0;
+      background: var(--dark);
+      border-top: 1px solid var(--line-dark);
+    }
 
-    /* Journey (Trilha Onna) — subtle line style */
-    @media (max-width: 720px){
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+      text-align: center;
+    }
+    @media (min-width: 640px) {
+      .footer-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
       }
+    }
 
+    .footer-brand {
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      color: var(--light);
+    }
 
-.header-right{display:flex;align-items:center;gap:14px;justify-content:flex-end;}
-.header-right nav{display:flex;align-items:center;gap:10px;}
-.header-right nav a{white-space:nowrap;}
+    .footer-brand small {
+      display: block;
+      font-weight: 300;
+      font-size: 10px;
+      color: var(--subtle);
+      margin-top: 2px;
+      letter-spacing: 0.08em;
+    }
 
-/* ===== MOBILE HEADER FIX ===== */
-@media (max-width: 768px) {
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: center;
+    }
+    @media (min-width: 640px) {
+      .footer-right { align-items: flex-end; }
+    }
 
-  .brand__lockup {
-    gap: 8px;
-    align-items: center;
-  }
+    .footer-contact {
+      font-size: 11px;
+      color: var(--subtle);
+      line-height: 1.6;
+    }
 
-  .brand__logo {
-    height: 22px;
-  }
+    .footer-contact a {
+      color: var(--subtle);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
 
-  .brand__name {
-    font-size: 11px;
-    letter-spacing: .1em;
-  }
+    .footer-contact a:hover { color: var(--light); }
 
-  .brand__tagline {
-    font-size: 10px;
-    letter-spacing: .1em;
-  }
+    .footer-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
 
-}
-    .brand__tagline {
-  font-size: 10px;
-  letter-spacing: .1em;
-}
+    .footer-whatsapp:hover { color: var(--accent-hover); }
 
-/* ===== Mobile fix: topbar ===== */
-@media (max-width: 720px){
+    .footer-whatsapp svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
 
-  .topbar .container-x > div{
-    height: auto !important;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
+    /* ══════════ RESPONSIVE ══════════ */
+    @media (max-width: 640px) {
+      .hero { padding: 64px 0 56px; }
+      .brand-tagline { display: none; }
+      .topbar-cta { padding: 8px 14px; font-size: 11px; }
+      .btn-gold, .btn-dark { width: 100%; text-align: center; }
+      .filter-section { padding: 56px 0; }
+      .deliverables { padding: 56px 0 64px; }
+      .faq { padding: 48px 0 64px; }
+    }
 
-  .brand__lockup{
-    gap: 10px;
-  }
+    /* ══════════ ANIMATIONS ══════════ */
+    @media (prefers-reduced-motion: no-preference) {
+      .hero-content > * {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      }
+      .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
+      .hero-content > *:nth-child(2) { animation-delay: 0.22s; }
+      .hero-content > *:nth-child(3) { animation-delay: 0.34s; }
+      .hero-content > *:nth-child(4) { animation-delay: 0.48s; }
 
-  .brand__logo{
-    height: 22px;
-  }
+      .filter-wrapper,
+      .d-card,
+      .faq-item {
+        opacity: 0;
+        transform: translateY(16px);
+        animation: rise 0.5s ease forwards;
+      }
+      .filter-wrapper { animation-delay: 0.1s; }
+      .d-card:nth-child(1) { animation-delay: 0.15s; }
+      .d-card:nth-child(2) { animation-delay: 0.25s; }
+      .d-card:nth-child(3) { animation-delay: 0.35s; }
+      .faq-item:nth-child(1) { animation-delay: 0.15s; }
+      .faq-item:nth-child(2) { animation-delay: 0.25s; }
 
-  .header-right{
-    width: 100%;
-    justify-content: flex-start;
-  }
-
-  .header-right nav{
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    white-space: nowrap;
-    gap: 8px;
-  }
-
-  .header-right a,
-  .header-right nav a,
-  .btn-primary{
-    white-space: nowrap;
-  }
-
-  .btn-primary{
-    padding: 10px 14px;
-    font-size: 14px;
-  }
-}
-
-</style>
+      @keyframes rise {
+        to { opacity: 1; transform: translateY(0); }
+      }
+    }
+  </style>
 </head>
 
-<body class="bg-grid">
-  <!-- TOPBAR -->
+<body>
+
+  <!-- ══════ TOPBAR ══════ -->
   <header class="topbar">
-    <div class="container-x">
-      <div class="h-[72px] flex items-center justify-between gap-4">
-        
-<div class="brand">
-  <div class="brand__lockup">
-    <img class="brand__logo" src="/logo.png" alt="Onna">
-    <div class="brand__stack">
-      <div class="brand__name">ONNA</div>
-      <div class="brand__tagline">Margem · Gestão · Liderança</div>
-    </div>
-  </div>
-</div>
-
-
-        <div class="header-right">
-<nav class="hidden md:flex items-center gap-2">
-          <a class="px-4 py-2 pill text-sm text-[var(--muted)] hover:bg-[rgba(239,242,247,.9)] transition" href="#indicios">Indícios</a>
-          <a class="px-4 py-2 pill text-sm text-[var(--muted)] hover:bg-[rgba(239,242,247,.9)] transition" href="#como-funciona">Como funciona</a>
-          <a class="px-4 py-2 pill text-sm text-[var(--muted)] hover:bg-[rgba(239,242,247,.9)] transition" href="#entrega">Entrega</a>
-          <a class="px-4 py-2 pill text-sm text-[var(--muted)] hover:bg-[rgba(239,242,247,.9)] transition" href="#perguntas">Perguntas</a>
-        </nav>
-<a class="px-4 py-2 btn-primary text-sm" href="#diagnostico">Faça o Diagnóstico Inteligente</a>
-</div>
+    <div class="container topbar-inner">
+      <div class="brand">
+        <img class="brand-logo" src="logo.png" alt="ONNA"
+             onerror="this.onerror=null;this.style.display='none';" />
+        <div class="brand-text">
+          <div class="brand-name">ONNA</div>
+          <div class="brand-tagline">Margem · Gestão · Liderança</div>
+        </div>
       </div>
+      <button class="topbar-cta"
+              data-tf-popup="LfVDGfZD"
+              data-tf-opacity="100"
+              data-tf-iframe-props="title=Diagnóstico Inteligente"
+              data-tf-medium="snippet">
+        Faça o Diagnóstico
+      </button>
     </div>
   </header>
 
-  <!-- HERO -->
-  <main class="container-x">
-    <section class="pt-14 md:pt-20 pb-12 md:pb-16">
-      <div class="grid md:grid-cols-12 gap-10 items-start">
-        <div class="md:col-span-8">
-<h1 class="h1">
-            Você trabalha como empresa grande.<br/>
-            Mas lucra como negócio pequeno.
-          </h1>
+  <!-- ══════ HERO ══════ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
 
-          <p class="lead mt-6 max-w-[60ch]">
-            Identifique o ponto exato onde seu faturamento deixa de virar lucro real.
-          </p>
+        <h1>Você sustenta uma empresa<br>que não se sustenta sozinha.</h1>
 
-          <div class="mt-8 flex flex-col sm:flex-row gap-3">
-            <a class="px-5 py-3 btn-primary text-base" href="#diagnostico">Faça o Diagnóstico Inteligente</a>
-            <a class="px-5 py-3 btn-secondary text-base" href="#como-funciona">Ver como funciona</a>
-          </div>
+        <p class="hero-punch">A conta não fecha porque a base não aguenta.</p>
 
-          <div class="mt-6 text-sm text-[var(--subtle)]">
-            Primeiro critério. Depois velocidade.
-
-        </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-
-    <!-- INDÍCIOS -->
-    <section id="indicios" class="py-12 md:py-16">
-      <div class="grid md:grid-cols-12 gap-10">
-        <div class="md:col-span-5">
-          <div class="micro mb-3">Indícios</div>
-          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight leading-tight">
-            O problema não é falta de esforço.<br/>É falta de leitura.
-          </h2>
-          <p class="lead mt-4">
-            Crescer não corrige erro estrutural. Amplifica.
-          </p>
-
-          <div class="mt-6">
-            <a class="inline-flex px-5 py-3 btn-primary text-base" href="#diagnostico">Faça o Diagnóstico Inteligente</a>
-          </div>
-        </div>
-
-        <div class="md:col-span-7 grid sm:grid-cols-2 gap-4">
-          <div class="card p-5">
-            <div class="font-semibold">O caixa aperta com venda em alta</div>
-          </div>
-          <div class="card p-5">
-            <div class="font-semibold">A margem oscila sem explicação clara</div>
-          </div>
-          <div class="card p-5">
-            <div class="font-semibold">Preço e desconto mudam mais por percepção do que por cálculo</div>
-          </div>
-          <div class="card p-5">
-            <div class="font-semibold">Crescer aumenta a pressão, não a previsibilidade</div>
-          </div>
-          <div class="card p-5">
-            <div class="font-semibold">A operação depende demais de você</div>
-          </div>
-          <div class="card p-5">
-            <div class="font-semibold">Relatórios existem, mas não orientam decisão</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-    <!-- COMO FUNCIONA -->
-    <section id="como-funciona" class="py-12 md:py-16">
-      <div class="grid md:grid-cols-12 gap-10">
-        <div class="md:col-span-5">
-          <div class="micro mb-3">Como funciona</div>
-          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight leading-tight">
-            Simples por fora.<br/>Implacável por dentro.
-          </h2>
-          <p class="lead mt-4">
-            Você não precisa virar analista. Precisa de critério antes de acelerar de novo.
-          </p>
-          <div class="mt-6">
-            <a class="inline-flex px-5 py-3 btn-primary text-base" href="#diagnostico">Faça o Diagnóstico Inteligente</a>
-          </div>
-        </div>
-
-        <div class="md:col-span-7 grid sm:grid-cols-3 gap-4">
-          <div class="card p-5">
-            <div class="micro mb-2">01</div>
-            <div class="font-semibold">Respostas essenciais</div>
-            <p class="text-sm text-[var(--muted)] leading-[21px] mt-2">
-              Você responde o que importa. Sem texto infinito. Sem enrolação.
-            </p>
-          </div>
-          <div class="card p-5">
-            <div class="micro mb-2">02</div>
-            <div class="font-semibold">Leitura Onna</div>
-            <p class="text-sm text-[var(--muted)] leading-[21px] mt-2">
-              A Onna organiza os critérios e expõe, de forma adulta, o risco real.
-            </p>
-          </div>
-          <div class="card p-5">
-            <div class="micro mb-2">03</div>
-            <div class="font-semibold">Um primeiro movimento</div>
-            <p class="text-sm text-[var(--muted)] leading-[21px] mt-2">
-              Você recebe a leitura de ajuste antes de contratar, expandir ou investir mais.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-8">
-        <p class="lead max-w-[78ch]">
-          O Diagnóstico Inteligente reduz ruído e trata o problema com maturidade.
-          Ele aponta onde a margem está sendo comprimida e qual decisão vem primeiro.
-          Se fizer sentido, o próximo passo é o Diagnóstico de Comando.
+        <p class="hero-sub">
+          Descubra em poucos minutos onde seu faturamento<br>
+          está virando custo — e qual decisão vem primeiro.
         </p>
-      </div>
-    </section>
 
-    <div class="divider"></div>
-
-    <!-- POSICIONAMENTO -->
-    <section class="py-12 md:py-14">
-      <div class="card p-8 md:p-10 text-center">
-        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight leading-tight">
-          Não é fórmula pronta.<br/>É arquitetura de decisão.
-        </h2>
-      </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- ENTREGA -->
-    <section id="entrega" class="py-12 md:py-16">
-      <div class="grid md:grid-cols-12 gap-10 items-start">
-        <div class="md:col-span-6">
-          <div class="micro mb-3">Entrega</div>
-          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight leading-tight">
-            Saída clara.<br/>Sem relatório para arquivar.
-          </h2>
-          <p class="lead mt-4">
-            Você termina com clareza prática: o que está comprimindo sua margem e qual decisão vem primeiro.
-          </p>
-
-          <div class="mt-8 flex gap-3">
-            <a class="px-5 py-3 btn-primary text-base" href="#diagnostico">Faça o Diagnóstico Inteligente</a>
-            <a class="px-5 py-3 btn-secondary text-base" href="#perguntas">Ver perguntas</a>
+        <div class="hero-cta-group">
+          <button class="btn-gold"
+                  data-tf-popup="LfVDGfZD"
+                  data-tf-opacity="100"
+                  data-tf-iframe-props="title=Diagnóstico Inteligente"
+                  data-tf-medium="snippet">
+            Faça o Diagnóstico Inteligente
+          </button>
+          <div class="hero-meta">
+            Gratuito<span>·</span>Menos de 3 minutos<span>·</span>Resposta em até 12h
           </div>
-
-          <div class="mt-8">
-            <p class="lead">
-              Se você já vende, mas o lucro não acompanha, crescer não é a resposta. <b>Localizar o erro é.</b>
-            </p>
+          <div class="hero-alt">
+            Prefere conversar direto? <a href="https://wa.me/5551991342122" target="_blank" rel="noopener">Fale com a Onna pelo WhatsApp.</a>
           </div>
         </div>
 
-        <div class="md:col-span-6 grid gap-4">
-          <div class="card p-6">
-            <div class="font-semibold">Mapa de vazamento</div>
-            <p class="text-sm text-[var(--muted)] leading-[21px] mt-2">
-              Onde o dinheiro está sendo drenado — margem mal calculada, desconto sem critério, retrabalho, capacidade ociosa.
-            </p>
-          </div>
-          <div class="card p-6">
-            <div class="font-semibold">Leitura de comando</div>
-            <p class="text-sm text-[var(--muted)] leading-[21px] mt-2">
-              Onde sua presença virou gargalo — e o que precisa ser reorganizado primeiro.
-            </p>
-          </div>
-          <div class="card p-6">
-            <div class="font-semibold">Risco de acelerar</div>
-            <p class="text-sm text-[var(--muted)] leading-[21px] mt-2">
-              O que piora se você colocar mais venda, mídia ou equipe sobre uma estrutura frágil.
-            </p>
-          </div>
-          <div class="card p-6">
-            <div class="font-semibold">Próximo passo</div>
-            <p class="text-sm text-[var(--muted)] leading-[21px] mt-2">
-              A decisão certa. No tempo certo.
-            </p>
-          </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="transition-strip"></div>
+
+  <!-- ══════ FILTRO ICP ══════ -->
+  <section class="filter-section">
+    <div class="container">
+      <div class="filter-wrapper">
+        <div class="filter-label">Para quem é</div>
+        <p class="filter-text">
+          Se você construiu uma empresa que vende todos os meses
+          — mas <strong>o resultado não acompanha o tamanho do esforço</strong>
+          — esse diagnóstico foi pensado pra isso.
+        </p>
+        <div class="filter-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ O QUE VOCÊ RECEBE ══════ -->
+  <section class="deliverables">
+    <div class="container">
+      <div class="section-label">O que você recebe</div>
+      <h2 class="deliverables-title">
+        Uma análise do seu cenário.<br>
+        Não um relatório pra arquivar.
+      </h2>
+
+      <div class="deliverables-grid">
+        <div class="d-card">
+          <div class="d-number">01</div>
+          <div class="d-title">Onde o resultado escapa</div>
+          <p class="d-desc">O ponto exato entre o que você fatura e o que sobra. Sem suposição — com base no que você respondeu.</p>
+        </div>
+        <div class="d-card">
+          <div class="d-number">02</div>
+          <div class="d-title">Qual decisão vem primeiro</div>
+          <p class="d-desc">Nem tudo precisa ser resolvido ao mesmo tempo. Você recebe a prioridade certa pro seu momento.</p>
+        </div>
+        <div class="d-card">
+          <div class="d-number">03</div>
+          <div class="d-title">O próximo passo concreto</div>
+          <p class="d-desc">Uma direção clara pra agir na semana seguinte. Não conselho genérico. Direção.</p>
         </div>
       </div>
-    </section>
 
-    <div class="divider"></div>
+      <div class="deliverables-cta">
+        <button class="btn-dark"
+                data-tf-popup="LfVDGfZD"
+                data-tf-opacity="100"
+                data-tf-iframe-props="title=Diagnóstico Inteligente"
+                data-tf-medium="snippet">
+          Faça o Diagnóstico Inteligente
+        </button>
+      </div>
+    </div>
+  </section>
 
-    <!-- FAQ -->
-    <section id="perguntas" class="py-12 md:py-16">
-      <div class="grid md:grid-cols-12 gap-10">
-        <div class="md:col-span-5">
-          <div class="micro mb-3">Perguntas</div>
-          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight leading-tight">
-            Direto ao ponto.
-          </h2>
-          <p class="lead mt-4">
-            O Diagnóstico Inteligente é uma leitura orientada à decisão. Não é auditoria.
-          </p>
-          <div class="mt-6">
-            <a class="inline-flex px-5 py-3 btn-primary text-base" href="#diagnostico">Faça o Diagnóstico Inteligente</a>
-          </div>
+  <!-- ══════ FAQ ══════ -->
+  <section class="faq">
+    <div class="container">
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="faq-q">O que exatamente eu recebo?</div>
+          <p class="faq-a">Uma análise personalizada da sua operação, enviada por WhatsApp em até 12 horas. A Onna identifica onde está a distorção e qual ajuste vem primeiro.</p>
         </div>
-
-        <div class="md:col-span-7 grid gap-4">
-          <details class="card p-6">
-            <summary class="font-semibold cursor-pointer">O que exatamente eu recebo ao final?</summary>
-            <p class="text-sm text-[var(--muted)] leading-[21px] mt-3">
-              Uma leitura estratégica da operação e a definição clara do que precisa ser ajustado primeiro.
-            </p>
-          </details>
-
-          <details class="card p-6">
-            <summary class="font-semibold cursor-pointer">Isso envolve análise profunda de números?</summary>
-            <p class="text-sm text-[var(--muted)] leading-[21px] mt-3">
-              Não. O foco é identificar distorções e prioridades com base nas suas respostas.
-              Se houver necessidade de aprofundamento técnico, isso acontece em uma etapa posterior.
-            </p>
-          </details>
-
-          <details class="card p-6">
-            <summary class="font-semibold cursor-pointer">Isso substitui planejamento estratégico?</summary>
-            <p class="text-sm text-[var(--muted)] leading-[21px] mt-3">
-              Não. Ele organiza Margem, Gestão e Liderança antes de qualquer expansão.
-            </p>
-          </details>
-
-          <details class="card p-6">
-            <summary class="font-semibold cursor-pointer">É indicado para qualquer empresa?</summary>
-            <p class="text-sm text-[var(--muted)] leading-[21px] mt-3">
-              Não. É para negócios que já vendem e sentem que o crescimento não está consolidando lucro com a mesma força.
-            </p>
-          </details>
-
-          <details class="card p-6">
-            <summary class="font-semibold cursor-pointer">O que acontece depois?</summary>
-            <p class="text-sm text-[var(--muted)] leading-[21px] mt-3">
-              Se a leitura indicar necessidade de aprofundamento, o próximo passo é o Diagnóstico de Comando.
-              Se não, você já sai com prioridade definida.
-            </p>
-          </details>
+        <div class="faq-item">
+          <div class="faq-q">Quanto custa?</div>
+          <p class="faq-a">Nada. O Diagnóstico Inteligente é gratuito. Menos de 3 minutos pra responder. Sem compromisso.</p>
+        </div>
+        <div class="faq-item faq-item--wide">
+          <div class="faq-q">Posso falar com alguém antes de preencher?</div>
+          <p class="faq-a">Sim. Se preferir, <a href="https://wa.me/5551991342122" target="_blank" rel="noopener">fale direto com a Onna pelo WhatsApp</a>. Vamos entender seu cenário e indicar o melhor caminho.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <div class="divider"></div>
-
-    <!-- DIAGNÓSTICO (ALVO DO BOTÃO) -->
-    <section id="diagnostico" class="py-12 md:py-16">
-      <div class="card p-8 md:p-10">
-        <div class="grid md:grid-cols-12 gap-8 items-start">
-          <div class="md:col-span-8">
-            <div class="micro mb-3">Diagnóstico Inteligente</div>
-            <h2 class="text-3xl md:text-4xl font-semibold tracking-tight leading-tight">
-              Organize seu crescimento.<br/>Estruture a base. Depois avance.
-            </h2>
-            <p class="lead mt-4 max-w-[78ch]">
-              Se a venda cresce e o caixa não acompanha, o problema não é esforço. É estrutura.
-            </p>
-
-            <div class="mt-7 flex flex-col sm:flex-row gap-3">
-              <a id="cta-diagnostico"
-                 class="px-5 py-3 btn-primary text-base"
-                 data-tf-popup="LfVDGfZD"
-                 data-tf-size="70"
-                 data-tf-opacity="100"
-                 data-tf-iframe-props="title=Diagnóstico Inteligente"
-                 data-tf-transitive-search-params
-                 data-tf-medium="snippet">
-                Abra o Diagnóstico Inteligente
-              </a>
-
-              <a class="px-5 py-3 btn-secondary text-base" href="#como-funciona">
-                Ver etapas
-              </a>
-            </div>
-          </div>
-          
-          <div class="md:col-span-4">
-                <div class="card p-6" style="background:rgba(248,249,252,.75)">
-                  <div class="micro mb-2">Antes de começar</div>
-                  <p class="text-sm text-[var(--muted)] leading-[21px]">
-                    Separe 5 minutos. Responda com honestidade. Descreva o real, não a intenção.
-                  </p>
-                  <div class="divider my-4"></div>
-                  <p class="text-sm text-[var(--muted)] leading-[21px]">
-                    Se a leitura indicar risco estrutural ou gargalo relevante, o próximo passo é o Diagnóstico de Comando.
-                  </p>
-                </div>
-        
-              </div>
-            </div>
-          </div>
-        </section>
-    
-<!-- FOOTER (barra final) -->
-    <footer class="py-10 md:py-12">
-      <div class="divider mb-8"></div>
-      <div class="flex flex-col md:flex-row justify-between gap-6 items-start">
-        <div>
-          <div class="font-semibold">ONNA</div>
-          <div class="text-sm text-[var(--muted)]">Margem · Gestão · Liderança</div>
-        </div>
-        <div class="text-sm text-[var(--muted)]">
-          <div><b>Contato</b></div>
-          <div>contato@onnacore.com.br</div>
-          <div>Porto Alegre — RS</div>
+  <!-- ══════ FOOTER ══════ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        ONNA
+        <small>Margem · Gestão · Liderança</small>
+      </div>
+      <div class="footer-right">
+        <a class="footer-whatsapp" href="https://wa.me/5551991342122" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          (51) 99134-2122
+        </a>
+        <div class="footer-contact">
+          <a href="mailto:contato@onnacore.com.br">contato@onnacore.com.br</a>
+           · Porto Alegre — RS
         </div>
       </div>
-    </footer>
-  </main>
-  <script>
- <script>
-document.getElementById('cta-diagnostico')?.addEventListener('click', function () {
-  if (typeof fbq === 'function') {
-    fbq('trackCustom', 'CTA_Diagnostico_Click');
-  }
-});
-</script>
-
-<script src="https://embed.typeform.com/next/embed.js"></script>
-
-<script>
-  window.addEventListener("message", function (event) {
-    try {
-      const data = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
-
-      const isSubmit =
-        data?.type === "form-submit" ||
-        data?.event === "form-submit" ||
-        data?.type === "form_response" ||
-        data?.event === "form_response" ||
-        data?.type === "tf:submit" ||
-        data?.event === "tf:submit";
-
-      if (isSubmit && typeof fbq === "function") {
-        fbq("track", "Lead");
-      }
-    } catch (e) {
-      if (event?.data?.type === "form-submit" && typeof fbq === "function") {
-        fbq("track", "Lead");
-      }
-    }
-  });
-</script>
+    </div>
+  </footer>
 
 </body>
 </html>
