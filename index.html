@@ -619,7 +619,12 @@
           <div class="brand-tagline">Margem · Gestão · Liderança</div>
         </div>
       </div>
-      <button class="topbar-cta" onclick="openDiagnostico()">
+      <button class="topbar-cta"
+              data-tf-popup="HyvcCoSS"
+              data-tf-opacity="100"
+              data-tf-iframe-props="title=Diagnóstico Inteligente"
+              data-tf-medium="snippet"
+              data-tf-on-submit="onTypeformSubmit">
         Faça o Diagnóstico
       </button>
     </div>
@@ -635,7 +640,12 @@
         <p class="hero-punch">Descubra em 3 minutos onde o resultado está travando.</p>
 
         <div class="hero-cta-group">
-          <button class="btn-gold" onclick="openDiagnostico()">
+          <button class="btn-gold"
+                  data-tf-popup="HyvcCoSS"
+                  data-tf-opacity="100"
+                  data-tf-iframe-props="title=Diagnóstico Inteligente"
+                  data-tf-medium="snippet"
+                  data-tf-on-submit="onTypeformSubmit">
             Fazer o Diagnóstico — é gratuito
           </button>
           <div class="hero-meta">
@@ -695,7 +705,12 @@
       </div>
 
       <div class="deliverables-cta">
-        <button class="btn-dark" onclick="openDiagnostico()">
+        <button class="btn-dark"
+                data-tf-popup="HyvcCoSS"
+                data-tf-opacity="100"
+                data-tf-iframe-props="title=Diagnóstico Inteligente"
+                data-tf-medium="snippet"
+                data-tf-on-submit="onTypeformSubmit">
           Faça o Diagnóstico Inteligente
         </button>
       </div>
@@ -742,20 +757,21 @@
     </div>
   </footer>
 
-  <!-- Typeform popup com rastreamento de Lead -->
+  <!-- Rastreamento de Lead no Meta Pixel -->
   <script>
-    function openDiagnostico() {
-      window.tf.createPopup('HyvcCoSS', {
-        opacity: 100,
-        iframeProps: { title: 'Diagnóstico Inteligente' },
-        medium: 'snippet',
-        onSubmit: function() {
-          if (typeof fbq === 'function') {
-            fbq('track', 'Lead');
-          }
-        }
-      }).open();
+    function onTypeformSubmit() {
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead');
+      }
     }
+
+    window.addEventListener('message', function(e) {
+      if (e.data && e.data.type === 'form-submit') {
+        if (typeof fbq === 'function') {
+          fbq('track', 'Lead');
+        }
+      }
+    });
   </script>
 
 </body>
