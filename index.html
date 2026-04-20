@@ -766,22 +766,7 @@
 
   <!-- Rastreamento de Lead no Meta Pixel -->
   <script>
-    var leadFired = false;
-
-    function fireLeadEvent() {
-      if (!leadFired && typeof fbq === 'function') {
-        fbq('track', 'Lead');
-        leadFired = true;
-        console.log('ONNA: Lead event fired');
-      }
-    }
-
-    window.addEventListener('message', function(event) {
-      try {
-        var data = event.data;
-
 <!-- Rastreamento de Lead no Meta Pixel -->
-<script>
   let leadFired = false;
 
   function fireLeadEvent(source = 'unknown') {
