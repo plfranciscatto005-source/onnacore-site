@@ -759,19 +759,39 @@
 
   <!-- Rastreamento de Lead no Meta Pixel -->
   <script>
-    function onTypeformSubmit() {
-      if (typeof fbq === 'function') {
+    var leadFired = false;
+
+    function fireLeadEvent() {
+      if (!leadFired && typeof fbq === 'function') {
         fbq('track', 'Lead');
+        leadFired = true;
+        console.log('ONNA: Lead event fired');
       }
     }
 
-    window.addEventListener('message', function(e) {
-      if (e.data && e.data.type === 'form-submit') {
-        if (typeof fbq === 'function') {
-          fbq('track', 'Lead');
+    window.addEventListener('message', function(event) {
+      try {
+        var data = event.data;
+
+        if (typeof data === 'string') {
+          try { data = JSON.parse(data); } catch(e) {}
         }
-      }
+
+        if (data) {
+          if (data.type === 'form-submit' ||
+              data.type === 'form-submit-success' ||
+              data.eventType === 'form-submit' ||
+              (data.type === 'typeform' && data.eventName === 'submit') ||
+              (typeof data === 'object' && data.formId === 'HyvcCoSS' && data.type === 'submit')) {
+            fireLeadEvent();
+          }
+        }
+      } catch(e) {}
     });
+
+    function onTypeformSubmit() {
+      fireLeadEvent();
+    }
   </script>
 
 </body>
