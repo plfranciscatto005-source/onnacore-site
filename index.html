@@ -780,26 +780,53 @@
       try {
         var data = event.data;
 
-        if (typeof data === 'string') {
-          try { data = JSON.parse(data); } catch(e) {}
-        }
+<!-- Rastreamento de Lead no Meta Pixel -->
+<script>
+  let leadFired = false;
 
-        if (data) {
-          if (data.type === 'form-submit' ||
-              data.type === 'form-submit-success' ||
-              data.eventType === 'form-submit' ||
-              (data.type === 'typeform' && data.eventName === 'submit') ||
-              (typeof data === 'object' && data.formId === 'HyvcCoSS' && data.type === 'submit')) {
-            fireLeadEvent();
-          }
-        }
-      } catch(e) {}
-    });
-
-    function onTypeformSubmit() {
-      fireLeadEvent();
+  function fireLeadEvent(source = 'unknown') {
+    if (leadFired) return;
+    if (typeof fbq !== 'function') {
+      console.warn('ONNA: fbq não está disponível');
+      return;
     }
-  </script>
+
+    fbq('track', 'Lead');
+    leadFired = true;
+    console.log('ONNA: Lead enviado via ' + source);
+  }
+
+  function onTypeformSubmit() {
+    fireLeadEvent('typeform-callback');
+  }
+
+  window.addEventListener('message', function(event) {
+    try {
+      let data = event.data;
+
+      if (typeof data === 'string') {
+        try {
+          data = JSON.parse(data);
+        } catch (_) {}
+      }
+
+      if (!data || typeof data !== 'object') return;
+
+      const isTypeformSubmit =
+        data.type === 'form-submit' ||
+        data.type === 'form-submit-success' ||
+        data.eventType === 'form-submit' ||
+        (data.type === 'typeform' && data.eventName === 'submit') ||
+        (data.formId === 'HyvcCoSS' && data.type === 'submit');
+
+      if (isTypeformSubmit) {
+        fireLeadEvent('postMessage');
+      }
+    } catch (e) {
+      console.warn('ONNA: erro ao processar evento do Typeform', e);
+    }
+  });
+</script>
 
 </body>
 </html>
