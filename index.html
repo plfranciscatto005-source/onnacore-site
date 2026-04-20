@@ -626,14 +626,13 @@
           <div class="brand-tagline">Margem · Gestão · Liderança</div>
         </div>
       </div>
-      <button class="topbar-cta"
-              data-tf-popup="HyvcCoSS"
-              data-tf-opacity="100"
-              data-tf-iframe-props="title=Diagnóstico Inteligente"
-              data-tf-medium="snippet"
-              data-tf-on-submit="onTypeformSubmit">
-        Faça o Diagnóstico
-      </button>
+    <button class="topbar-cta"
+      data-tf-popup="HyvcCoSS"
+      data-tf-opacity="100"
+      data-tf-iframe-props="title=Diagnóstico Inteligente"
+      data-tf-medium="snippet">
+      Faça o Diagnóstico
+    </button>
     </div>
   </header>
 
@@ -651,8 +650,7 @@
                   data-tf-popup="HyvcCoSS"
                   data-tf-opacity="100"
                   data-tf-iframe-props="title=Diagnóstico Inteligente"
-                  data-tf-medium="snippet"
-                  data-tf-on-submit="onTypeformSubmit">
+                  data-tf-medium="snippet">
             Fazer o Diagnóstico — é gratuito
           </button>
           <div class="hero-meta">
@@ -716,8 +714,7 @@
                 data-tf-popup="HyvcCoSS"
                 data-tf-opacity="100"
                 data-tf-iframe-props="title=Diagnóstico Inteligente"
-                data-tf-medium="snippet"
-                data-tf-on-submit="onTypeformSubmit">
+                data-tf-medium="snippet">
           Faça o Diagnóstico Inteligente
         </button>
       </div>
@@ -765,24 +762,16 @@
   </footer>
 
   <!-- Rastreamento de Lead no Meta Pixel -->
-  <script>
-<!-- Rastreamento de Lead no Meta Pixel -->
+<script>
   let leadFired = false;
 
   function fireLeadEvent(source = 'unknown') {
     if (leadFired) return;
-    if (typeof fbq !== 'function') {
-      console.warn('ONNA: fbq não está disponível');
-      return;
-    }
+    if (typeof fbq !== 'function') return;
 
     fbq('track', 'Lead');
     leadFired = true;
     console.log('ONNA: Lead enviado via ' + source);
-  }
-
-  function onTypeformSubmit() {
-    fireLeadEvent('typeform-callback');
   }
 
   window.addEventListener('message', function(event) {
@@ -790,25 +779,20 @@
       let data = event.data;
 
       if (typeof data === 'string') {
-        try {
-          data = JSON.parse(data);
-        } catch (_) {}
+        try { data = JSON.parse(data); } catch (_) {}
       }
 
-      if (!data || typeof data !== 'object') return;
-
-      const isTypeformSubmit =
-        data.type === 'form-submit' ||
-        data.type === 'form-submit-success' ||
-        data.eventType === 'form-submit' ||
-        (data.type === 'typeform' && data.eventName === 'submit') ||
-        (data.formId === 'HyvcCoSS' && data.type === 'submit');
-
-      if (isTypeformSubmit) {
-        fireLeadEvent('postMessage');
+      if (
+        data &&
+        (data.type === 'form-submit' ||
+         data.type === 'form-submit-success' ||
+         data.eventType === 'form-submit')
+      ) {
+        fireLeadEvent('typeform-submit');
       }
+
     } catch (e) {
-      console.warn('ONNA: erro ao processar evento do Typeform', e);
+      console.warn('ONNA: erro no listener', e);
     }
   });
 </script>
