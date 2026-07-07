@@ -195,8 +195,11 @@ body{
   letter-spacing:-0.02em;
   color:var(--ink);
   margin-top:28px;
-  min-height:2.1em;
 }
+.tw-wrap{ position:relative; }
+.tw-ghost{ display:block; visibility:hidden; }
+.tw-live{ position:absolute; inset:0; }
+.caret-ghost{ visibility:hidden; }
 .hero h1 .sobra{
   font-style:italic;
   font-weight:380;
@@ -319,6 +322,24 @@ body{
 .sec{ padding:96px 0 104px; }
 @media (max-width:720px){ .sec{ padding:64px 0 72px; } }
 .sec-head{ margin-bottom:56px; }
+.sec-head::before{
+  content:"";
+  display:block;
+  width:44px; height:2px;
+  background:var(--gold-bright);
+  border-radius:1px;
+  margin-bottom:26px;
+}
+.faq .sec-head::before,
+.quem-inner::before,
+.fecho .container::before{
+  content:"";
+  display:block;
+  width:44px; height:2px;
+  background:var(--gold-bright);
+  border-radius:1px;
+  margin:0 auto 26px;
+}
 .sec-head .section-title{ margin-top:16px; }
 .sec-head .section-lead{ margin-top:18px; }
 
@@ -689,7 +710,7 @@ body{
 /* ══════════ MOBILE FINO ══════════ */
 @media (max-width:720px){
   .brand-tagline{ display:none; }
-  .hero{ padding:64px 0 52px; }
+  .hero{ padding:64px 0 64px; }
   .hero-cta .btn{ width:100%; }
   .metodo-close{ flex-direction:column; align-items:stretch; }
   .metodo-close .btn{ width:100%; }
@@ -726,9 +747,9 @@ body{
   <div class="container">
     <div class="hero-inner">
       <div class="kicker reveal in">Análise de Margem · Gratuita</div>
-      <h1 id="tw" aria-label="Você sabe o quanto fatura. Não sabe o quanto lucra.">
-        <span id="tw1"></span><br>
-        <span id="tw2"></span><span id="twsobra" class="sobra"></span><span id="twdot"></span><span class="caret" id="caret"></span>
+      <h1 id="tw" class="tw-wrap" aria-label="Você sabe o quanto fatura. Não sabe o quanto lucra.">
+        <span class="tw-ghost" aria-hidden="true">Você sabe o quanto fatura.<br>Não sabe o quanto <span class="sobra">lucra</span>.<span class="caret caret-ghost"></span></span>
+        <span class="tw-live" aria-hidden="true"><span id="tw1"></span><br><span id="tw2"></span><span id="twsobra" class="sobra"></span><span id="twdot"></span><span class="caret" id="caret"></span></span>
       </h1>
       <p class="hero-promise reveal">Você responde em alguns minutos. A Onna lê sua operação e te chama no WhatsApp com uma percepção concreta do seu cenário.</p>
 
