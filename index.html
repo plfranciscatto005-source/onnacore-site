@@ -1,800 +1,1186 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ONNA — Análise de Margem</title>
-  <meta name="description" content="Você sabe o quanto fatura. Não sabe o quanto sobra. Análise de Margem gratuita. Direto no seu WhatsApp." />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#FDFCF8" />
+<title>ONNA — Análise de Margem</title>
+<meta name="description" content="Você sabe o quanto fatura. Não sabe o quanto lucra. Análise de Margem gratuita: a Onna lê sua operação e responde direto no seu WhatsApp." />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,380;0,9..144,450;0,9..144,560;1,9..144,380;1,9..144,450&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
 
-  <!-- Typeform Embed SDK -->
-  <script src="https://embed.typeform.com/next/embed.js"></script>
+<!-- Typeform Embed SDK -->
+<script src="https://embed.typeform.com/next/embed.js"></script>
 
- <!-- Meta Pixel -->
+<!-- Meta Pixel -->
 <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;
-  n.push=n;
-  n.loaded=!0;
-  n.version='2.0';
-  n.queue=[];
-  t=b.createElement(e);
-  t.async=!0;
-  t.src=v;
-  s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)
-  }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-
-  fbq('init', '924726467166743');
-  fbq('track', 'PageView');
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;
+n.push=n;
+n.loaded=!0;
+n.version='2.0';
+n.queue=[];
+t=b.createElement(e);
+t.async=!0;
+t.src=v;
+s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)
+}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '924726467166743');
+fbq('track', 'PageView');
 </script>
 <noscript>
-  <img height="1" width="1" style="display:none"
-       src="https://www.facebook.com/tr?id=924726467166743&ev=PageView&noscript=1" />
+<img height="1" width="1" style="display:none"
+     src="https://www.facebook.com/tr?id=924726467166743&ev=PageView&noscript=1" />
 </noscript>
 
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --dark: #0F0F11;
-      --dark-2: #18181B;
-      --dark-3: #222225;
-      --ink: #121317;
-      --ink-soft: #2F3034;
-      --muted: #5A5B61;
-      --subtle: #8A8B91;
-      --light: #E8E6E0;
-      --light-2: #C8C6C0;
-      --surface: #FFFFFF;
-      --surface-warm: #FAFAF8;
-      --line-dark: rgba(255,255,255,0.06);
-      --line-light: rgba(18,19,23,0.07);
-      --accent: #A0825A;
-      --accent-hover: #B8975F;
-      --accent-glow: rgba(160,130,90,0.25);
-    }
-
-    html {
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    body {
-      font-family: 'Poppins', system-ui, sans-serif;
-      color: var(--ink);
-      background: var(--surface);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    .container {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    @media (min-width: 768px) { .container { padding: 0 48px; } }
-
-    /* ══════════ TOPBAR ══════════ */
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(15,15,17,0.92);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      border-bottom: 1px solid var(--line-dark);
-    }
-
-    .topbar-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 60px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .brand-text { line-height: 1; }
-
-    .brand-name {
-      font-weight: 700;
-      font-size: 14px;
-      letter-spacing: 0.06em;
-      color: var(--light);
-    }
-
-    .brand-tagline {
-      font-size: 9px;
-      color: var(--subtle);
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      margin-top: 2px;
-    }
-
-    .topbar-cta {
-      display: inline-flex;
-      align-items: center;
-      padding: 9px 20px;
-      background: var(--accent);
-      color: #fff;
-      font-family: 'Poppins', sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-decoration: none;
-    }
-
-    .topbar-cta:hover {
-      background: var(--accent-hover);
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px var(--accent-glow);
-    }
-
-    /* ══════════ HERO ══════════ */
-    .hero {
-      position: relative;
-      background: var(--dark);
-      padding: 100px 0 88px;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        repeating-linear-gradient(to right, rgba(255,255,255,0.02) 0 1px, transparent 1px 80px),
-        repeating-linear-gradient(to bottom, rgba(255,255,255,0.015) 0 1px, transparent 1px 80px);
-      mask-image: radial-gradient(ellipse 70% 60% at 30% 30%, #000 10%, transparent 70%);
-      -webkit-mask-image: radial-gradient(ellipse 70% 60% at 30% 30%, #000 10%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      top: -15%;
-      right: -5%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(160,130,90,0.08) 0%, transparent 65%);
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 700px;
-    }
-
-    .hero h1 {
-      font-size: clamp(32px, 5.5vw, 58px);
-      font-weight: 800;
-      line-height: 1.06;
-      letter-spacing: -0.035em;
-      color: var(--light);
-    }
-
-    .hero-punch {
-      margin-top: 24px;
-      font-size: clamp(15px, 2vw, 18px);
-      font-weight: 500;
-      color: var(--accent);
-      letter-spacing: 0.01em;
-      line-height: 1.4;
-    }
-
-    .hero-sub {
-      margin-top: 28px;
-      font-size: clamp(15px, 1.8vw, 17px);
-      font-weight: 300;
-      line-height: 1.65;
-      color: var(--light-2);
-      max-width: 540px;
-    }
-
-    .hero-cta-group {
-      margin-top: 44px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      align-items: flex-start;
-    }
-
-    .btn-gold {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 17px 40px;
-      background: var(--accent);
-      color: #fff;
-      font-family: 'Poppins', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      text-decoration: none;
-      box-shadow:
-        0 4px 24px var(--accent-glow),
-        0 1px 4px rgba(160,130,90,0.2);
-    }
-
-    .btn-gold:hover {
-      transform: translateY(-2px);
-      background: var(--accent-hover);
-      box-shadow:
-        0 8px 40px rgba(160,130,90,0.35),
-        0 2px 8px rgba(160,130,90,0.25);
-    }
-
-    .btn-gold:active { transform: translateY(0); }
-
-    .hero-meta {
-      font-size: 12px;
-      color: var(--subtle);
-      letter-spacing: 0.04em;
-    }
-
-    .hero-meta span {
-      margin: 0 8px;
-      opacity: 0.3;
-    }
-
-    .hero-alt {
-      font-size: 12px;
-      color: rgba(200,198,192,0.5);
-      margin-top: 4px;
-    }
-
-    .hero-alt a {
-      color: rgba(200,198,192,0.65);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(200,198,192,0.2);
-      transition: all 0.15s;
-    }
-
-    .hero-alt a:hover {
-      color: var(--accent);
-      border-bottom-color: var(--accent);
-    }
-
-    /* ══════════ TRANSITION ══════════ */
-    .transition-strip {
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent) 0%, rgba(160,130,90,0.1) 100%);
-    }
-
-    /* ══════════ FILTER (ICP) ══════════ */
-    .filter-section {
-      padding: 72px 0;
-      background: var(--surface);
-      position: relative;
-    }
-
-    .filter-wrapper {
-      max-width: 680px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .filter-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 20px;
-    }
-
-    .filter-text {
-      font-size: clamp(18px, 2.3vw, 24px);
-      font-weight: 400;
-      line-height: 1.6;
-      color: var(--ink-soft);
-    }
-
-    .filter-text strong {
-      color: var(--ink);
-      font-weight: 600;
-    }
-
-    .filter-line {
-      width: 48px;
-      height: 2px;
-      background: var(--accent);
-      margin: 28px auto 0;
-      border-radius: 1px;
-    }
-
-    /* ══════════ DELIVERABLES ══════════ */
-    .deliverables {
-      padding: 72px 0 80px;
-      background: var(--surface-warm);
-      border-top: 1px solid var(--line-light);
-      border-bottom: 1px solid var(--line-light);
-    }
-
-    .section-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 14px;
-    }
-
-    .deliverables-title {
-      font-size: clamp(24px, 3vw, 36px);
-      font-weight: 700;
-      letter-spacing: -0.025em;
-      line-height: 1.15;
-      color: var(--ink);
-      margin-bottom: 48px;
-    }
-
-    .deliverables-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-    @media (min-width: 640px) {
-      .deliverables-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-
-    .d-card {
-      padding: 32px 24px 28px;
-      border: 1px solid var(--line-light);
-      border-radius: 14px;
-      background: var(--surface);
-      transition: all 0.25s ease;
-      position: relative;
-    }
-
-    .d-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 24px;
-      right: 24px;
-      height: 2px;
-      background: var(--accent);
-      border-radius: 0 0 2px 2px;
-      opacity: 0;
-      transition: opacity 0.25s ease;
-    }
-
-    .d-card:hover {
-      border-color: rgba(160,130,90,0.2);
-      box-shadow: 0 12px 40px rgba(18,19,23,0.05);
-    }
-
-    .d-card:hover::before { opacity: 1; }
-
-    .d-number {
-      font-size: 32px;
-      font-weight: 800;
-      color: rgba(160,130,90,0.15);
-      line-height: 1;
-      margin-bottom: 16px;
-    }
-
-    .d-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 10px;
-      line-height: 1.3;
-    }
-
-    .d-desc {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .deliverables-cta {
-      margin-top: 56px;
-      text-align: center;
-    }
-
-    .btn-dark {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 17px 40px;
-      background: var(--ink);
-      color: #fff;
-      font-family: 'Poppins', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      transition: all 0.25s ease;
-      text-decoration: none;
-      box-shadow: 0 4px 20px rgba(18,19,23,0.1);
-    }
-
-    .btn-dark:hover {
-      transform: translateY(-2px);
-      background: var(--ink-soft);
-      box-shadow: 0 8px 32px rgba(18,19,23,0.15);
-    }
-
-    /* ══════════ FAQ ══════════ */
-    .faq {
-      padding: 64px 0 80px;
-      background: var(--surface);
-    }
-
-    .faq-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      max-width: 640px;
-      margin: 0 auto;
-    }
-    @media (min-width: 640px) {
-      .faq-grid { grid-template-columns: repeat(2, 1fr); }
-      .faq-item--wide { grid-column: 1 / -1; }
-    }
-
-    .faq-item {
-      padding: 24px;
-      border: 1px solid var(--line-light);
-      border-radius: 12px;
-      background: var(--surface-warm);
-    }
-
-    .faq-q {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 10px;
-      line-height: 1.35;
-    }
-
-    .faq-a {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .faq-a a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
-      border-bottom: 1px solid rgba(160,130,90,0.3);
-      transition: all 0.15s;
-    }
-
-    .faq-a a:hover {
-      border-bottom-color: var(--accent);
-    }
-
-    /* ══════════ FOOTER ══════════ */
-    .footer {
-      padding: 36px 0;
-      background: var(--dark);
-      border-top: 1px solid var(--line-dark);
-    }
-
-    .footer-inner {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      align-items: center;
-      text-align: center;
-    }
-    @media (min-width: 640px) {
-      .footer-inner {
-        flex-direction: row;
-        justify-content: space-between;
-        text-align: left;
-      }
-    }
-
-    .footer-brand {
-      font-weight: 700;
-      font-size: 13px;
-      letter-spacing: 0.05em;
-      color: var(--light);
-    }
-
-    .footer-brand small {
-      display: block;
-      font-weight: 300;
-      font-size: 10px;
-      color: var(--subtle);
-      margin-top: 2px;
-      letter-spacing: 0.08em;
-    }
-
-    .footer-right {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      align-items: center;
-    }
-    @media (min-width: 640px) {
-      .footer-right { align-items: flex-end; }
-    }
-
-    .footer-contact {
-      font-size: 11px;
-      color: var(--subtle);
-      line-height: 1.6;
-    }
-
-    .footer-contact a {
-      color: var(--subtle);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .footer-contact a:hover { color: var(--light); }
-
-    .footer-whatsapp {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--accent);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .footer-whatsapp:hover { color: var(--accent-hover); }
-
-    .footer-whatsapp svg {
-      width: 14px;
-      height: 14px;
-      fill: currentColor;
-    }
-
-    /* ══════════ RESPONSIVE ══════════ */
-    @media (max-width: 640px) {
-      .hero { padding: 64px 0 56px; }
-      .brand-tagline { display: none; }
-      .topbar-cta { padding: 8px 14px; font-size: 11px; }
-      .btn-gold, .btn-dark { width: 100%; text-align: center; }
-      .filter-section { padding: 56px 0; }
-      .deliverables { padding: 56px 0 64px; }
-      .faq { padding: 48px 0 64px; }
-    }
-
-    /* ══════════ ANIMATIONS ══════════ */
-    @media (prefers-reduced-motion: no-preference) {
-      .hero-content > * {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-      }
-      .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
-      .hero-content > *:nth-child(2) { animation-delay: 0.25s; }
-      .hero-content > *:nth-child(3) { animation-delay: 0.4s; }
-
-      .filter-wrapper,
-      .d-card,
-      .faq-item {
-        opacity: 0;
-        transform: translateY(16px);
-        animation: rise 0.5s ease forwards;
-      }
-      .filter-wrapper { animation-delay: 0.1s; }
-      .d-card:nth-child(1) { animation-delay: 0.15s; }
-      .d-card:nth-child(2) { animation-delay: 0.25s; }
-      .d-card:nth-child(3) { animation-delay: 0.35s; }
-      .faq-item:nth-child(1) { animation-delay: 0.15s; }
-      .faq-item:nth-child(2) { animation-delay: 0.25s; }
-
-      @keyframes rise {
-        to { opacity: 1; transform: translateY(0); }
-      }
-    }
-  </style>
+<style>
+/* ════════════════════════════════════════════════════════
+   ONNA — ANÁLISE DE MARGEM · v3
+   Editorial em movimento.
+   Fraunces (tese) · Work Sans (leitura)
+   Papel dominante · navy, dourado e wine como tinta
+════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root{
+  --paper:#FDFCF8;
+  --cream:#F5F1E7;
+  --card:#FFFFFF;
+  --ink:#17191E;
+  --ink-soft:#3A3D44;
+  --muted:#6E7076;
+  --faint:#9B9DA3;
+  --coal:#1C1B18;
+  --coal-deep:#0F0E0C;
+  --gold:#B8860B;
+  --gold-bright:#D8A93A;
+  --wine:#A63A3A;
+  --line:#E7E2D6;
+  --line-strong:#D5CFC0;
+  --serif:'Fraunces', Georgia, serif;
+  --sans:'Work Sans', system-ui, sans-serif;
+  --r-sheet:36px;
+  --r-card:20px;
+  --ease:cubic-bezier(0.22,1,0.36,1);
+}
+
+html{ scroll-behavior:smooth; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+
+body{
+  font-family:var(--sans);
+  font-weight:400;
+  font-size:16px;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.65;
+  overflow-x:hidden;
+}
+
+::selection{ background:rgba(216,169,58,0.28); }
+
+.container{ max-width:1160px; margin:0 auto; padding:0 24px; }
+@media (min-width:768px){ .container{ padding:0 56px; } }
+
+/* ─── barra de progresso de leitura ─── */
+.progress{
+  position:fixed; top:0; left:0; z-index:200;
+  height:3px; width:0;
+  background:linear-gradient(90deg, var(--gold), var(--gold-bright));
+}
+
+/* ─── voz visual ─── */
+.kicker{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:0.24em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+.section-title{
+  font-family:var(--serif);
+  font-weight:450;
+  font-size:clamp(30px, 3.8vw, 50px);
+  line-height:1.1;
+  letter-spacing:-0.014em;
+  color:var(--ink);
+}
+.section-lead{
+  font-weight:300;
+  font-size:16.5px;
+  line-height:1.75;
+  color:var(--muted);
+  max-width:56ch;
+}
+
+/* ─── botões (pill) ─── */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  font-family:var(--sans);
+  font-size:15px;
+  font-weight:500;
+  letter-spacing:0.01em;
+  padding:18px 36px;
+  background:var(--ink);
+  color:var(--paper);
+  border:none;
+  border-radius:999px;
+  cursor:pointer;
+  text-decoration:none;
+  transition:transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease);
+}
+.btn::after{
+  content:"→";
+  font-weight:400;
+  transition:transform .25s var(--ease);
+}
+.btn:hover{
+  background:var(--coal-deep);
+  transform:translateY(-2px) scale(1.015);
+  box-shadow:0 14px 34px rgba(23,25,30,0.18);
+}
+.btn:hover::after{ transform:translateX(5px); }
+.btn:active{ transform:translateY(0) scale(0.99); }
+.btn:focus-visible{ outline:2.5px solid var(--gold); outline-offset:3px; }
+
+/* ══════════ TOPBAR ══════════ */
+.topbar{
+  position:sticky; top:0; z-index:100;
+  background:rgba(253,252,248,0.82);
+  backdrop-filter:blur(16px) saturate(150%);
+  -webkit-backdrop-filter:blur(16px) saturate(150%);
+  border-bottom:1px solid transparent;
+  transition:border-color .3s ease;
+}
+.topbar.scrolled{ border-bottom-color:var(--line); }
+.topbar-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  height:68px;
+}
+.brand{ display:flex; align-items:baseline; gap:14px; }
+.brand-name{
+  font-family:var(--serif);
+  font-weight:560;
+  font-size:19px;
+  letter-spacing:0.26em;
+  color:var(--ink);
+}
+.brand-name em{ font-style:normal; color:var(--gold); }
+.brand-tagline{
+  font-size:10px;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--faint);
+}
+.topbar .btn{ padding:12px 24px; font-size:13px; }
+
+/* ══════════ HERO ══════════ */
+.hero{
+  padding:116px 0 96px;
+}
+.hero-inner{ max-width:940px; }
+.hero h1{
+  font-family:var(--serif);
+  font-weight:450;
+  font-size:clamp(42px, 6.6vw, 84px);
+  line-height:1.05;
+  letter-spacing:-0.02em;
+  color:var(--ink);
+  margin-top:28px;
+  min-height:2.1em;
+}
+.hero h1 .sobra{
+  font-style:italic;
+  font-weight:380;
+  color:var(--wine);
+}
+.caret{
+  display:inline-block;
+  width:3px;
+  height:0.92em;
+  margin-left:4px;
+  background:var(--gold-bright);
+  vertical-align:-0.12em;
+  animation:blink 1s steps(1) infinite;
+}
+@keyframes blink{ 50%{ opacity:0; } }
+.caret.done{ animation:blink 1s steps(1) 5; animation-fill-mode:forwards; }
+
+.hero-support{
+  margin-top:30px;
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:380;
+  font-size:clamp(19px, 2.4vw, 26px);
+  line-height:1.5;
+  color:var(--ink-soft);
+  max-width:36ch;
+}
+.hero-promise{
+  margin-top:20px;
+  font-weight:300;
+  font-size:clamp(15.5px, 1.7vw, 17.5px);
+  line-height:1.75;
+  color:var(--muted);
+  max-width:52ch;
+}
+.hero-cta{
+  margin-top:40px;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:24px;
+}
+.hero-facts{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.9;
+}
+.hero-facts span{ margin:0 8px; color:var(--line-strong); }
+.hero-alt{
+  margin-top:14px;
+  font-size:13px;
+  color:var(--faint);
+}
+.hero-alt a{
+  color:var(--gold);
+  font-weight:500;
+  text-decoration:none;
+  border-bottom:1px solid rgba(184,134,11,0.35);
+}
+.hero-alt a:hover{ border-bottom-color:var(--gold); }
+
+
+
+/* ══════════ MARQUEE DE SETORES ══════════ */
+.marquee{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:22px 0;
+  overflow:hidden;
+  white-space:nowrap;
+  position:relative;
+}
+.marquee::before, .marquee::after{
+  content:"";
+  position:absolute; top:0; bottom:0;
+  width:110px; z-index:2;
+  pointer-events:none;
+}
+.marquee::before{ left:0; background:linear-gradient(90deg, var(--paper), transparent); }
+.marquee::after{ right:0; background:linear-gradient(-90deg, var(--paper), transparent); }
+.marquee-track{
+  display:inline-flex;
+  align-items:center;
+  gap:0;
+  animation:scroll 46s linear infinite;
+  will-change:transform;
+}
+.marquee:hover .marquee-track{ animation-play-state:paused; }
+@keyframes scroll{ to{ transform:translateX(-50%); } }
+.mq-item{
+  display:inline-flex;
+  align-items:center;
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:380;
+  font-size:17px;
+  color:var(--ink-soft);
+  padding:0 14px;
+}
+.mq-item::after{
+  content:"";
+  width:7px; height:7px;
+  margin-left:28px;
+  transform:rotate(45deg);
+  border:1.4px solid var(--gold);
+}
+
+/* ══════════ FOLHAS (sheets) ══════════ */
+.sheet-wrap{ padding:26px 12px; }
+@media (min-width:768px){ .sheet-wrap{ padding:34px 20px; } }
+.sheet{
+  background:var(--cream);
+  border-radius:var(--r-sheet);
+  max-width:1280px;
+  margin:0 auto;
+  padding:84px 0 92px;
+}
+@media (max-width:720px){ .sheet{ padding:58px 0 64px; border-radius:26px; } }
+
+.sec{ padding:96px 0 104px; }
+@media (max-width:720px){ .sec{ padding:64px 0 72px; } }
+.sec-head{ margin-bottom:56px; }
+.sec-head .section-title{ margin-top:16px; }
+.sec-head .section-lead{ margin-top:18px; }
+
+/* ══════════ LEITURAS ══════════ */
+.leituras-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+}
+@media (min-width:660px){ .leituras-grid{ grid-template-columns:repeat(2,1fr); gap:20px; } }
+@media (min-width:1000px){ .leituras-grid{ grid-template-columns:repeat(3,1fr); gap:22px; } }
+
+.lcard{
+  position:relative;
+  background:var(--card);
+  border:1px solid rgba(231,226,214,0.7);
+  border-radius:var(--r-card);
+  padding:32px 28px 26px;
+  display:flex;
+  flex-direction:column;
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.lcard:hover{
+  transform:translateY(-5px);
+  box-shadow:0 24px 54px rgba(23,25,30,0.09);
+}
+.lcard-setor{
+  font-size:10.5px;
+  font-weight:600;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.lcard-hook{
+  margin-top:18px;
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:17px;
+  line-height:1.55;
+  color:var(--ink);
+  flex:1 1 auto;
+}
+.lcard-shift{
+  margin-top:24px;
+  padding-top:18px;
+  border-top:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+.shift-row{
+  display:flex;
+  align-items:baseline;
+  gap:14px;
+}
+.shift-label{
+  flex:0 0 54px;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+}
+.shift-label--antes{ color:var(--wine); }
+.shift-label--depois{ color:var(--gold); }
+.shift-val{
+  font-size:13.5px;
+  font-weight:400;
+  line-height:1.55;
+}
+.shift-val--antes{ color:var(--wine); }
+.shift-val--depois{ color:var(--ink); font-weight:500; }
+.leituras-note{
+  margin-top:44px;
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:380;
+  font-size:14.5px;
+  color:var(--muted);
+  text-align:center;
+}
+
+/* ══════════ COMO FUNCIONA — trilho que conduz ══════════ */
+.metodo-grid{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:44px;
+  padding-left:38px;
+}
+@media (min-width:820px){
+  .metodo-grid{ grid-template-columns:repeat(3,1fr); gap:48px; padding-left:0; padding-top:46px; }
+}
+/* trilho */
+.metodo-grid::before{
+  content:"";
+  position:absolute;
+  background:var(--line);
+}
+@media (max-width:819px){
+  .metodo-grid::before{ left:8px; top:6px; bottom:6px; width:2px; }
+}
+@media (min-width:820px){
+  .metodo-grid::before{ top:8px; left:6px; right:6px; height:2px; }
+}
+/* trilho que se preenche */
+.metodo-fill{
+  position:absolute;
+  background:var(--gold);
+  transition:transform 1.6s var(--ease);
+}
+@media (max-width:819px){
+  .metodo-fill{ left:8px; top:6px; bottom:6px; width:2px; transform:scaleY(0); transform-origin:top; }
+  .metodo-grid.in .metodo-fill{ transform:scaleY(1); }
+}
+@media (min-width:820px){
+  .metodo-fill{ top:8px; left:6px; right:6px; height:2px; transform:scaleX(0); transform-origin:left; }
+  .metodo-grid.in .metodo-fill{ transform:scaleX(1); }
+}
+.mstep{ position:relative; }
+.mstep::before{
+  content:"";
+  position:absolute;
+  width:14px; height:14px;
+  border-radius:50%;
+  background:var(--paper);
+  border:2.5px solid var(--gold);
+}
+@media (max-width:819px){
+  .mstep::before{ left:-37px; top:4px; }
+}
+@media (min-width:820px){
+  .mstep::before{ top:-45px; left:0; }
+}
+.mstep-marker{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:380;
+  font-size:15px;
+  color:var(--gold);
+}
+.mstep-title{
+  margin-top:12px;
+  font-family:var(--serif);
+  font-weight:450;
+  font-size:24px;
+  line-height:1.22;
+  color:var(--ink);
+}
+.mstep-body{
+  margin-top:12px;
+  font-weight:300;
+  font-size:14.5px;
+  line-height:1.75;
+  color:var(--muted);
+  max-width:34ch;
+}
+.metodo-close{
+  margin-top:60px;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:26px;
+}
+.metodo-close .obs{ font-size:13px; color:var(--faint); }
+
+/* ══════════ O QUE VOCÊ LEVA ══════════ */
+.leva-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:20px;
+}
+@media (min-width:820px){ .leva-grid{ grid-template-columns:repeat(3,1fr); gap:22px; } }
+.leva-item{
+  background:var(--card);
+  border-radius:var(--r-card);
+  padding:34px 30px 30px;
+  border:1px solid rgba(231,226,214,0.7);
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.leva-item:hover{
+  transform:translateY(-5px);
+  box-shadow:0 24px 54px rgba(23,25,30,0.09);
+}
+.leva-num{
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:380;
+  font-size:15px;
+  color:var(--gold);
+}
+.leva-title{
+  margin-top:12px;
+  font-family:var(--serif);
+  font-weight:450;
+  font-size:22px;
+  color:var(--ink);
+  line-height:1.25;
+}
+.leva-body{
+  margin-top:12px;
+  font-weight:300;
+  font-size:14.5px;
+  line-height:1.75;
+  color:var(--muted);
+}
+
+/* ══════════ QUEM LÊ ══════════ */
+.quem-inner{
+  max-width:820px;
+  margin:0 auto;
+  text-align:center;
+}
+.quem-text{
+  margin-top:26px;
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:clamp(20px, 2.6vw, 28px);
+  line-height:1.58;
+  color:var(--ink);
+}
+.quem-text em{ font-style:italic; color:var(--gold); }
+.quem-method{
+  margin-top:26px;
+  font-weight:300;
+  font-size:15px;
+  line-height:1.8;
+  color:var(--muted);
+  max-width:58ch;
+  margin-left:auto; margin-right:auto;
+}
+
+/* ══════════ FAQ ══════════ */
+.faq .sec-head{ text-align:center; max-width:640px; margin-left:auto; margin-right:auto; }
+.faq-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+  max-width:900px;
+  margin:0 auto;
+}
+@media (min-width:680px){ .faq-grid{ grid-template-columns:repeat(2,1fr); gap:20px; } }
+.faq-item{
+  background:var(--card);
+  border:1px solid rgba(231,226,214,0.7);
+  border-radius:var(--r-card);
+  padding:28px 28px 24px;
+}
+.faq-q{
+  font-family:var(--serif);
+  font-weight:450;
+  font-size:17.5px;
+  line-height:1.4;
+  color:var(--ink);
+}
+.faq-a{
+  margin-top:10px;
+  font-weight:300;
+  font-size:14.5px;
+  line-height:1.75;
+  color:var(--muted);
+}
+.faq-a a{
+  color:var(--gold);
+  font-weight:500;
+  text-decoration:none;
+  border-bottom:1px solid rgba(184,134,11,0.35);
+}
+.faq-a a:hover{ border-bottom-color:var(--gold); }
+
+/* ══════════ FECHO ══════════ */
+.fecho{ padding:120px 0 130px; text-align:center; }
+@media (max-width:720px){ .fecho{ padding:80px 0 90px; } }
+.fecho-title{
+  font-family:var(--serif);
+  font-weight:450;
+  font-size:clamp(34px, 5.2vw, 66px);
+  line-height:1.1;
+  letter-spacing:-0.016em;
+  color:var(--ink);
+  max-width:18ch;
+  margin:18px auto 0;
+}
+.fecho-title em{
+  font-style:italic;
+  font-weight:380;
+  color:var(--wine);
+}
+.fecho-sub{
+  margin-top:22px;
+  font-weight:300;
+  font-size:16px;
+  color:var(--muted);
+}
+.fecho-cta{ margin-top:38px; }
+.fecho .btn{ padding:20px 44px; font-size:16px; }
+
+/* ══════════ FOOTER ══════════ */
+.footer{
+  background:var(--coal);
+  color:#EDEBE4;
+  padding:56px 0;
+  border-radius:var(--r-sheet) var(--r-sheet) 0 0;
+}
+.footer-inner{
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+  align-items:center;
+  text-align:center;
+}
+@media (min-width:680px){
+  .footer-inner{ flex-direction:row; justify-content:space-between; text-align:left; align-items:flex-start; }
+}
+.footer .brand-name{ color:#EDEBE4; }
+.footer .brand-tagline{ color:rgba(237,235,228,0.55); margin-top:6px; }
+.footer-scope{ margin-top:12px; font-size:12.5px; color:rgba(237,235,228,0.7); }
+.footer-right{ display:flex; flex-direction:column; gap:8px; align-items:center; }
+@media (min-width:680px){ .footer-right{ align-items:flex-end; } }
+.footer-whatsapp{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:13px; font-weight:500;
+  color:var(--gold-bright);
+  text-decoration:none;
+}
+.footer-whatsapp:hover{ color:#E8C05C; }
+.footer-whatsapp svg{ width:14px; height:14px; fill:currentColor; }
+.footer-contact{ font-size:12px; color:rgba(237,235,228,0.65); }
+.footer-contact a{ color:inherit; text-decoration:none; }
+.footer-place{ font-size:11px; color:rgba(237,235,228,0.4); }
+
+/* ══════════ CTA FIXO MOBILE ══════════ */
+.mcta{
+  position:fixed;
+  left:12px; right:12px; bottom:12px;
+  z-index:150;
+  transform:translateY(140%);
+  transition:transform .45s var(--ease);
+  display:none;
+}
+.mcta.show{ transform:translateY(0); }
+.mcta .btn{
+  width:100%;
+  box-shadow:0 16px 40px rgba(23,25,30,0.28);
+}
+@media (max-width:720px){ .mcta{ display:block; } }
+
+/* ══════════ REVEAL ══════════ */
+.reveal{
+  opacity:0;
+  transform:translateY(26px);
+  transition:opacity .8s var(--ease), transform .8s var(--ease);
+}
+.reveal.in{ opacity:1; transform:none; }
+.reveal[data-delay="1"]{ transition-delay:.1s; }
+.reveal[data-delay="2"]{ transition-delay:.2s; }
+.reveal[data-delay="3"]{ transition-delay:.3s; }
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  .reveal{ opacity:1; transform:none; transition:none; }
+  .marquee-track{ animation:none; }
+  .metodo-fill{ transform:none !important; transition:none; }
+  .caret{ animation:none; }
+  .btn, .lcard, .leva-item{ transition:none; }
+  .mcta{ transition:none; }
+}
+
+/* ══════════ MOBILE FINO ══════════ */
+@media (max-width:720px){
+  .brand-tagline{ display:none; }
+  .hero{ padding:64px 0 52px; }
+  .hero-cta .btn{ width:100%; }
+  .metodo-close{ flex-direction:column; align-items:stretch; }
+  .metodo-close .btn{ width:100%; }
+  .metodo-close .obs{ text-align:center; }
+  .fecho .btn{ width:calc(100% - 24px); }
+  body{ padding-bottom:84px; }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- ══════ TOPBAR ══════ -->
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <div class="brand">
-        <div class="brand-text">
-          <div class="brand-name">ONNA</div>
-          <div class="brand-tagline">Margem · Gestão · Liderança</div>
-        </div>
-      </div>
-    <<button class="topbar-cta"
-      data-tf-popup="QvykQbLg"
-      data-tf-opacity="100"
-      data-tf-iframe-props="title=Análise de Margem"
-      data-tf-medium="snippet">
+<div class="progress" id="progress"></div>
+
+<!-- ══════ TOPBAR ══════ -->
+<header class="topbar" id="topbar">
+  <div class="container topbar-inner">
+    <div class="brand">
+      <div class="brand-name">ONNA<em>.</em></div>
+      <div class="brand-tagline">Margem · Gestão · Liderança</div>
+    </div>
+    <button class="btn"
+            data-tf-popup="QvykQbLg"
+            data-tf-opacity="100"
+            data-tf-iframe-props="title=Análise de Margem"
+            data-tf-medium="snippet">
       Faça a Análise de Margem
     </button>
-    </div>
-  </header>
+  </div>
+</header>
 
-  <!-- ══════ HERO ══════ -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
+<!-- ══════ HERO ══════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="kicker reveal in">Análise de Margem · Gratuita</div>
+      <h1 id="tw" aria-label="Você sabe o quanto fatura. Não sabe o quanto lucra.">
+        <span id="tw1"></span><br>
+        <span id="tw2"></span><span id="twsobra" class="sobra"></span><span id="twdot"></span><span class="caret" id="caret"></span>
+      </h1>
+      <p class="hero-promise reveal">Você responde em alguns minutos. A Onna lê sua operação e te chama no WhatsApp com uma percepção concreta do seu cenário.</p>
 
-        <h1>Você sabe o quanto fatura.<br>Não sabe o quanto sobra.</h1>
-
-        <p class="hero-punch">E essa é a diferença entre crescer e se sustentar.</p>
-
-        <div class="hero-cta-group">
-          <button class="btn-gold"
-                  data-tf-popup="QvykQbLg"
-                  data-tf-opacity="100"
-                  data-tf-iframe-props="title=Análise de Margem"
-                  data-tf-medium="snippet">
-            Faça a Análise de Margem — é gratuita
-          </button>
-          <div class="hero-meta">
-            Análise direta<span>·</span>Resposta no seu WhatsApp
-          </div>
-          <div class="hero-alt">
-            Prefere conversar direto? <a href="https://wa.me/5551991342122" target="_blank" rel="noopener">Fale com a Onna pelo WhatsApp.</a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <div class="transition-strip"></div>
-
-  <!-- ══════ FILTRO ICP ══════ -->
-  <section class="filter-section">
-    <div class="container">
-      <div class="filter-wrapper">
-        <div class="filter-label">Para quem é</div>
-        <p class="filter-text">
-          Se você construiu uma empresa que vende todos os meses
-          — mas <strong>o resultado não acompanha o tamanho do esforço</strong>
-          — essa análise foi pensada pra isso.
-        </p>
-        <div class="filter-line"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════ O QUE VOCÊ RECEBE ══════ -->
-  <section class="deliverables">
-    <div class="container">
-      <div class="section-label">O que você recebe</div>
-      <h2 class="deliverables-title">
-        Uma análise do seu cenário.<br>
-        Não um relatório pra arquivar.
-      </h2>
-
-      <div class="deliverables-grid">
-        <div class="d-card">
-          <div class="d-number">01</div>
-          <div class="d-title">Onde o resultado escapa</div>
-          <p class="d-desc">O ponto exato entre o que você fatura e o que sobra. Sem suposição — com base no que você respondeu.</p>
-        </div>
-        <div class="d-card">
-          <div class="d-number">02</div>
-          <div class="d-title">Qual decisão vem primeiro</div>
-          <p class="d-desc">O que resolver primeiro e o que pode esperar. Prioridade real, não lista genérica.</p>
-        </div>
-        <div class="d-card">
-          <div class="d-number">03</div>
-          <div class="d-title">Uma conversa direta</div>
-          <p class="d-desc">A Onna te chama no WhatsApp com uma leitura concreta da sua operação. Sem reunião agendada, sem compromisso.</p>
-        </div>
-      </div>
-
-      <div class="deliverables-cta">
-        <button class="btn-dark"
+      <div class="hero-cta reveal">
+        <button class="btn"
                 data-tf-popup="QvykQbLg"
                 data-tf-opacity="100"
                 data-tf-iframe-props="title=Análise de Margem"
                 data-tf-medium="snippet">
           Faça a Análise de Margem
         </button>
+        <div class="hero-facts">
+          Gratuita <span>|</span> Sem call agendada <span>|</span> Resposta no seu WhatsApp
+        </div>
+      </div>
+      <div class="hero-alt reveal">Prefere conversar antes? <a href="https://wa.me/5551991342122" target="_blank" rel="noopener">Fale com a Onna pelo WhatsApp.</a></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════ MARQUEE ══════ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="mqtrack">
+    <span class="mq-item">Serralheria</span>
+    <span class="mq-item">Odontologia</span>
+    <span class="mq-item">Moda premium</span>
+    <span class="mq-item">Materiais de construção</span>
+    <span class="mq-item">Agências</span>
+    <span class="mq-item">Padarias</span>
+    <span class="mq-item">Autopeças</span>
+    <span class="mq-item">Confecção</span>
+    <span class="mq-item">Bebidas</span>
+    <span class="mq-item">Alimentação</span>
+    <span class="mq-item">Varejo</span>
+    <span class="mq-item">Serviços</span>
+  </div>
+</div>
+
+<!-- ══════ LEITURAS ══════ -->
+<div class="sheet-wrap">
+  <section class="sheet">
+    <div class="container">
+      <div class="sec-head reveal">
+        <div class="kicker">O que a Onna enxerga</div>
+        <h2 class="section-title">Setores diferentes.<br>O mesmo critério técnico.</h2>
+        <p class="section-lead">O problema espelhado com precisão. A decisão tomada com critério. E o resultado aparecendo onde o faturamento sozinho não mostrava.</p>
+      </div>
+
+      <div class="leituras-grid">
+        <div class="lcard reveal">
+          <div class="lcard-setor">Serralheria familiar · interior de SP</div>
+          <p class="lcard-hook">O portão que sustentava a casa custava R$ 5.453. O mercado pagava R$ 5.000.</p>
+          <div class="lcard-shift">
+            <div class="shift-row"><span class="shift-label shift-label--antes">Antes</span><span class="shift-val shift-val--antes">R$ 1.697 de prejuízo por serviço, financiado com dívida</span></div>
+            <div class="shift-row"><span class="shift-label shift-label--depois">Depois</span><span class="shift-val shift-val--depois">O mesmo serviço no lucro, sem passar do teto de mercado</span></div>
+          </div>
+        </div>
+
+        <div class="lcard reveal" data-delay="1">
+          <div class="lcard-setor">Rede odontológica · 3 unidades · RJ</div>
+          <p class="lcard-hook">R$ 560 mil de produção viravam R$ 330 mil de receita. O crediário aprovava sem análise.</p>
+          <div class="lcard-shift">
+            <div class="shift-row"><span class="shift-label shift-label--antes">Antes</span><span class="shift-val shift-val--antes">69% do crediário sem voltar</span></div>
+            <div class="shift-row"><span class="shift-label shift-label--depois">Depois</span><span class="shift-val shift-val--depois">Crédito com regra - e a decisão de volta sobre receita real</span></div>
+          </div>
+        </div>
+
+        <div class="lcard reveal" data-delay="2">
+          <div class="lcard-setor">Multimarca feminina premium · PR</div>
+          <p class="lcard-hook">A dona acreditava dar 5 a 10% de desconto. O balcão dava 14,7%, peça a peça.</p>
+          <div class="lcard-shift">
+            <div class="shift-row"><span class="shift-label shift-label--antes">Antes</span><span class="shift-val shift-val--antes">14,7% de desconto sem régua</span></div>
+            <div class="shift-row"><span class="shift-label shift-label--depois">Depois</span><span class="shift-val shift-val--depois">Quase 5 pontos de margem de volta, com piso em cada negociação</span></div>
+          </div>
+        </div>
+
+        <div class="lcard reveal">
+          <div class="lcard-setor">Ferragens e materiais de construção</div>
+          <p class="lcard-hook">Uma margem média governava milhares de itens de giros completamente diferentes.</p>
+          <div class="lcard-shift">
+            <div class="shift-row"><span class="shift-label shift-label--antes">Antes</span><span class="shift-val shift-val--antes">Categorias inteiras vendendo abaixo do que deviam</span></div>
+            <div class="shift-row"><span class="shift-label shift-label--depois">Depois</span><span class="shift-val shift-val--depois">Preço e compra por categoria, corredor por corredor</span></div>
+          </div>
+        </div>
+
+        <div class="lcard reveal" data-delay="1">
+          <div class="lcard-setor">Agência de marketing</div>
+          <p class="lcard-hook">Carteira cheia, faturamento estável - e a hora da equipe custando R$ 0 no papel.</p>
+          <div class="lcard-shift">
+            <div class="shift-row"><span class="shift-label shift-label--antes">Antes</span><span class="shift-val shift-val--antes">Clientes deficitários invisíveis dentro do contrato</span></div>
+            <div class="shift-row"><span class="shift-label shift-label--depois">Depois</span><span class="shift-val shift-val--depois">Margem por contrato, renegociação e pró-labore fixo</span></div>
+          </div>
+        </div>
+
+        <div class="lcard reveal" data-delay="2">
+          <div class="lcard-setor">Padaria artesanal · Porto Alegre</div>
+          <p class="lcard-hook">O preço estava certo. O caixa é que ninguém enxergava.</p>
+          <div class="lcard-shift">
+            <div class="shift-row"><span class="shift-label shift-label--antes">Antes</span><span class="shift-val shift-val--antes">5 decisões de gestão paradas há meses</span></div>
+            <div class="shift-row"><span class="shift-label shift-label--depois">Depois</span><span class="shift-val shift-val--depois">Cada uma com número próprio - destravadas em semanas</span></div>
+          </div>
+        </div>
+
+        <div class="lcard reveal">
+          <div class="lcard-setor">Loja de bebidas · 2 unidades</div>
+          <p class="lcard-hook">Preço por markup, custos fixos das duas lojas fora da conta.</p>
+          <div class="lcard-shift">
+            <div class="shift-row"><span class="shift-label shift-label--antes">Antes</span><span class="shift-val shift-val--antes">O risco morando dentro do preço</span></div>
+            <div class="shift-row"><span class="shift-label shift-label--depois">Depois</span><span class="shift-val shift-val--depois">O preço carregando a estrutura inteira das duas lojas</span></div>
+          </div>
+        </div>
+
+        <div class="lcard reveal" data-delay="1">
+          <div class="lcard-setor">Loja de autopeças</div>
+          <p class="lcard-hook">A margem média escondia o balcão: venda abaixo do custo de reposição.</p>
+          <div class="lcard-shift">
+            <div class="shift-row"><span class="shift-label shift-label--antes">Antes</span><span class="shift-val shift-val--antes">Capital envelhecendo em peça parada</span></div>
+            <div class="shift-row"><span class="shift-label shift-label--depois">Depois</span><span class="shift-val shift-val--depois">Giro no comando de compra, preço e desconto - capital de volta ao caixa</span></div>
+          </div>
+        </div>
+
+        <div class="lcard reveal" data-delay="2">
+          <div class="lcard-setor">Indústria de confecção</div>
+          <p class="lcard-hook">O preço por peça seguia a concorrência. O custo-minuto ninguém tinha calculado.</p>
+          <div class="lcard-shift">
+            <div class="shift-row"><span class="shift-label shift-label--antes">Antes</span><span class="shift-val shift-val--antes">Grades inteiras costurando prejuízo em volume</span></div>
+            <div class="shift-row"><span class="shift-label shift-label--depois">Depois</span><span class="shift-val shift-val--depois">Margem definida grade a grade, antes do corte</span></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="leituras-note reveal">Leituras da Onna em casos atendidos e cenários setoriais. Resultados e números ajustados, identificação preservada.</p>
+    </div>
+  </section>
+</div>
+
+<!-- ══════ COMO FUNCIONA ══════ -->
+<section class="sec">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="kicker">Como funciona</div>
+      <h2 class="section-title">Três passos. Nenhuma burocracia.</h2>
+    </div>
+
+    <div class="metodo-grid" id="metodo">
+      <div class="metodo-fill"></div>
+      <div class="mstep reveal">
+        <div class="mstep-marker">Primeiro</div>
+        <div class="mstep-title">Você responde.</div>
+        <p class="mstep-body">Um formulário direto sobre operação, números e momento. Alguns minutos, sem anexar documento, sem reunião marcada.</p>
+      </div>
+      <div class="mstep reveal" data-delay="1">
+        <div class="mstep-marker">Depois</div>
+        <div class="mstep-title">A Onna lê sua operação.</div>
+        <p class="mstep-body">Suas respostas não caem numa esteira automática. São lidas uma a uma, com o mesmo método técnico dos diagnósticos da Onna.</p>
+      </div>
+      <div class="mstep reveal" data-delay="2">
+        <div class="mstep-marker">Então</div>
+        <div class="mstep-title">A leitura chega no seu WhatsApp.</div>
+        <p class="mstep-body">A primeira mensagem já traz uma percepção concreta do seu cenário e o que priorizar. Você não explica sua empresa do zero - e a conversa segue no seu ritmo.</p>
+      </div>
+    </div>
+
+    <div class="metodo-close reveal">
+      <button class="btn"
+              data-tf-popup="QvykQbLg"
+              data-tf-opacity="100"
+              data-tf-iframe-props="title=Análise de Margem"
+              data-tf-medium="snippet">
+        Faça a Análise de Margem
+      </button>
+      <div class="obs">Gratuita. Alguns minutos, direto ao ponto.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ O QUE VOCÊ LEVA ══════ -->
+<div class="sheet-wrap">
+  <section class="sheet">
+    <div class="container">
+      <div class="sec-head reveal">
+        <div class="kicker">O que você leva</div>
+        <h2 class="section-title">Clareza que já muda a próxima decisão.</h2>
+      </div>
+
+      <div class="leva-grid">
+        <div class="leva-item reveal">
+          <div class="leva-num">Um</div>
+          <div class="leva-title">Onde o lucro escapa</div>
+          <p class="leva-body">O ponto exato entre o que você fatura e o que fica no caixa - dito de forma direta, com base no que você respondeu, sem suposição.</p>
+        </div>
+        <div class="leva-item reveal" data-delay="1">
+          <div class="leva-num">Dois</div>
+          <div class="leva-title">A ordem certa de ataque</div>
+          <p class="leva-body">O que resolver primeiro e o que pode esperar. Prioridade com critério técnico, ajustada ao momento e ao porte da sua operação.</p>
+        </div>
+        <div class="leva-item reveal" data-delay="2">
+          <div class="leva-num">Três</div>
+          <div class="leva-title">O próximo passo, com clareza</div>
+          <p class="leva-body">Se a leitura indicar trabalho profundo, você recebe o caminho com escopo e preço na mesa. Se não indicar, a conversa vale por ela mesma - sem empurrão.</p>
+        </div>
       </div>
     </div>
   </section>
+</div>
 
-  <!-- ══════ FAQ ══════ -->
-  <section class="faq">
+<!-- ══════ QUEM LÊ ══════ -->
+<section class="sec">
+  <div class="container">
+    <div class="quem-inner reveal">
+      <div class="kicker">Quem lê a sua operação</div>
+      <p class="quem-text">A Onna é a consultoria que lê empresas por dentro: margem, preço e organização financeira de operações entre R$ 30 mil e R$ 500 mil por mês, em todo o Brasil - <em>no ponto exato em que a decisão acontece.</em></p>
+      <p class="quem-method">O método não muda com o porte: número verificado na fonte, leitura direta do que ele significa, decisão na ordem certa. É o rigor dos relatórios que os clientes da Onna recebem - aplicado desde a primeira mensagem que chega no seu WhatsApp.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FAQ ══════ -->
+<div class="sheet-wrap">
+  <section class="sheet faq">
     <div class="container">
+      <div class="sec-head reveal">
+        <div class="kicker">Perguntas diretas</div>
+        <h2 class="section-title">Antes de responder.</h2>
+      </div>
+
       <div class="faq-grid">
-        <div class="faq-item">
-          <div class="faq-q">O que exatamente eu recebo?</div>
-          <p class="faq-a">Uma análise direta da sua operação. A Onna lê suas respostas e te chama no WhatsApp com uma direção clara. Sem reunião agendada, sem compromisso.</p>
+        <div class="faq-item reveal">
+          <div class="faq-q">O que acontece depois que eu respondo?</div>
+          <p class="faq-a">A Onna lê suas respostas e te chama no WhatsApp, em poucos dias úteis, com uma percepção concreta do seu cenário. A partir daí, a conversa segue no seu ritmo.</p>
         </div>
-        <div class="faq-item">
+        <div class="faq-item reveal" data-delay="1">
           <div class="faq-q">Quanto custa?</div>
-          <p class="faq-a">Nada. A Análise de Margem é gratuita. Sem compromisso.</p>
+          <p class="faq-a">Nada. A Análise de Margem é gratuita e sem compromisso.</p>
         </div>
-        <div class="faq-item faq-item--wide">
+        <div class="faq-item reveal">
+          <div class="faq-q">Isso é uma consultoria gratuita?</div>
+          <p class="faq-a">É a leitura inicial da sua operação e uma conversa direta sobre ela. O trabalho profundo - diagnóstico completo ou acompanhamento - só é apresentado se houver caso, com escopo e preço claros.</p>
+        </div>
+        <div class="faq-item reveal" data-delay="1">
           <div class="faq-q">Posso falar com alguém antes de preencher?</div>
           <p class="faq-a">Sim. Se preferir, <a href="https://wa.me/5551991342122" target="_blank" rel="noopener">fale direto com a Onna pelo WhatsApp</a>. Vamos entender seu cenário e indicar o melhor caminho.</p>
         </div>
       </div>
     </div>
   </section>
+</div>
 
-  <!-- ══════ FOOTER ══════ -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        ONNA
-        <small>Margem · Gestão · Liderança</small>
-      </div>
-      <div class="footer-right">
-        <a class="footer-whatsapp" href="https://wa.me/5551991342122" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          (51) 99134-2122
-        </a>
-        <div class="footer-contact">
-          <a href="mailto:contato@onnacore.com.br">contato@onnacore.com.br</a>
-           · Porto Alegre — RS
-        </div>
-      </div>
+<!-- ══════ FECHO ══════ -->
+<section class="fecho">
+  <div class="container">
+    <div class="kicker reveal">Análise de Margem · Gratuita</div>
+    <h2 class="fecho-title reveal">Quanto do que você fatura <em>vira lucro</em>?</h2>
+    <p class="fecho-sub reveal">A resposta começa com alguns minutos seus - e chega no seu WhatsApp.</p>
+    <div class="fecho-cta reveal">
+      <button class="btn"
+              data-tf-popup="QvykQbLg"
+              data-tf-opacity="100"
+              data-tf-iframe-props="title=Análise de Margem"
+              data-tf-medium="snippet">
+        Faça a Análise de Margem
+      </button>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <!-- Rastreamento de Lead no Meta Pixel -->
+<!-- ══════ FOOTER ══════ -->
+<footer class="footer" id="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="brand-name">ONNA<em>.</em></div>
+      <div class="brand-tagline">Margem · Gestão · Liderança</div>
+      <div class="footer-scope">Atendimento online em todo o Brasil.</div>
+    </div>
+    <div class="footer-right">
+      <a class="footer-whatsapp" href="https://wa.me/5551991342122" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        (51) 99134-2122
+      </a>
+      <div class="footer-contact"><a href="mailto:contato@onnacore.com.br">contato@onnacore.com.br</a></div>
+      <div class="footer-place">Porto Alegre - RS</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════ CTA FIXO MOBILE ══════ -->
+<div class="mcta" id="mcta">
+  <button class="btn"
+          data-tf-popup="QvykQbLg"
+          data-tf-opacity="100"
+          data-tf-iframe-props="title=Análise de Margem"
+          data-tf-medium="snippet">
+    Faça a Análise de Margem
+  </button>
+</div>
+
+<!-- ══════ Rastreamento de Lead (Meta Pixel) ══════ -->
 <script>
+(function(){
   let leadFired = false;
-
-  function fireLeadEvent(source = 'unknown') {
+  function fireLeadEvent(source){
     if (leadFired) return;
     if (typeof fbq !== 'function') return;
-
     fbq('track', 'Lead');
     leadFired = true;
-    console.log('ONNA: Lead enviado via ' + source);
+    console.log('ONNA: Lead enviado via ' + (source || 'unknown'));
   }
-
-  window.addEventListener('message', function(event) {
-    try {
+  window.addEventListener('message', function(event){
+    try{
       let data = event.data;
-
-      if (typeof data === 'string') {
-        try { data = JSON.parse(data); } catch (_) {}
+      if (typeof data === 'string'){
+        try{ data = JSON.parse(data); } catch(_){}
       }
-
-      if (
-        data &&
-        (data.type === 'form-submit' ||
-         data.type === 'form-submit-success' ||
-         data.eventType === 'form-submit')
-      ) {
+      if (!data) return;
+      const t = data.type || data.eventType || '';
+      if (t === 'form-submit' || t === 'form-submit-success' || t === 'form_submit' || t === 'form-submitted'){
         fireLeadEvent('typeform-submit');
       }
-
-    } catch (e) {
+    } catch(e){
       console.warn('ONNA: erro no listener', e);
     }
-  });</script>
+  });
+})();
+</script>
+
+<!-- ══════ Movimento ══════ -->
+<script>
+(function(){
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── typewriter do hero ── */
+  const L1 = 'Você sabe o quanto fatura.';
+  const L2 = 'Não sabe o quanto ';
+  const SOBRA = 'lucra';
+  const tw1 = document.getElementById('tw1');
+  const tw2 = document.getElementById('tw2');
+  const tws = document.getElementById('twsobra');
+  const twd = document.getElementById('twdot');
+  const caret = document.getElementById('caret');
+
+  function typeInto(el, text, i, speed, done){
+    if (i <= text.length){
+      el.textContent = text.slice(0, i);
+      setTimeout(() => typeInto(el, text, i + 1, speed, done), speed);
+    } else if (done) done();
+  }
+
+  if (reduced){
+    tw1.textContent = L1;
+    tw2.textContent = L2;
+    tws.textContent = SOBRA;
+    twd.textContent = '.';
+    caret.style.display = 'none';
+  } else {
+    setTimeout(() => {
+      typeInto(tw1, L1, 0, 42, () => {
+        setTimeout(() => {
+          typeInto(tw2, L2, 0, 42, () => {
+            typeInto(tws, SOBRA, 0, 70, () => {
+              twd.textContent = '.';
+              caret.classList.add('done');
+            });
+          });
+        }, 320);
+      });
+    }, 350);
+  }
+
+  /* ── reveals ── */
+  const els = document.querySelectorAll('.reveal, .metodo-grid');
+  if (reduced || !('IntersectionObserver' in window)){
+    els.forEach(el => el.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
+    els.forEach(el => io.observe(el));
+  }
+
+  /* ── contagem dos números de prova ── */
+  const fmt = (v, dec, format) => {
+    if (format === 'mil'){
+      return Math.round(v).toLocaleString('pt-BR');
+    }
+    return dec ? v.toFixed(dec).replace('.', ',') : String(Math.round(v));
+  };
+  const counters = document.querySelectorAll('.lcard-stat-none');
+  if (!reduced && 'IntersectionObserver' in window){
+    const ioc = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        ioc.unobserve(el);
+        const target = parseFloat(el.dataset.count);
+        const dec = parseInt(el.dataset.decimal || '0', 10);
+        const prefix = el.dataset.prefix || '';
+        const suffix = el.dataset.suffix || '';
+        const format = el.dataset.format || '';
+        const dur = 1300;
+        const t0 = performance.now();
+        function tick(now){
+          const p = Math.min((now - t0) / dur, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = prefix + fmt(target * eased, dec, format) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(el => ioc.observe(el));
+  }
+
+  /* ── barra de progresso + topbar ── */
+  const bar = document.getElementById('progress');
+  const topbar = document.getElementById('topbar');
+  let ticking = false;
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+      topbar.classList.toggle('scrolled', h.scrollTop > 8);
+      ticking = false;
+    });
+  }
+  document.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  /* ── CTA fixo mobile ── */
+  const mcta = document.getElementById('mcta');
+  const hero = document.querySelector('.hero');
+  const footer = document.getElementById('footer');
+  if ('IntersectionObserver' in window){
+    let heroOut = false, footerIn = false;
+    const update = () => mcta.classList.toggle('show', heroOut && !footerIn);
+    new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; update(); }, { threshold: 0.05 }).observe(hero);
+    new IntersectionObserver(([e]) => { footerIn = e.isIntersecting; update(); }, { threshold: 0.05 }).observe(footer);
+  }
+
+  /* ── marquee: duplicar trilha pro loop ── */
+  const track = document.getElementById('mqtrack');
+  track.innerHTML += track.innerHTML;
+})();
+</script>
 
 </body>
 </html>
