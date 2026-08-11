@@ -4,1020 +4,402 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#FDFCF8" />
-<title>ONNA — Análise de Margem</title>
-<meta name="description" content="Você sabe o quanto fatura. Não sabe o quanto lucra. Análise de Margem gratuita: a Onna lê sua operação e responde direto no seu WhatsApp." />
+<title>ONNA - Análise de Margem | Linha alta</title>
+<meta name="description" content="Fatura alto, lucra pouco, e ninguém te mostrou por quê. A Onna lê a sua operação com rigor de diagnóstico e mostra onde o lucro está vazando. A leitura chega no seu WhatsApp." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,380;0,9..144,450;0,9..144,560;1,9..144,380;1,9..144,450&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,380;0,9..144,450;0,9..144,560;1,9..144,380;1,9..144,450&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
 <!-- Typeform Embed SDK -->
 <script src="https://embed.typeform.com/next/embed.js"></script>
 
-<!-- Meta Pixel -->
+<!-- Meta Pixel (so PageView na LP; Lead/LeadQualificado dispara nos endings A/B do form v4) -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;
-n.push=n;
-n.loaded=!0;
-n.version='2.0';
-n.queue=[];
-t=b.createElement(e);
-t.async=!0;
-t.src=v;
-s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
+s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
 }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '924726467166743');
 fbq('track', 'PageView');
 </script>
-<noscript>
-<img height="1" width="1" style="display:none"
-     src="https://www.facebook.com/tr?id=924726467166743&ev=PageView&noscript=1" />
-</noscript>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=924726467166743&ev=PageView&noscript=1" /></noscript>
 
 <style>
 /* ════════════════════════════════════════════════════════
-   ONNA — ANÁLISE DE MARGEM · v3
-   Editorial em movimento.
-   Fraunces (tese) · Work Sans (leitura)
-   Papel dominante · navy, dourado e wine como tinta
+   ONNA - ANALISE DE MARGEM · LP LINHA ALTA
+   Sistema visual validado (Fraunces / Work Sans / IBM Plex Mono).
+   Papel dominante · grafite, dourado e wine como tinta.
+   Conduz, sem numero como limitador. Sem gratuidade.
 ════════════════════════════════════════════════════════ */
-
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-
 :root{
-  --paper:#FDFCF8;
-  --cream:#F5F1E7;
-  --card:#FFFFFF;
-  --ink:#17191E;
-  --ink-soft:#3A3D44;
-  --muted:#6E7076;
-  --faint:#9B9DA3;
-  --coal:#1C1B18;
-  --coal-deep:#0F0E0C;
-  --gold:#B8860B;
-  --gold-bright:#D8A93A;
-  --wine:#A63A3A;
-  --line:#E7E2D6;
-  --line-strong:#D5CFC0;
-  --serif:'Fraunces', Georgia, serif;
-  --sans:'Work Sans', system-ui, sans-serif;
-  --r-sheet:36px;
-  --r-card:20px;
-  --ease:cubic-bezier(0.22,1,0.36,1);
+  --paper:#FDFCF8; --cream:#F5F1E7; --card:#FFFFFF;
+  --ink:#17191E; --ink-soft:#3A3D44; --muted:#6E7076; --faint:#9B9DA3;
+  --coal:#1C1B18; --coal-deep:#0F0E0C;
+  --gold:#B8860B; --gold-bright:#D8A93A; --wine:#A63A3A;
+  --line:#E7E2D6; --line-strong:#D5CFC0;
+  --serif:'Fraunces', Georgia, serif; --sans:'Work Sans', system-ui, sans-serif; --mono:'IBM Plex Mono', monospace;
+  --r-sheet:36px; --r-card:20px; --ease:cubic-bezier(0.22,1,0.36,1);
 }
-
 html{ scroll-behavior:smooth; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
-
-body{
-  font-family:var(--sans);
-  font-weight:400;
-  font-size:16px;
-  color:var(--ink);
-  background:var(--paper);
-  line-height:1.65;
-  overflow-x:hidden;
-}
-
+body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink); background:var(--paper); line-height:1.65; overflow-x:hidden; }
 ::selection{ background:rgba(216,169,58,0.28); }
-
 .container{ max-width:1160px; margin:0 auto; padding:0 24px; }
 @media (min-width:768px){ .container{ padding:0 56px; } }
 
-/* ─── barra de progresso de leitura ─── */
-.progress{
-  position:fixed; top:0; left:0; z-index:200;
-  height:3px; width:0;
-  background:linear-gradient(90deg, var(--gold), var(--gold-bright));
-}
+.progress{ position:fixed; top:0; left:0; z-index:200; height:3px; width:0; background:linear-gradient(90deg, var(--gold), var(--gold-bright)); }
 
-/* ─── voz visual ─── */
-.kicker{
-  font-size:11px;
-  font-weight:600;
-  letter-spacing:0.24em;
-  text-transform:uppercase;
-  color:var(--gold);
-}
-.section-title{
-  font-family:var(--serif);
-  font-weight:450;
-  font-size:clamp(30px, 3.8vw, 50px);
-  line-height:1.1;
-  letter-spacing:-0.014em;
-  color:var(--ink);
-}
-.section-lead{
-  font-weight:300;
-  font-size:16.5px;
-  line-height:1.75;
-  color:var(--muted);
-  max-width:56ch;
-}
+.kicker{ font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); }
+.section-title{ font-family:var(--serif); font-weight:450; font-size:clamp(30px, 3.8vw, 50px); line-height:1.1; letter-spacing:-0.014em; color:var(--ink); }
+.section-lead{ font-weight:300; font-size:16.5px; line-height:1.75; color:var(--muted); max-width:60ch; }
 
-/* ─── botões (pill) ─── */
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:12px;
-  font-family:var(--sans);
-  font-size:15px;
-  font-weight:500;
-  letter-spacing:0.01em;
-  padding:18px 36px;
-  background:var(--ink);
-  color:var(--paper);
-  border:none;
-  border-radius:999px;
-  cursor:pointer;
-  text-decoration:none;
-  transition:transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease);
-}
-.btn::after{
-  content:"→";
-  font-weight:400;
-  transition:transform .25s var(--ease);
-}
-.btn:hover{
-  background:var(--coal-deep);
-  transform:translateY(-2px) scale(1.015);
-  box-shadow:0 14px 34px rgba(23,25,30,0.18);
-}
+.btn{ display:inline-flex; align-items:center; justify-content:center; gap:12px; font-family:var(--sans); font-size:15px; font-weight:500; letter-spacing:0.01em; padding:18px 36px; background:var(--ink); color:var(--paper); border:none; border-radius:999px; cursor:pointer; text-decoration:none; transition:transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease); }
+.btn::after{ content:"→"; font-weight:400; transition:transform .25s var(--ease); }
+.btn:hover{ background:var(--coal-deep); transform:translateY(-2px) scale(1.015); box-shadow:0 14px 34px rgba(23,25,30,0.18); }
 .btn:hover::after{ transform:translateX(5px); }
 .btn:active{ transform:translateY(0) scale(0.99); }
 .btn:focus-visible{ outline:2.5px solid var(--gold); outline-offset:3px; }
 
-/* ══════════ TOPBAR ══════════ */
-.topbar{
-  position:sticky; top:0; z-index:100;
-  background:rgba(253,252,248,0.82);
-  backdrop-filter:blur(16px) saturate(150%);
-  -webkit-backdrop-filter:blur(16px) saturate(150%);
-  border-bottom:1px solid transparent;
-  transition:border-color .3s ease;
-}
+/* TOPBAR */
+.topbar{ position:sticky; top:0; z-index:100; background:rgba(253,252,248,0.82); backdrop-filter:blur(16px) saturate(150%); -webkit-backdrop-filter:blur(16px) saturate(150%); border-bottom:1px solid transparent; transition:border-color .3s ease; }
 .topbar.scrolled{ border-bottom-color:var(--line); }
-.topbar-inner{
-  display:flex; align-items:center; justify-content:space-between;
-  height:68px;
-}
+.topbar-inner{ display:flex; align-items:center; justify-content:space-between; height:68px; }
 .brand{ display:flex; align-items:baseline; gap:14px; }
-.brand-name{
-  font-family:var(--serif);
-  font-weight:560;
-  font-size:19px;
-  letter-spacing:0.26em;
-  color:var(--ink);
-}
+.brand-name{ font-family:var(--serif); font-weight:560; font-size:19px; letter-spacing:0.26em; color:var(--ink); }
 .brand-name em{ font-style:normal; color:var(--gold); }
-.brand-tagline{
-  font-size:10px;
-  letter-spacing:0.18em;
-  text-transform:uppercase;
-  color:var(--faint);
-}
+.brand-tagline{ font-family:var(--mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--faint); }
 .topbar .btn{ padding:12px 24px; font-size:13px; }
 
-/* ══════════ HERO ══════════ */
-.hero{
-  padding:116px 0 96px;
-}
+/* HERO */
+.hero{ padding:116px 0 92px; }
 .hero-inner{ max-width:940px; }
-.hero h1{
-  font-family:var(--serif);
-  font-weight:450;
-  font-size:clamp(42px, 6.6vw, 84px);
-  line-height:1.05;
-  letter-spacing:-0.02em;
-  color:var(--ink);
-  margin-top:28px;
-}
-.tw-wrap{ position:relative; }
-.tw-ghost{ display:block; visibility:hidden; }
-.tw-live{ position:absolute; inset:0; }
-.caret-ghost{ visibility:hidden; }
-.hero h1 .sobra{
-  font-style:italic;
-  font-weight:380;
-  color:var(--wine);
-}
-.caret{
-  display:inline-block;
-  width:3px;
-  height:0.92em;
-  margin-left:4px;
-  background:var(--gold-bright);
-  vertical-align:-0.12em;
-  animation:blink 1s steps(1) infinite;
-}
-@keyframes blink{ 50%{ opacity:0; } }
-.caret.done{ animation:blink 1s steps(1) 5; animation-fill-mode:forwards; }
-
-.hero-support{
-  margin-top:30px;
-  font-family:var(--serif);
-  font-style:italic;
-  font-weight:380;
-  font-size:clamp(19px, 2.4vw, 26px);
-  line-height:1.5;
-  color:var(--ink-soft);
-  max-width:36ch;
-}
-.hero-promise{
-  margin-top:20px;
-  font-weight:300;
-  font-size:clamp(15.5px, 1.7vw, 17.5px);
-  line-height:1.75;
-  color:var(--muted);
-  max-width:52ch;
-}
-.hero-cta{
-  margin-top:40px;
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  gap:24px;
-}
-.hero-facts{
-  font-size:13px;
-  color:var(--muted);
-  line-height:1.9;
-}
+.hero h1{ font-family:var(--serif); font-weight:450; font-size:clamp(33px, 6.4vw, 80px); line-height:1.08; letter-spacing:-0.02em; color:var(--ink); margin-top:26px; }
+.hero h1 em{ font-style:italic; font-weight:380; color:var(--wine); }
+.hero-support{ margin-top:28px; font-weight:300; font-size:clamp(16px, 1.9vw, 19px); line-height:1.7; color:var(--ink-soft); max-width:52ch; }
+.hero-cta{ margin-top:38px; display:flex; flex-wrap:wrap; align-items:center; gap:24px; }
+.hero-facts{ font-family:var(--mono); font-size:12px; letter-spacing:0.03em; color:var(--muted); line-height:1.9; }
 .hero-facts span{ margin:0 8px; color:var(--line-strong); }
-.hero-alt{
-  margin-top:14px;
-  font-size:13px;
-  color:var(--faint);
-}
-.hero-alt a{
-  color:var(--gold);
-  font-weight:500;
-  text-decoration:none;
-  border-bottom:1px solid rgba(184,134,11,0.35);
-}
+.hero-alt{ margin-top:14px; font-size:13px; color:var(--faint); }
+.hero-alt a{ color:var(--gold); font-weight:500; text-decoration:none; border-bottom:1px solid rgba(184,134,11,0.35); }
 .hero-alt a:hover{ border-bottom-color:var(--gold); }
 
-
-
-/* ══════════ MARQUEE DE SETORES ══════════ */
-.marquee{
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-  padding:22px 0;
-  overflow:hidden;
-  white-space:nowrap;
-  position:relative;
-}
-.marquee::before, .marquee::after{
-  content:"";
-  position:absolute; top:0; bottom:0;
-  width:110px; z-index:2;
-  pointer-events:none;
-}
-.marquee::before{ left:0; background:linear-gradient(90deg, var(--paper), transparent); }
-.marquee::after{ right:0; background:linear-gradient(-90deg, var(--paper), transparent); }
-.marquee-track{
-  display:inline-flex;
-  align-items:center;
-  gap:0;
-  animation:scroll 46s linear infinite;
-  will-change:transform;
-}
-.marquee:hover .marquee-track{ animation-play-state:paused; }
-@keyframes scroll{ to{ transform:translateX(-50%); } }
-.mq-item{
-  display:inline-flex;
-  align-items:center;
-  font-family:var(--serif);
-  font-style:italic;
-  font-weight:380;
-  font-size:17px;
-  color:var(--ink-soft);
-  padding:0 14px;
-}
-.mq-item::after{
-  content:"";
-  width:7px; height:7px;
-  margin-left:28px;
-  transform:rotate(45deg);
-  border:1.4px solid var(--gold);
-}
-
-/* ══════════ FOLHAS (sheets) ══════════ */
+/* SHEETS / SECTIONS */
 .sheet-wrap{ padding:26px 12px; }
 @media (min-width:768px){ .sheet-wrap{ padding:34px 20px; } }
-.sheet{
-  background:var(--cream);
-  border-radius:var(--r-sheet);
-  max-width:1280px;
-  margin:0 auto;
-  padding:84px 0 92px;
-}
+.sheet{ background:var(--cream); border-radius:var(--r-sheet); max-width:1280px; margin:0 auto; padding:84px 0 92px; }
 @media (max-width:720px){ .sheet{ padding:58px 0 64px; border-radius:26px; } }
-
-.sec{ padding:96px 0 104px; }
-@media (max-width:720px){ .sec{ padding:64px 0 72px; } }
-.sec-head{ margin-bottom:56px; }
-.sec-head::before{
-  content:"";
-  display:block;
-  width:44px; height:2px;
-  background:var(--gold-bright);
-  border-radius:1px;
-  margin-bottom:26px;
-}
-.faq .sec-head::before,
-.quem-inner::before,
-.fecho .container::before{
-  content:"";
-  display:block;
-  width:44px; height:2px;
-  background:var(--gold-bright);
-  border-radius:1px;
-  margin:0 auto 26px;
-}
+.sec{ padding:92px 0 100px; }
+@media (max-width:720px){ .sec{ padding:60px 0 68px; } }
+.sec-head{ margin-bottom:52px; }
+.sec-head::before{ content:""; display:block; width:44px; height:2px; background:var(--gold-bright); border-radius:1px; margin-bottom:26px; }
 .sec-head .section-title{ margin-top:16px; }
-.sec-head .section-lead{ margin-top:18px; }
+.sec-head .section-lead{ margin-top:20px; }
+.center .sec-head{ text-align:center; max-width:720px; margin-left:auto; margin-right:auto; }
+.center .sec-head::before{ margin-left:auto; margin-right:auto; }
+.center .sec-head .section-lead{ margin-left:auto; margin-right:auto; }
 
-/* ══════════ LEITURAS ══════════ */
-.leituras-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:18px;
-}
-@media (min-width:660px){ .leituras-grid{ grid-template-columns:repeat(2,1fr); gap:20px; } }
-@media (min-width:1000px){ .leituras-grid{ grid-template-columns:repeat(3,1fr); gap:22px; } }
+/* ESPELHO APROFUNDADO (leitura Onna) */
+.leitura-body{ max-width:60ch; }
+.leitura-body p{ font-size:clamp(17px,1.9vw,20px); line-height:1.7; color:var(--ink-soft); margin-top:18px; }
+.leitura-body p:first-child{ margin-top:0; }
+.leitura-body strong{ font-weight:500; color:var(--ink); }
+.leitura-punch{ margin-top:30px; font-family:var(--serif); font-style:italic; font-weight:400; font-size:clamp(20px,2.3vw,26px); line-height:1.5; color:var(--ink); }
+.leitura-punch em{ font-style:italic; color:var(--gold); }
 
-.lcard{
-  position:relative;
-  background:var(--card);
-  border:1px solid rgba(231,226,214,0.7);
-  border-radius:var(--r-card);
-  padding:32px 28px 26px;
-  display:flex;
-  flex-direction:column;
-  transition:transform .35s var(--ease), box-shadow .35s var(--ease);
-}
-.lcard:hover{
-  transform:translateY(-5px);
-  box-shadow:0 24px 54px rgba(23,25,30,0.09);
-}
-.lcard-setor{
-  font-size:10.5px;
-  font-weight:600;
-  letter-spacing:0.18em;
-  text-transform:uppercase;
-  color:var(--muted);
-}
-.lcard-hook{
-  margin-top:18px;
-  font-family:var(--serif);
-  font-weight:400;
-  font-size:17px;
-  line-height:1.55;
-  color:var(--ink);
-  flex:1 1 auto;
-}
-.lcard-shift{
-  margin-top:24px;
-  padding-top:18px;
-  border-top:1px solid var(--line);
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-}
-.shift-row{
-  display:flex;
-  align-items:baseline;
-  gap:14px;
-}
-.shift-label{
-  flex:0 0 54px;
-  font-size:10px;
-  font-weight:600;
-  letter-spacing:0.2em;
-  text-transform:uppercase;
-}
-.shift-label--antes{ color:var(--wine); }
-.shift-label--depois{ color:var(--gold); }
-.shift-val{
-  font-size:13.5px;
-  font-weight:400;
-  line-height:1.55;
-}
-.shift-val--antes{ color:var(--wine); }
-.shift-val--depois{ color:var(--ink); font-weight:500; }
-.leituras-note{
-  margin-top:44px;
-  font-family:var(--serif);
-  font-style:italic;
-  font-weight:380;
-  font-size:14.5px;
-  color:var(--muted);
-  text-align:center;
-}
+/* PROVA - numero-heroi */
+.breadth{ font-family:var(--mono); font-size:12px; letter-spacing:0.06em; color:var(--muted); text-align:center; margin-bottom:40px; }
+.breadth b{ color:var(--ink); font-weight:500; }
+.prova-grid{ display:grid; grid-template-columns:1fr; gap:18px; }
+@media (min-width:640px){ .prova-grid{ grid-template-columns:repeat(2,1fr); gap:20px; } }
+@media (min-width:1000px){ .prova-grid{ grid-template-columns:repeat(3,1fr); gap:22px; } }
+.pcard{ background:var(--card); border:1px solid rgba(231,226,214,0.7); border-radius:var(--r-card); padding:30px 28px 24px; display:flex; flex-direction:column; transition:transform .35s var(--ease), box-shadow .35s var(--ease); }
+.pcard:hover{ transform:translateY(-5px); box-shadow:0 24px 54px rgba(23,25,30,0.09); }
+.pcard-setor{ font-family:var(--mono); font-size:10.5px; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); }
+.pcard-num{ margin-top:16px; font-family:var(--serif); font-weight:450; font-size:clamp(34px,4vw,44px); line-height:1; letter-spacing:-0.02em; color:var(--ink); }
+.pcard-num em{ font-style:normal; font-size:0.5em; color:var(--gold); vertical-align:0.15em; margin-left:2px; }
+.pcard-desc{ margin-top:14px; font-size:14.5px; line-height:1.6; color:var(--ink-soft); flex:1 1 auto; }
+.prova-seal{ margin-top:36px; text-align:center; font-family:var(--mono); font-size:11px; letter-spacing:0.05em; color:var(--faint); max-width:56ch; margin-left:auto; margin-right:auto; line-height:1.7; }
 
-/* ══════════ COMO FUNCIONA — trilho que conduz ══════════ */
-.metodo-grid{
-  position:relative;
-  display:grid;
-  grid-template-columns:1fr;
-  gap:44px;
-  padding-left:38px;
-}
-@media (min-width:820px){
-  .metodo-grid{ grid-template-columns:repeat(3,1fr); gap:48px; padding-left:0; padding-top:46px; }
-}
-/* trilho */
-.metodo-grid::before{
-  content:"";
-  position:absolute;
-  background:var(--line);
-}
-@media (max-width:819px){
-  .metodo-grid::before{ left:8px; top:6px; bottom:6px; width:2px; }
-}
-@media (min-width:820px){
-  .metodo-grid::before{ top:8px; left:6px; right:6px; height:2px; }
-}
-/* trilho que se preenche */
-.metodo-fill{
-  position:absolute;
-  background:var(--gold);
-  transition:transform 1.6s var(--ease);
-}
-@media (max-width:819px){
-  .metodo-fill{ left:8px; top:6px; bottom:6px; width:2px; transform:scaleY(0); transform-origin:top; }
-  .metodo-grid.in .metodo-fill{ transform:scaleY(1); }
-}
-@media (min-width:820px){
-  .metodo-fill{ top:8px; left:6px; right:6px; height:2px; transform:scaleX(0); transform-origin:left; }
-  .metodo-grid.in .metodo-fill{ transform:scaleX(1); }
-}
-.mstep{ position:relative; }
-.mstep::before{
-  content:"";
-  position:absolute;
-  width:14px; height:14px;
-  border-radius:50%;
-  background:var(--paper);
-  border:2.5px solid var(--gold);
-}
-@media (max-width:819px){
-  .mstep::before{ left:-37px; top:4px; }
-}
-@media (min-width:820px){
-  .mstep::before{ top:-45px; left:0; }
-}
-.mstep-marker{
-  font-family:var(--serif);
-  font-style:italic;
-  font-weight:380;
-  font-size:15px;
-  color:var(--gold);
-}
-.mstep-title{
-  margin-top:12px;
-  font-family:var(--serif);
-  font-weight:450;
-  font-size:24px;
-  line-height:1.22;
-  color:var(--ink);
-}
-.mstep-body{
-  margin-top:12px;
-  font-weight:300;
-  font-size:14.5px;
-  line-height:1.75;
-  color:var(--muted);
-  max-width:34ch;
-}
-.metodo-close{
-  margin-top:60px;
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  gap:26px;
-}
-.metodo-close .obs{ font-size:13px; color:var(--faint); }
+/* METODO */
+.metodo-inner{ max-width:820px; }
+.metodo-text{ margin-top:22px; font-family:var(--serif); font-weight:400; font-size:clamp(19px,2.2vw,25px); line-height:1.55; color:var(--ink); }
+.metodo-text em{ font-style:italic; color:var(--gold); }
+.metodo-sub{ margin-top:22px; font-weight:300; font-size:15.5px; line-height:1.8; color:var(--muted); max-width:58ch; }
 
-/* ══════════ O QUE VOCÊ LEVA ══════════ */
-.leva-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:20px;
-}
-@media (min-width:820px){ .leva-grid{ grid-template-columns:repeat(3,1fr); gap:22px; } }
-.leva-item{
-  background:var(--card);
-  border-radius:var(--r-card);
-  padding:34px 30px 30px;
-  border:1px solid rgba(231,226,214,0.7);
-  transition:transform .35s var(--ease), box-shadow .35s var(--ease);
-}
-.leva-item:hover{
-  transform:translateY(-5px);
-  box-shadow:0 24px 54px rgba(23,25,30,0.09);
-}
-.leva-num{
-  font-family:var(--serif);
-  font-style:italic;
-  font-weight:380;
-  font-size:15px;
-  color:var(--gold);
-}
-.leva-title{
-  margin-top:12px;
-  font-family:var(--serif);
-  font-weight:450;
-  font-size:22px;
-  color:var(--ink);
-  line-height:1.25;
-}
-.leva-body{
-  margin-top:12px;
-  font-weight:300;
-  font-size:14.5px;
-  line-height:1.75;
-  color:var(--muted);
-}
-
-/* ══════════ QUEM LÊ ══════════ */
-.quem-inner{
-  max-width:820px;
-  margin:0 auto;
-  text-align:center;
-}
-.quem-text{
-  margin-top:26px;
-  font-family:var(--serif);
-  font-weight:400;
-  font-size:clamp(20px, 2.6vw, 28px);
-  line-height:1.58;
-  color:var(--ink);
-}
+/* QUEM LE (equipe) */
+.quem-inner{ max-width:840px; margin:0 auto; text-align:center; }
+.quem-text{ margin-top:24px; font-family:var(--serif); font-weight:400; font-size:clamp(20px,2.5vw,28px); line-height:1.55; color:var(--ink); }
 .quem-text em{ font-style:italic; color:var(--gold); }
-.quem-method{
-  margin-top:26px;
-  font-weight:300;
-  font-size:15px;
-  line-height:1.8;
-  color:var(--muted);
-  max-width:58ch;
-  margin-left:auto; margin-right:auto;
-}
+.quem-sub{ margin-top:24px; font-weight:300; font-size:15px; line-height:1.8; color:var(--muted); max-width:60ch; margin-left:auto; margin-right:auto; }
+.quem-band{ margin-top:34px; display:flex; flex-wrap:wrap; justify-content:center; gap:14px 34px; font-family:var(--mono); font-size:12px; letter-spacing:0.05em; color:var(--ink-soft); }
+.quem-band span{ display:inline-flex; align-items:center; gap:10px; }
+.quem-band span::before{ content:""; width:6px; height:6px; transform:rotate(45deg); border:1.4px solid var(--gold); }
 
-/* ══════════ FAQ ══════════ */
-.faq .sec-head{ text-align:center; max-width:640px; margin-left:auto; margin-right:auto; }
-.faq-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:18px;
-  max-width:900px;
-  margin:0 auto;
-}
+/* O QUE A LEITURA DA */
+.leva-grid{ display:grid; grid-template-columns:1fr; gap:20px; }
+@media (min-width:820px){ .leva-grid{ grid-template-columns:repeat(3,1fr); gap:22px; } }
+.leva-item{ background:var(--card); border-radius:var(--r-card); padding:34px 30px 30px; border:1px solid rgba(231,226,214,0.7); transition:transform .35s var(--ease), box-shadow .35s var(--ease); }
+.leva-item:hover{ transform:translateY(-5px); box-shadow:0 24px 54px rgba(23,25,30,0.09); }
+.leva-num{ font-family:var(--serif); font-style:italic; font-weight:380; font-size:15px; color:var(--gold); }
+.leva-title{ margin-top:12px; font-family:var(--serif); font-weight:450; font-size:22px; color:var(--ink); line-height:1.25; }
+.leva-body{ margin-top:12px; font-weight:300; font-size:14.5px; line-height:1.75; color:var(--muted); }
+
+/* FAQ */
+.faq-grid{ display:grid; grid-template-columns:1fr; gap:18px; max-width:900px; margin:0 auto; }
 @media (min-width:680px){ .faq-grid{ grid-template-columns:repeat(2,1fr); gap:20px; } }
-.faq-item{
-  background:var(--card);
-  border:1px solid rgba(231,226,214,0.7);
-  border-radius:var(--r-card);
-  padding:28px 28px 24px;
-}
-.faq-q{
-  font-family:var(--serif);
-  font-weight:450;
-  font-size:17.5px;
-  line-height:1.4;
-  color:var(--ink);
-}
-.faq-a{
-  margin-top:10px;
-  font-weight:300;
-  font-size:14.5px;
-  line-height:1.75;
-  color:var(--muted);
-}
-.faq-a a{
-  color:var(--gold);
-  font-weight:500;
-  text-decoration:none;
-  border-bottom:1px solid rgba(184,134,11,0.35);
-}
-.faq-a a:hover{ border-bottom-color:var(--gold); }
+.faq-item{ background:var(--card); border:1px solid rgba(231,226,214,0.7); border-radius:var(--r-card); padding:28px 28px 24px; }
+.faq-q{ font-family:var(--serif); font-weight:450; font-size:17.5px; line-height:1.4; color:var(--ink); }
+.faq-a{ margin-top:10px; font-weight:300; font-size:14.5px; line-height:1.75; color:var(--muted); }
+.faq-a a{ color:var(--gold); font-weight:500; text-decoration:none; border-bottom:1px solid rgba(184,134,11,0.35); }
 
-/* ══════════ FECHO ══════════ */
-.fecho{ padding:120px 0 130px; text-align:center; }
-@media (max-width:720px){ .fecho{ padding:80px 0 90px; } }
-.fecho-title{
-  font-family:var(--serif);
-  font-weight:450;
-  font-size:clamp(34px, 5.2vw, 66px);
-  line-height:1.1;
-  letter-spacing:-0.016em;
-  color:var(--ink);
-  max-width:18ch;
-  margin:18px auto 0;
-}
-.fecho-title em{
-  font-style:italic;
-  font-weight:380;
-  color:var(--wine);
-}
-.fecho-sub{
-  margin-top:22px;
-  font-weight:300;
-  font-size:16px;
-  color:var(--muted);
-}
-.fecho-cta{ margin-top:38px; }
+/* FECHO */
+.fecho{ padding:118px 0 128px; text-align:center; }
+@media (max-width:720px){ .fecho{ padding:78px 0 88px; } }
+.fecho-title{ font-family:var(--serif); font-weight:450; font-size:clamp(32px,5vw,62px); line-height:1.1; letter-spacing:-0.016em; color:var(--ink); max-width:20ch; margin:18px auto 0; }
+.fecho-title em{ font-style:italic; font-weight:380; color:var(--wine); }
+.fecho-sub{ margin-top:22px; font-weight:300; font-size:16px; color:var(--muted); }
+.fecho-cta{ margin-top:36px; }
 .fecho .btn{ padding:20px 44px; font-size:16px; }
 
-/* ══════════ FOOTER ══════════ */
-.footer{
-  background:var(--coal);
-  color:#EDEBE4;
-  padding:56px 0;
-  border-radius:var(--r-sheet) var(--r-sheet) 0 0;
-}
-.footer-inner{
-  display:flex;
-  flex-direction:column;
-  gap:24px;
-  align-items:center;
-  text-align:center;
-}
-@media (min-width:680px){
-  .footer-inner{ flex-direction:row; justify-content:space-between; text-align:left; align-items:flex-start; }
-}
+/* FOOTER */
+.footer{ background:var(--coal); color:#EDEBE4; padding:56px 0; border-radius:var(--r-sheet) var(--r-sheet) 0 0; }
+.footer-inner{ display:flex; flex-direction:column; gap:24px; align-items:center; text-align:center; }
+@media (min-width:680px){ .footer-inner{ flex-direction:row; justify-content:space-between; text-align:left; align-items:flex-start; } }
 .footer .brand-name{ color:#EDEBE4; }
 .footer .brand-tagline{ color:rgba(237,235,228,0.55); margin-top:6px; }
 .footer-scope{ margin-top:12px; font-size:12.5px; color:rgba(237,235,228,0.7); }
 .footer-right{ display:flex; flex-direction:column; gap:8px; align-items:center; }
 @media (min-width:680px){ .footer-right{ align-items:flex-end; } }
-.footer-whatsapp{
-  display:inline-flex; align-items:center; gap:8px;
-  font-size:13px; font-weight:500;
-  color:var(--gold-bright);
-  text-decoration:none;
-}
-.footer-whatsapp:hover{ color:#E8C05C; }
+.footer-whatsapp{ display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:500; color:var(--gold-bright); text-decoration:none; }
 .footer-whatsapp svg{ width:14px; height:14px; fill:currentColor; }
 .footer-contact{ font-size:12px; color:rgba(237,235,228,0.65); }
 .footer-contact a{ color:inherit; text-decoration:none; }
 .footer-place{ font-size:11px; color:rgba(237,235,228,0.4); }
 
-/* ══════════ CTA FIXO MOBILE ══════════ */
-.mcta{
-  position:fixed;
-  left:12px; right:12px; bottom:12px;
-  z-index:150;
-  transform:translateY(140%);
-  transition:transform .45s var(--ease);
-  display:none;
-}
+/* CTA FIXO MOBILE */
+.mcta{ position:fixed; left:12px; right:12px; bottom:12px; z-index:150; transform:translateY(140%); transition:transform .45s var(--ease); display:none; }
 .mcta.show{ transform:translateY(0); }
-.mcta .btn{
-  width:100%;
-  box-shadow:0 16px 40px rgba(23,25,30,0.28);
-}
+.mcta .btn{ width:100%; box-shadow:0 16px 40px rgba(23,25,30,0.28); }
 @media (max-width:720px){ .mcta{ display:block; } }
 
-/* ══════════ REVEAL ══════════ */
-.reveal{
-  opacity:0;
-  transform:translateY(26px);
-  transition:opacity .8s var(--ease), transform .8s var(--ease);
-}
+/* REVEAL */
+.reveal{ opacity:0; transform:translateY(26px); transition:opacity .8s var(--ease), transform .8s var(--ease); }
 .reveal.in{ opacity:1; transform:none; }
 .reveal[data-delay="1"]{ transition-delay:.1s; }
 .reveal[data-delay="2"]{ transition-delay:.2s; }
 .reveal[data-delay="3"]{ transition-delay:.3s; }
+@media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } .reveal{ opacity:1; transform:none; transition:none; } .btn,.pcard,.leva-item{ transition:none; } .mcta{ transition:none; } }
 
-@media (prefers-reduced-motion: reduce){
-  html{ scroll-behavior:auto; }
-  .reveal{ opacity:1; transform:none; transition:none; }
-  .marquee-track{ animation:none; }
-  .metodo-fill{ transform:none !important; transition:none; }
-  .caret{ animation:none; }
-  .btn, .lcard, .leva-item{ transition:none; }
-  .mcta{ transition:none; }
-}
-
-/* ══════════ MOBILE FINO ══════════ */
 @media (max-width:720px){
   .brand-tagline{ display:none; }
-  .hero{ padding:64px 0 64px; }
+  .topbar .btn{ display:none; }
+  .topbar-inner{ height:60px; }
+  .hero{ padding:44px 0 52px; }
+  .hero-support{ font-size:16.5px; }
+  .hero-cta{ margin-top:32px; gap:18px; }
   .hero-cta .btn{ width:100%; }
-  .metodo-close{ flex-direction:column; align-items:stretch; }
-  .metodo-close .btn{ width:100%; }
-  .metodo-close .obs{ text-align:center; }
+  .container{ padding:0 22px; }
+  .sec-head{ margin-bottom:40px; }
+  .breadth{ margin-bottom:30px; }
+  .leitura-body p{ font-size:17px; }
   .fecho .btn{ width:calc(100% - 24px); }
-  body{ padding-bottom:84px; }
+  body{ padding-bottom:88px; }
 }
 </style>
 </head>
 
 <body>
-
 <div class="progress" id="progress"></div>
 
-<!-- ══════ TOPBAR ══════ -->
+<!-- TOPBAR -->
 <header class="topbar" id="topbar">
   <div class="container topbar-inner">
     <div class="brand">
       <div class="brand-name">ONNA<em>.</em></div>
       <div class="brand-tagline">Margem · Gestão · Liderança</div>
     </div>
-    <button class="btn"
-            data-tf-popup="QvykQbLg"
-            data-tf-opacity="100"
-            data-tf-iframe-props="title=Análise de Margem"
-            data-tf-medium="snippet">
-      Faça a Análise de Margem
-    </button>
+    <button class="btn" data-tf-popup="FORM_V4_LINHA_ALTA" data-tf-opacity="100" data-tf-iframe-props="title=Análise de Margem" data-tf-medium="snippet">Quero enxergar meu lucro</button>
   </div>
 </header>
 
-<!-- ══════ HERO ══════ -->
+<!-- HERO -->
 <section class="hero">
   <div class="container">
     <div class="hero-inner">
-      <div class="kicker reveal in">Análise de Margem · Gratuita</div>
-      <h1 id="tw" class="tw-wrap" aria-label="Você sabe o quanto fatura. Não sabe o quanto lucra.">
-        <span class="tw-ghost" aria-hidden="true">Você sabe o quanto fatura.<br>Não sabe o quanto <span class="sobra">lucra</span>.<span class="caret caret-ghost"></span></span>
-        <span class="tw-live" aria-hidden="true"><span id="tw1"></span><br><span id="tw2"></span><span id="twsobra" class="sobra"></span><span id="twdot"></span><span class="caret" id="caret"></span></span>
-      </h1>
-      <p class="hero-promise reveal">Você responde em alguns minutos. A Onna lê sua operação e te chama no WhatsApp com uma percepção concreta do seu cenário.</p>
-
-      <div class="hero-cta reveal">
-        <button class="btn"
-                data-tf-popup="QvykQbLg"
-                data-tf-opacity="100"
-                data-tf-iframe-props="title=Análise de Margem"
-                data-tf-medium="snippet">
-          Faça a Análise de Margem
-        </button>
-        <div class="hero-facts">
-          Gratuita <span>|</span> Sem call agendada <span>|</span> Resposta no seu WhatsApp
-        </div>
+      <div class="kicker reveal in">Para quem fatura e não vê o lucro</div>
+      <h1 class="reveal">Fatura alto, <em>lucra pouco</em>, e ninguém te mostrou por quê.</h1>
+      <p class="hero-support reveal" data-delay="1">A Onna lê a sua operação com rigor de diagnóstico e mostra onde o lucro está vazando. A leitura chega no seu WhatsApp.</p>
+      <div class="hero-cta reveal" data-delay="2">
+        <button class="btn" data-tf-popup="FORM_V4_LINHA_ALTA" data-tf-opacity="100" data-tf-iframe-props="title=Análise de Margem" data-tf-medium="snippet">Quero enxergar meu lucro</button>
+        <div class="hero-facts">Sem compromisso <span>|</span> Resposta no seu WhatsApp</div>
       </div>
-      <div class="hero-alt reveal">Prefere conversar antes? <a href="https://wa.me/5551991342122" target="_blank" rel="noopener">Fale com a Onna pelo WhatsApp.</a></div>
+      <div class="hero-alt reveal" data-delay="3">Prefere conversar antes? <a href="https://wa.me/5551991342122" target="_blank" rel="noopener">Fale com a Onna pelo WhatsApp.</a></div>
     </div>
-
   </div>
 </section>
 
-<!-- ══════ MARQUEE ══════ -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track" id="mqtrack">
-    <span class="mq-item">Serralheria</span>
-    <span class="mq-item">Odontologia</span>
-    <span class="mq-item">Moda premium</span>
-    <span class="mq-item">Materiais de construção</span>
-    <span class="mq-item">Agências</span>
-    <span class="mq-item">Padarias</span>
-    <span class="mq-item">Autopeças</span>
-    <span class="mq-item">Confecção</span>
-    <span class="mq-item">Bebidas</span>
-    <span class="mq-item">Alimentação</span>
-    <span class="mq-item">Varejo</span>
-    <span class="mq-item">Serviços</span>
-  </div>
-</div>
-
-<!-- ══════ LEITURAS ══════ -->
+<!-- ESPELHO APROFUNDADO -->
 <div class="sheet-wrap">
   <section class="sheet">
     <div class="container">
       <div class="sec-head reveal">
-        <div class="kicker">O que a Onna enxerga</div>
-        <h2 class="section-title">Setores diferentes.<br>O mesmo critério técnico.</h2>
-        <p class="section-lead">O problema espelhado com precisão. A decisão tomada com critério. E o resultado aparecendo onde o faturamento sozinho não mostrava.</p>
+        <div class="kicker">A leitura da Onna</div>
+        <h2 class="section-title">Faturamento alto esconde melhor o vazamento.</h2>
       </div>
-
-      <div class="leituras-grid">
-        <div class="lcard reveal">
-          <div class="lcard-setor">Serralheria familiar · interior de SP</div>
-          <p class="lcard-hook">O portão que sustentava a casa custava R$ 5.453. O mercado pagava R$ 5.000.</p>
-          <div class="lcard-shift">
-            <div class="shift-row"><span class="shift-label shift-label--antes">Antes</span><span class="shift-val shift-val--antes">R$ 1.697 de prejuízo por serviço, financiado com dívida</span></div>
-            <div class="shift-row"><span class="shift-label shift-label--depois">Depois</span><span class="shift-val shift-val--depois">O mesmo serviço no lucro, sem passar do teto de mercado</span></div>
-          </div>
-        </div>
-
-        <div class="lcard reveal" data-delay="1">
-          <div class="lcard-setor">Rede odontológica · 3 unidades · RJ</div>
-          <p class="lcard-hook">R$ 560 mil de produção viravam R$ 330 mil de receita. O crediário aprovava sem análise.</p>
-          <div class="lcard-shift">
-            <div class="shift-row"><span class="shift-label shift-label--antes">Antes</span><span class="shift-val shift-val--antes">69% do crediário sem voltar</span></div>
-            <div class="shift-row"><span class="shift-label shift-label--depois">Depois</span><span class="shift-val shift-val--depois">Crédito com regra - e a decisão de volta sobre receita real</span></div>
-          </div>
-        </div>
-
-        <div class="lcard reveal" data-delay="2">
-          <div class="lcard-setor">Multimarca feminina premium · PR</div>
-          <p class="lcard-hook">A dona acreditava dar 5 a 10% de desconto. O balcão dava 14,7%, peça a peça.</p>
-          <div class="lcard-shift">
-            <div class="shift-row"><span class="shift-label shift-label--antes">Antes</span><span class="shift-val shift-val--antes">14,7% de desconto sem régua</span></div>
-            <div class="shift-row"><span class="shift-label shift-label--depois">Depois</span><span class="shift-val shift-val--depois">Quase 5 pontos de margem de volta, com piso em cada negociação</span></div>
-          </div>
-        </div>
-
-        <div class="lcard reveal">
-          <div class="lcard-setor">Ferragens e materiais de construção</div>
-          <p class="lcard-hook">Uma margem média governava milhares de itens de giros completamente diferentes.</p>
-          <div class="lcard-shift">
-            <div class="shift-row"><span class="shift-label shift-label--antes">Antes</span><span class="shift-val shift-val--antes">Categorias inteiras vendendo abaixo do que deviam</span></div>
-            <div class="shift-row"><span class="shift-label shift-label--depois">Depois</span><span class="shift-val shift-val--depois">Preço e compra por categoria, corredor por corredor</span></div>
-          </div>
-        </div>
-
-        <div class="lcard reveal" data-delay="1">
-          <div class="lcard-setor">Agência de marketing</div>
-          <p class="lcard-hook">Carteira cheia, faturamento estável - e a hora da equipe custando R$ 0 no papel.</p>
-          <div class="lcard-shift">
-            <div class="shift-row"><span class="shift-label shift-label--antes">Antes</span><span class="shift-val shift-val--antes">Clientes deficitários invisíveis dentro do contrato</span></div>
-            <div class="shift-row"><span class="shift-label shift-label--depois">Depois</span><span class="shift-val shift-val--depois">Margem por contrato, renegociação e pró-labore fixo</span></div>
-          </div>
-        </div>
-
-        <div class="lcard reveal" data-delay="2">
-          <div class="lcard-setor">Padaria artesanal · Porto Alegre</div>
-          <p class="lcard-hook">O preço estava certo. O caixa é que ninguém enxergava.</p>
-          <div class="lcard-shift">
-            <div class="shift-row"><span class="shift-label shift-label--antes">Antes</span><span class="shift-val shift-val--antes">5 decisões de gestão paradas há meses</span></div>
-            <div class="shift-row"><span class="shift-label shift-label--depois">Depois</span><span class="shift-val shift-val--depois">Cada uma com número próprio - destravadas em semanas</span></div>
-          </div>
-        </div>
-
-        <div class="lcard reveal">
-          <div class="lcard-setor">Loja de bebidas · 2 unidades</div>
-          <p class="lcard-hook">Preço por markup, custos fixos das duas lojas fora da conta.</p>
-          <div class="lcard-shift">
-            <div class="shift-row"><span class="shift-label shift-label--antes">Antes</span><span class="shift-val shift-val--antes">O risco morando dentro do preço</span></div>
-            <div class="shift-row"><span class="shift-label shift-label--depois">Depois</span><span class="shift-val shift-val--depois">O preço carregando a estrutura inteira das duas lojas</span></div>
-          </div>
-        </div>
-
-        <div class="lcard reveal" data-delay="1">
-          <div class="lcard-setor">Loja de autopeças</div>
-          <p class="lcard-hook">A margem média escondia o balcão: venda abaixo do custo de reposição.</p>
-          <div class="lcard-shift">
-            <div class="shift-row"><span class="shift-label shift-label--antes">Antes</span><span class="shift-val shift-val--antes">Capital envelhecendo em peça parada</span></div>
-            <div class="shift-row"><span class="shift-label shift-label--depois">Depois</span><span class="shift-val shift-val--depois">Giro no comando de compra, preço e desconto - capital de volta ao caixa</span></div>
-          </div>
-        </div>
-
-        <div class="lcard reveal" data-delay="2">
-          <div class="lcard-setor">Indústria de confecção</div>
-          <p class="lcard-hook">O preço por peça seguia a concorrência. O custo-minuto ninguém tinha calculado.</p>
-          <div class="lcard-shift">
-            <div class="shift-row"><span class="shift-label shift-label--antes">Antes</span><span class="shift-val shift-val--antes">Grades inteiras costurando prejuízo em volume</span></div>
-            <div class="shift-row"><span class="shift-label shift-label--depois">Depois</span><span class="shift-val shift-val--depois">Margem definida grade a grade, antes do corte</span></div>
-          </div>
-        </div>
+      <div class="leitura-body reveal" data-delay="1">
+        <p>Faturamento grande cria uma folga que engana. Como sobra o suficiente para pagar as contas todo mês, a pergunta que decide o resultado acaba ficando para trás: quanto de cada venda realmente vira lucro?</p>
+        <p>O dinheiro entra, circula, paga fornecedor, cobre folha, quita imposto <strong>e some antes de virar resultado</strong>. Quanto maior o volume, mais fácil o vazamento se diluir no meio dele. Um ponto de margem perdido em R$ 30 mil passa despercebido; em R$ 200 mil, são milhares por mês saindo sem que você veja.</p>
+        <p class="leitura-punch">A Onna faz a conta que o volume esconde: <em>onde o lucro para de acompanhar o faturamento, e por quê.</em></p>
       </div>
-
-      <p class="leituras-note reveal">Leituras da Onna em casos atendidos e cenários setoriais. Resultados e números ajustados, identificação preservada.</p>
     </div>
   </section>
 </div>
 
-<!-- ══════ COMO FUNCIONA ══════ -->
+<!-- PROVA SOCIAL (numerosa, curada, selo honesto) -->
+<section class="sec center">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="kicker">O que a leitura destrava</div>
+      <h2 class="section-title">Operações diferentes. O mesmo dinheiro escondido.</h2>
+    </div>
+    <div class="breadth reveal" data-delay="1">Leituras da Onna em <b>varejo, saúde, indústria, distribuição e serviço</b>, em <b>três estados</b>.</div>
+    <div class="prova-grid">
+      <div class="pcard reveal">
+        <div class="pcard-setor">Rede odontológica · 3 unidades</div>
+        <div class="pcard-num">R$ 18 mil<em>/mês</em></div>
+        <p class="pcard-desc">Produzia R$ 560 mil e recebia R$ 330 mil: o crédito próprio aprovava sem análise e quase um terço do faturamento nunca chegava ao caixa. Uma regra de crédito sobre receita real trouxe o dinheiro de volta ao mês.</p>
+      </div>
+      <div class="pcard reveal" data-delay="1">
+        <div class="pcard-setor">Indústria de moda</div>
+        <div class="pcard-num">R$ 42 mil<em>/mês</em></div>
+        <p class="pcard-desc">Coleções inteiras saíam no vermelho sem ninguém perceber. O preço seguia a concorrência e o custo real de produção nunca entrava na conta. Margem apurada coleção a coleção, antes do primeiro corte de tecido.</p>
+      </div>
+      <div class="pcard reveal" data-delay="2">
+        <div class="pcard-setor">Distribuição de bebidas</div>
+        <div class="pcard-num">+5 <em>pts</em></div>
+        <p class="pcard-desc">Cinco pontos de margem escondidos no markup sobre a garrafa. Custos fixos, perdas e o serviço da dívida nunca entravam no preço. Recolocados na conta, o preço passou a sustentar a operação inteira.</p>
+      </div>
+      <div class="pcard reveal">
+        <div class="pcard-setor">Serviço especializado</div>
+        <div class="pcard-num">R$ 11 mil<em>/mês</em></div>
+        <p class="pcard-desc">Contratos no prejuízo escondidos dentro de uma carteira cheia. O faturamento estável mascarava a hora da equipe entrando como custo zero. Margem apurada contrato a contrato, e pró-labore fixo pela primeira vez.</p>
+      </div>
+      <div class="pcard reveal" data-delay="1">
+        <div class="pcard-setor">Multimarca de moda feminina premium</div>
+        <div class="pcard-num">4,7 <em>pts</em></div>
+        <p class="pcard-desc">A dona calculava de 5 a 10% de desconto; o balcão praticava 14,7%, peça a peça, sem ninguém somar. Um piso por negociação devolveu a margem sem custar uma venda sequer.</p>
+      </div>
+      <div class="pcard reveal" data-delay="2">
+        <div class="pcard-setor">Rede de materiais de construção</div>
+        <div class="pcard-num">R$ 140 mil</div>
+        <p class="pcard-desc">Milhares de itens de giros completamente diferentes, governados por uma única margem média. Capital envelhecendo em prateleira e categorias vendendo abaixo do custo de reposição. Preço e compra redefinidos categoria a categoria, com o capital de volta ao caixa.</p>
+      </div>
+    </div>
+    <p class="prova-seal reveal">Casos reais, números adaptados. A Onna tem compromisso com o sigilo das informações.</p>
+  </section>
+</section>
+
+<!-- METODO -->
+<section class="sec">
+  <div class="container">
+    <div class="metodo-inner reveal">
+      <div class="kicker">Como a Onna trabalha</div>
+      <p class="metodo-text">O mesmo rigor dos diagnósticos que os clientes da Onna pagam, aplicado <em>desde a primeira mensagem que chega no seu WhatsApp.</em></p>
+      <p class="metodo-sub">Número verificado na fonte, leitura direta do que ele significa, decisão na ordem certa. Sem fórmula pronta e sem esteira automática: a leitura é feita sobre os seus números, por quem faz os diagnósticos da Onna.</p>
+    </div>
+  </div>
+</section>
+
+<!-- QUEM LE (equipe) -->
+<div class="sheet-wrap">
+  <section class="sheet center">
+    <div class="container">
+      <div class="quem-inner reveal">
+        <div class="kicker">Quem lê a sua operação</div>
+        <p class="quem-text">Os técnicos da Onna leem empresas por dentro: margem, preço e organização financeira de operações que já cresceram, <em>no ponto exato em que a decisão acontece.</em></p>
+        <p class="quem-sub">Uma consultoria de gestão que trabalha com o rigor de quem lida com número e sigilo todo dia. O método não muda com o porte, e é ele que sustenta cada leitura, da primeira mensagem ao diagnóstico.</p>
+        <div class="quem-band reveal" data-delay="1">
+          <span>Varejo</span><span>Saúde</span><span>Indústria</span><span>Três estados</span><span>Resultados medidos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- O QUE A LEITURA DA -->
 <section class="sec">
   <div class="container">
     <div class="sec-head reveal">
-      <div class="kicker">Como funciona</div>
-      <h2 class="section-title">Três passos. Nenhuma burocracia.</h2>
+      <div class="kicker">O que você leva</div>
+      <h2 class="section-title">Clareza que já muda a próxima decisão.</h2>
     </div>
-
-    <div class="metodo-grid" id="metodo">
-      <div class="metodo-fill"></div>
-      <div class="mstep reveal">
-        <div class="mstep-marker">Primeiro</div>
-        <div class="mstep-title">Você responde.</div>
-        <p class="mstep-body">Um formulário direto sobre operação, números e momento. Alguns minutos, sem anexar documento, sem reunião marcada.</p>
+    <div class="leva-grid">
+      <div class="leva-item reveal">
+        <div class="leva-num">Um</div>
+        <div class="leva-title">Onde o lucro escapa</div>
+        <p class="leva-body">O ponto exato entre o que você fatura e o que fica no caixa, dito de forma direta, com base no que você respondeu. Sem suposição.</p>
       </div>
-      <div class="mstep reveal" data-delay="1">
-        <div class="mstep-marker">Depois</div>
-        <div class="mstep-title">A Onna lê sua operação.</div>
-        <p class="mstep-body">Suas respostas não caem numa esteira automática. São lidas uma a uma, com o mesmo método técnico dos diagnósticos da Onna.</p>
+      <div class="leva-item reveal" data-delay="1">
+        <div class="leva-num">Dois</div>
+        <div class="leva-title">A ordem certa de ataque</div>
+        <p class="leva-body">O que resolver primeiro e o que pode esperar. Prioridade com critério técnico, ajustada ao momento e ao porte da sua operação.</p>
       </div>
-      <div class="mstep reveal" data-delay="2">
-        <div class="mstep-marker">Então</div>
-        <div class="mstep-title">A leitura chega no seu WhatsApp.</div>
-        <p class="mstep-body">A primeira mensagem já traz uma percepção concreta do seu cenário e o que priorizar. Você não explica sua empresa do zero - e a conversa segue no seu ritmo.</p>
+      <div class="leva-item reveal" data-delay="2">
+        <div class="leva-num">Três</div>
+        <div class="leva-title">O próximo passo, com escopo claro</div>
+        <p class="leva-body">Se a leitura indicar trabalho profundo, você recebe o caminho com escopo e preço na mesa. Se não indicar, a conversa vale por ela mesma.</p>
       </div>
-    </div>
-
-    <div class="metodo-close reveal">
-      <button class="btn"
-              data-tf-popup="QvykQbLg"
-              data-tf-opacity="100"
-              data-tf-iframe-props="title=Análise de Margem"
-              data-tf-medium="snippet">
-        Faça a Análise de Margem
-      </button>
-      <div class="obs">Gratuita. Alguns minutos, direto ao ponto.</div>
     </div>
   </div>
 </section>
 
-<!-- ══════ O QUE VOCÊ LEVA ══════ -->
+<!-- FAQ -->
 <div class="sheet-wrap">
-  <section class="sheet">
-    <div class="container">
-      <div class="sec-head reveal">
-        <div class="kicker">O que você leva</div>
-        <h2 class="section-title">Clareza que já muda a próxima decisão.</h2>
-      </div>
-
-      <div class="leva-grid">
-        <div class="leva-item reveal">
-          <div class="leva-num">Um</div>
-          <div class="leva-title">Onde o lucro escapa</div>
-          <p class="leva-body">O ponto exato entre o que você fatura e o que fica no caixa - dito de forma direta, com base no que você respondeu, sem suposição.</p>
-        </div>
-        <div class="leva-item reveal" data-delay="1">
-          <div class="leva-num">Dois</div>
-          <div class="leva-title">A ordem certa de ataque</div>
-          <p class="leva-body">O que resolver primeiro e o que pode esperar. Prioridade com critério técnico, ajustada ao momento e ao porte da sua operação.</p>
-        </div>
-        <div class="leva-item reveal" data-delay="2">
-          <div class="leva-num">Três</div>
-          <div class="leva-title">O próximo passo, com clareza</div>
-          <p class="leva-body">Se a leitura indicar trabalho profundo, você recebe o caminho com escopo e preço na mesa. Se não indicar, a conversa vale por ela mesma - sem empurrão.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- ══════ QUEM LÊ ══════ -->
-<section class="sec">
-  <div class="container">
-    <div class="quem-inner reveal">
-      <div class="kicker">Quem lê a sua operação</div>
-      <p class="quem-text">A Onna é a consultoria que lê empresas por dentro: margem, preço e organização financeira de operações entre R$ 30 mil e R$ 500 mil por mês, em todo o Brasil - <em>no ponto exato em que a decisão acontece.</em></p>
-      <p class="quem-method">O método não muda com o porte: número verificado na fonte, leitura direta do que ele significa, decisão na ordem certa. É o rigor dos relatórios que os clientes da Onna recebem - aplicado desde a primeira mensagem que chega no seu WhatsApp.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ══════ FAQ ══════ -->
-<div class="sheet-wrap">
-  <section class="sheet faq">
+  <section class="sheet center">
     <div class="container">
       <div class="sec-head reveal">
         <div class="kicker">Perguntas diretas</div>
         <h2 class="section-title">Antes de responder.</h2>
       </div>
-
-      <div class="faq-grid">
+      <div class="faq-grid" style="text-align:left;">
         <div class="faq-item reveal">
           <div class="faq-q">O que acontece depois que eu respondo?</div>
-          <p class="faq-a">A Onna lê suas respostas e te chama no WhatsApp, em poucos dias úteis, com uma percepção concreta do seu cenário. A partir daí, a conversa segue no seu ritmo.</p>
+          <p class="faq-a">Um especialista da Onna lê suas respostas e te chama no WhatsApp, em poucos dias úteis, com uma leitura concreta do seu cenário. A partir daí, a conversa segue no seu ritmo.</p>
         </div>
         <div class="faq-item reveal" data-delay="1">
-          <div class="faq-q">Quanto custa?</div>
-          <p class="faq-a">Nada. A Análise de Margem é gratuita e sem compromisso.</p>
+          <div class="faq-q">Isso é uma consultoria sem custo?</div>
+          <p class="faq-a">É a leitura inicial da sua operação e uma conversa direta sobre ela, sem compromisso. O trabalho profundo, diagnóstico completo ou acompanhamento, só é apresentado se houver caso, com escopo e preço claros.</p>
         </div>
         <div class="faq-item reveal">
-          <div class="faq-q">Isso é uma consultoria gratuita?</div>
-          <p class="faq-a">É a leitura inicial da sua operação e uma conversa direta sobre ela. O trabalho profundo - diagnóstico completo ou acompanhamento - só é apresentado se houver caso, com escopo e preço claros.</p>
+          <div class="faq-q">Serve pra uma operação do meu porte?</div>
+          <p class="faq-a">A Onna trabalha com operações que já cresceram e perderam clareza sobre margem e caixa. O método não muda com o tamanho: quanto maior o volume, mais dinheiro costuma estar escondido nele.</p>
         </div>
         <div class="faq-item reveal" data-delay="1">
           <div class="faq-q">Posso falar com alguém antes de preencher?</div>
-          <p class="faq-a">Sim. Se preferir, <a href="https://wa.me/5551991342122" target="_blank" rel="noopener">fale direto com a Onna pelo WhatsApp</a>. Vamos entender seu cenário e indicar o melhor caminho.</p>
+          <p class="faq-a">Pode. Se preferir, <a href="https://wa.me/5551991342122" target="_blank" rel="noopener">fale direto com a Onna pelo WhatsApp</a>. A gente entende seu cenário e indica o melhor caminho.</p>
         </div>
       </div>
     </div>
   </section>
 </div>
 
-<!-- ══════ FECHO ══════ -->
+<!-- FECHO -->
 <section class="fecho">
   <div class="container">
-    <div class="kicker reveal">Análise de Margem · Gratuita</div>
-    <h2 class="fecho-title reveal">Quanto do que você fatura <em>vira lucro</em>?</h2>
-    <p class="fecho-sub reveal">A resposta começa com alguns minutos seus - e chega no seu WhatsApp.</p>
+    <div class="kicker reveal">Análise de Margem</div>
+    <h2 class="fecho-title reveal">Quanto do que você fatura <em>chega até você?</em></h2>
+    <p class="fecho-sub reveal">A resposta começa com alguns minutos seus, e chega no seu WhatsApp.</p>
     <div class="fecho-cta reveal">
-      <button class="btn"
-              data-tf-popup="QvykQbLg"
-              data-tf-opacity="100"
-              data-tf-iframe-props="title=Análise de Margem"
-              data-tf-medium="snippet">
-        Faça a Análise de Margem
-      </button>
+      <button class="btn" data-tf-popup="FORM_V4_LINHA_ALTA" data-tf-opacity="100" data-tf-iframe-props="title=Análise de Margem" data-tf-medium="snippet">Quero enxergar meu lucro</button>
     </div>
   </div>
 </section>
 
-<!-- ══════ FOOTER ══════ -->
+<!-- FOOTER -->
 <footer class="footer" id="footer">
   <div class="container footer-inner">
     <div class="footer-brand">
@@ -1036,145 +418,28 @@ body{
   </div>
 </footer>
 
-<!-- ══════ CTA FIXO MOBILE ══════ -->
+<!-- CTA FIXO MOBILE -->
 <div class="mcta" id="mcta">
-  <button class="btn"
-          data-tf-popup="QvykQbLg"
-          data-tf-opacity="100"
-          data-tf-iframe-props="title=Análise de Margem"
-          data-tf-medium="snippet">
-    Faça a Análise de Margem
-  </button>
+  <button class="btn" data-tf-popup="FORM_V4_LINHA_ALTA" data-tf-opacity="100" data-tf-iframe-props="title=Análise de Margem" data-tf-medium="snippet">Quero enxergar meu lucro</button>
 </div>
 
-<!-- ══════ Rastreamento de Lead (Meta Pixel) ══════ -->
-<script>
-(function(){
-  let leadFired = false;
-  function fireLeadEvent(source){
-    if (leadFired) return;
-    if (typeof fbq !== 'function') return;
-    fbq('track', 'Lead');
-    leadFired = true;
-    console.log('ONNA: Lead enviado via ' + (source || 'unknown'));
-  }
-  window.addEventListener('message', function(event){
-    try{
-      let data = event.data;
-      if (typeof data === 'string'){
-        try{ data = JSON.parse(data); } catch(_){}
-      }
-      if (!data) return;
-      const t = data.type || data.eventType || '';
-      if (t === 'form-submit' || t === 'form-submit-success' || t === 'form_submit' || t === 'form-submitted'){
-        fireLeadEvent('typeform-submit');
-      }
-    } catch(e){
-      console.warn('ONNA: erro no listener', e);
-    }
-  });
-})();
-</script>
-
-<!-- ══════ Movimento ══════ -->
 <script>
 (function(){
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ── typewriter do hero ── */
-  const L1 = 'Você sabe o quanto fatura.';
-  const L2 = 'Não sabe o quanto ';
-  const SOBRA = 'lucra';
-  const tw1 = document.getElementById('tw1');
-  const tw2 = document.getElementById('tw2');
-  const tws = document.getElementById('twsobra');
-  const twd = document.getElementById('twdot');
-  const caret = document.getElementById('caret');
-
-  function typeInto(el, text, i, speed, done){
-    if (i <= text.length){
-      el.textContent = text.slice(0, i);
-      setTimeout(() => typeInto(el, text, i + 1, speed, done), speed);
-    } else if (done) done();
-  }
-
-  if (reduced){
-    tw1.textContent = L1;
-    tw2.textContent = L2;
-    tws.textContent = SOBRA;
-    twd.textContent = '.';
-    caret.style.display = 'none';
-  } else {
-    setTimeout(() => {
-      typeInto(tw1, L1, 0, 42, () => {
-        setTimeout(() => {
-          typeInto(tw2, L2, 0, 42, () => {
-            typeInto(tws, SOBRA, 0, 70, () => {
-              twd.textContent = '.';
-              caret.classList.add('done');
-            });
-          });
-        }, 320);
-      });
-    }, 350);
-  }
-
-  /* ── reveals ── */
-  const els = document.querySelectorAll('.reveal, .metodo-grid');
+  const els = document.querySelectorAll('.reveal');
   if (reduced || !('IntersectionObserver' in window)){
     els.forEach(el => el.classList.add('in'));
   } else {
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting){
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
-        }
-      });
+      entries.forEach(entry => { if (entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); } });
     }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
     els.forEach(el => io.observe(el));
   }
-
-  /* ── contagem dos números de prova ── */
-  const fmt = (v, dec, format) => {
-    if (format === 'mil'){
-      return Math.round(v).toLocaleString('pt-BR');
-    }
-    return dec ? v.toFixed(dec).replace('.', ',') : String(Math.round(v));
-  };
-  const counters = document.querySelectorAll('.lcard-stat-none');
-  if (!reduced && 'IntersectionObserver' in window){
-    const ioc = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        ioc.unobserve(el);
-        const target = parseFloat(el.dataset.count);
-        const dec = parseInt(el.dataset.decimal || '0', 10);
-        const prefix = el.dataset.prefix || '';
-        const suffix = el.dataset.suffix || '';
-        const format = el.dataset.format || '';
-        const dur = 1300;
-        const t0 = performance.now();
-        function tick(now){
-          const p = Math.min((now - t0) / dur, 1);
-          const eased = 1 - Math.pow(1 - p, 3);
-          el.textContent = prefix + fmt(target * eased, dec, format) + suffix;
-          if (p < 1) requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-      });
-    }, { threshold: 0.5 });
-    counters.forEach(el => ioc.observe(el));
-  }
-
-  /* ── barra de progresso + topbar ── */
   const bar = document.getElementById('progress');
   const topbar = document.getElementById('topbar');
   let ticking = false;
   function onScroll(){
-    if (ticking) return;
-    ticking = true;
+    if (ticking) return; ticking = true;
     requestAnimationFrame(() => {
       const h = document.documentElement;
       const max = h.scrollHeight - h.clientHeight;
@@ -1183,10 +448,7 @@ body{
       ticking = false;
     });
   }
-  document.addEventListener('scroll', onScroll, { passive:true });
-  onScroll();
-
-  /* ── CTA fixo mobile ── */
+  document.addEventListener('scroll', onScroll, { passive:true }); onScroll();
   const mcta = document.getElementById('mcta');
   const hero = document.querySelector('.hero');
   const footer = document.getElementById('footer');
@@ -1196,12 +458,7 @@ body{
     new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; update(); }, { threshold: 0.05 }).observe(hero);
     new IntersectionObserver(([e]) => { footerIn = e.isIntersecting; update(); }, { threshold: 0.05 }).observe(footer);
   }
-
-  /* ── marquee: duplicar trilha pro loop ── */
-  const track = document.getElementById('mqtrack');
-  track.innerHTML += track.innerHTML;
 })();
 </script>
-
 </body>
 </html>
