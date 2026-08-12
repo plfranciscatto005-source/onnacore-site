@@ -14,7 +14,7 @@
 <!-- Typeform Embed SDK -->
 <script src="https://embed.typeform.com/next/embed.js"></script>
 
-<!-- Meta Pixel (so PageView na LP; Lead/LeadQualificado dispara nos endings A/B do form v4) -->
+<!-- Meta Pixel (so PageView na LP; Lead/LeadQualificado dispara no ending do form) -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -29,12 +29,6 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=924726467166743&ev=PageView&noscript=1" /></noscript>
 
 <style>
-/* ════════════════════════════════════════════════════════
-   ONNA - ANALISE DE MARGEM · LP LINHA ALTA
-   Sistema visual validado (Fraunces / Work Sans / IBM Plex Mono).
-   Papel dominante · grafite, dourado e wine como tinta.
-   Conduz, sem numero como limitador. Sem gratuidade.
-════════════════════════════════════════════════════════ */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 :root{
   --paper:#FDFCF8; --cream:#F5F1E7; --card:#FFFFFF;
@@ -102,7 +96,7 @@ body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink)
 .center .sec-head::before{ margin-left:auto; margin-right:auto; }
 .center .sec-head .section-lead{ margin-left:auto; margin-right:auto; }
 
-/* ESPELHO APROFUNDADO (leitura Onna) */
+/* ESPELHO APROFUNDADO */
 .leitura-body{ max-width:60ch; }
 .leitura-body p{ font-size:clamp(17px,1.9vw,20px); line-height:1.7; color:var(--ink-soft); margin-top:18px; }
 .leitura-body p:first-child{ margin-top:0; }
@@ -110,7 +104,7 @@ body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink)
 .leitura-punch{ margin-top:30px; font-family:var(--serif); font-style:italic; font-weight:400; font-size:clamp(20px,2.3vw,26px); line-height:1.5; color:var(--ink); }
 .leitura-punch em{ font-style:italic; color:var(--gold); }
 
-/* PROVA - numero-heroi */
+/* PROVA */
 .breadth{ font-family:var(--mono); font-size:12px; letter-spacing:0.06em; color:var(--muted); text-align:center; margin-bottom:40px; }
 .breadth b{ color:var(--ink); font-weight:500; }
 .prova-grid{ display:grid; grid-template-columns:1fr; gap:18px; }
@@ -130,7 +124,7 @@ body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink)
 .metodo-text em{ font-style:italic; color:var(--gold); }
 .metodo-sub{ margin-top:22px; font-weight:300; font-size:15.5px; line-height:1.8; color:var(--muted); max-width:58ch; }
 
-/* QUEM LE (equipe) */
+/* QUEM LE */
 .quem-inner{ max-width:840px; margin:0 auto; text-align:center; }
 .quem-text{ margin-top:24px; font-family:var(--serif); font-weight:400; font-size:clamp(20px,2.5vw,28px); line-height:1.55; color:var(--ink); }
 .quem-text em{ font-style:italic; color:var(--gold); }
@@ -215,18 +209,16 @@ body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink)
 <body>
 <div class="progress" id="progress"></div>
 
-<!-- TOPBAR -->
 <header class="topbar" id="topbar">
   <div class="container topbar-inner">
     <div class="brand">
       <div class="brand-name">ONNA<em>.</em></div>
       <div class="brand-tagline">Margem · Gestão · Liderança</div>
     </div>
-    <button class="btn" data-tf-popup="FORM_V4_LINHA_ALTA" data-tf-opacity="100" data-tf-iframe-props="title=Análise de Margem" data-tf-medium="snippet">Quero enxergar meu lucro</button>
+    <a class="btn" href="https://form.typeform.com/to/prSxI2Rk" data-tf-popup="prSxI2Rk" data-tf-opacity="100" data-tf-iframe-props="title=Análise de Margem" data-tf-medium="snippet" target="_blank" rel="noopener">Quero enxergar meu lucro</a>
   </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <div class="container">
     <div class="hero-inner">
@@ -234,7 +226,7 @@ body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink)
       <h1 class="reveal">Fatura alto, <em>lucra pouco</em>, e ninguém te mostrou por quê.</h1>
       <p class="hero-support reveal" data-delay="1">A Onna lê a sua operação com rigor de diagnóstico e mostra onde o lucro está vazando. A leitura chega no seu WhatsApp.</p>
       <div class="hero-cta reveal" data-delay="2">
-        <button class="btn" data-tf-popup="FORM_V4_LINHA_ALTA" data-tf-opacity="100" data-tf-iframe-props="title=Análise de Margem" data-tf-medium="snippet">Quero enxergar meu lucro</button>
+        <a class="btn" href="https://form.typeform.com/to/prSxI2Rk" data-tf-popup="prSxI2Rk" data-tf-opacity="100" data-tf-iframe-props="title=Análise de Margem" data-tf-medium="snippet" target="_blank" rel="noopener">Quero enxergar meu lucro</a>
         <div class="hero-facts">Sem compromisso <span>|</span> Resposta no seu WhatsApp</div>
       </div>
       <div class="hero-alt reveal" data-delay="3">Prefere conversar antes? <a href="https://wa.me/5551991342122" target="_blank" rel="noopener">Fale com a Onna pelo WhatsApp.</a></div>
@@ -242,7 +234,6 @@ body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink)
   </div>
 </section>
 
-<!-- ESPELHO APROFUNDADO -->
 <div class="sheet-wrap">
   <section class="sheet">
     <div class="container">
@@ -259,7 +250,6 @@ body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink)
   </section>
 </div>
 
-<!-- PROVA SOCIAL -->
 <section class="sec center">
   <div class="container">
     <div class="sec-head reveal">
@@ -281,4 +271,177 @@ body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink)
       <div class="pcard reveal" data-delay="2">
         <div class="pcard-setor">Distribuição de bebidas</div>
         <div class="pcard-num">+5 <em>pts</em></div>
-        <p class="pcard-desc">Cinco pontos de margem escondidos no markup sobre a garrafa. Custos fixos, perdas e o serviço da dívida nunca entravam no preço. Recolocados na conta, o preço passou a sustentar a o
+        <p class="pcard-desc">Cinco pontos de margem escondidos no markup sobre a garrafa. Custos fixos, perdas e o serviço da dívida nunca entravam no preço. Recolocados na conta, o preço passou a sustentar a operação inteira.</p>
+      </div>
+      <div class="pcard reveal">
+        <div class="pcard-setor">Serviço especializado</div>
+        <div class="pcard-num">R$ 11 mil<em>/mês</em></div>
+        <p class="pcard-desc">Contratos no prejuízo escondidos dentro de uma carteira cheia. O faturamento estável mascarava a hora da equipe entrando como custo zero. Margem apurada contrato a contrato, e pró-labore fixo pela primeira vez.</p>
+      </div>
+      <div class="pcard reveal" data-delay="1">
+        <div class="pcard-setor">Multimarca de moda feminina premium</div>
+        <div class="pcard-num">4,7 <em>pts</em></div>
+        <p class="pcard-desc">A dona calculava de 5 a 10% de desconto; o balcão praticava 14,7%, peça a peça, sem ninguém somar. Um piso por negociação devolveu a margem sem custar uma venda sequer.</p>
+      </div>
+      <div class="pcard reveal" data-delay="2">
+        <div class="pcard-setor">Rede de materiais de construção</div>
+        <div class="pcard-num">R$ 140 mil</div>
+        <p class="pcard-desc">Milhares de itens de giros completamente diferentes, governados por uma única margem média. Capital envelhecendo em prateleira e categorias vendendo abaixo do custo de reposição. Preço e compra redefinidos categoria a categoria, com o capital de volta ao caixa.</p>
+      </div>
+    </div>
+    <p class="prova-seal reveal">Casos reais, números adaptados. A Onna tem compromisso com o sigilo das informações.</p>
+  </section>
+</section>
+
+<section class="sec">
+  <div class="container">
+    <div class="metodo-inner reveal">
+      <div class="kicker">Como a Onna trabalha</div>
+      <p class="metodo-text">O mesmo rigor dos diagnósticos que os clientes da Onna pagam, aplicado <em>desde a primeira mensagem que chega no seu WhatsApp.</em></p>
+      <p class="metodo-sub">Número verificado na fonte, leitura direta do que ele significa, decisão na ordem certa. Sem fórmula pronta e sem esteira automática: a leitura é feita sobre os seus números, por quem faz os diagnósticos da Onna.</p>
+    </div>
+  </div>
+</section>
+
+<div class="sheet-wrap">
+  <section class="sheet center">
+    <div class="container">
+      <div class="quem-inner reveal">
+        <div class="kicker">Quem lê a sua operação</div>
+        <p class="quem-text">Os técnicos da Onna leem empresas por dentro: margem, preço e organização financeira de operações que já cresceram, <em>no ponto exato em que a decisão acontece.</em></p>
+        <p class="quem-sub">Uma consultoria de gestão que trabalha com o rigor de quem lida com número e sigilo todo dia. O método não muda com o porte, e é ele que sustenta cada leitura, da primeira mensagem ao diagnóstico.</p>
+        <div class="quem-band reveal" data-delay="1">
+          <span>Varejo</span><span>Saúde</span><span>Indústria</span><span>Três estados</span><span>Resultados medidos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="sec">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="kicker">O que você leva</div>
+      <h2 class="section-title">Clareza que já muda a próxima decisão.</h2>
+    </div>
+    <div class="leva-grid">
+      <div class="leva-item reveal">
+        <div class="leva-num">Um</div>
+        <div class="leva-title">Onde o lucro escapa</div>
+        <p class="leva-body">O ponto exato entre o que você fatura e o que fica no caixa, dito de forma direta, com base no que você respondeu. Sem suposição.</p>
+      </div>
+      <div class="leva-item reveal" data-delay="1">
+        <div class="leva-num">Dois</div>
+        <div class="leva-title">A ordem certa de ataque</div>
+        <p class="leva-body">O que resolver primeiro e o que pode esperar. Prioridade com critério técnico, ajustada ao momento e ao porte da sua operação.</p>
+      </div>
+      <div class="leva-item reveal" data-delay="2">
+        <div class="leva-num">Três</div>
+        <div class="leva-title">O próximo passo, com escopo claro</div>
+        <p class="leva-body">Se a leitura indicar trabalho profundo, você recebe o caminho com escopo e preço na mesa. Se não indicar, a conversa vale por ela mesma.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sheet-wrap">
+  <section class="sheet center">
+    <div class="container">
+      <div class="sec-head reveal">
+        <div class="kicker">Perguntas diretas</div>
+        <h2 class="section-title">Antes de responder.</h2>
+      </div>
+      <div class="faq-grid" style="text-align:left;">
+        <div class="faq-item reveal">
+          <div class="faq-q">O que acontece depois que eu respondo?</div>
+          <p class="faq-a">Um especialista da Onna lê suas respostas e te chama no WhatsApp, em poucos dias úteis, com uma leitura concreta do seu cenário. A partir daí, a conversa segue no seu ritmo.</p>
+        </div>
+        <div class="faq-item reveal" data-delay="1">
+          <div class="faq-q">Isso é uma consultoria sem custo?</div>
+          <p class="faq-a">É a leitura inicial da sua operação e uma conversa direta sobre ela, sem compromisso. O trabalho profundo, diagnóstico completo ou acompanhamento, só é apresentado se houver caso, com escopo e preço claros.</p>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q">Serve pra uma operação do meu porte?</div>
+          <p class="faq-a">A Onna trabalha com operações que já cresceram e perderam clareza sobre margem e caixa. O método não muda com o tamanho: quanto maior o volume, mais dinheiro costuma estar escondido nele.</p>
+        </div>
+        <div class="faq-item reveal" data-delay="1">
+          <div class="faq-q">Posso falar com alguém antes de preencher?</div>
+          <p class="faq-a">Pode. Se preferir, <a href="https://wa.me/5551991342122" target="_blank" rel="noopener">fale direto com a Onna pelo WhatsApp</a>. A gente entende seu cenário e indica o melhor caminho.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section class="fecho">
+  <div class="container">
+    <div class="kicker reveal">Análise de Margem</div>
+    <h2 class="fecho-title reveal">Quanto do que você fatura <em>chega até você?</em></h2>
+    <p class="fecho-sub reveal">A resposta começa com alguns minutos seus, e chega no seu WhatsApp.</p>
+    <div class="fecho-cta reveal">
+      <a class="btn" href="https://form.typeform.com/to/prSxI2Rk" data-tf-popup="prSxI2Rk" data-tf-opacity="100" data-tf-iframe-props="title=Análise de Margem" data-tf-medium="snippet" target="_blank" rel="noopener">Quero enxergar meu lucro</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" id="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="brand-name">ONNA<em>.</em></div>
+      <div class="brand-tagline">Margem · Gestão · Liderança</div>
+      <div class="footer-scope">Atendimento online em todo o Brasil.</div>
+    </div>
+    <div class="footer-right">
+      <a class="footer-whatsapp" href="https://wa.me/5551991342122" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        (51) 99134-2122
+      </a>
+      <div class="footer-contact"><a href="mailto:contato@onnacore.com.br">contato@onnacore.com.br</a></div>
+      <div class="footer-place">Porto Alegre - RS</div>
+    </div>
+  </div>
+</footer>
+
+<div class="mcta" id="mcta">
+  <a class="btn" href="https://form.typeform.com/to/prSxI2Rk" data-tf-popup="prSxI2Rk" data-tf-opacity="100" data-tf-iframe-props="title=Análise de Margem" data-tf-medium="snippet" target="_blank" rel="noopener">Quero enxergar meu lucro</a>
+</div>
+
+<script>
+(function(){
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const els = document.querySelectorAll('.reveal');
+  if (reduced || !('IntersectionObserver' in window)){
+    els.forEach(el => el.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting){ entry.target.classList.add('in'); io.unobserve(entry.target); } });
+    }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
+    els.forEach(el => io.observe(el));
+  }
+  const bar = document.getElementById('progress');
+  const topbar = document.getElementById('topbar');
+  let ticking = false;
+  function onScroll(){
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(() => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+      topbar.classList.toggle('scrolled', h.scrollTop > 8);
+      ticking = false;
+    });
+  }
+  document.addEventListener('scroll', onScroll, { passive:true }); onScroll();
+  const mcta = document.getElementById('mcta');
+  const hero = document.querySelector('.hero');
+  const footer = document.getElementById('footer');
+  if ('IntersectionObserver' in window){
+    let heroOut = false, footerIn = false;
+    const update = () => mcta.classList.toggle('show', heroOut && !footerIn);
+    new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; update(); }, { threshold: 0.05 }).observe(hero);
+    new IntersectionObserver(([e]) => { footerIn = e.isIntersecting; update(); }, { threshold: 0.05 }).observe(footer);
+  }
+})();
+</script>
+</body>
+</html>
