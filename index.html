@@ -14,7 +14,7 @@
 <!-- Typeform Embed SDK -->
 <script src="https://embed.typeform.com/next/embed.js"></script>
 
-<!-- Meta Pixel (so PageView na LP; Lead/LeadQualificado dispara no ending do form) -->
+<!-- Meta Pixel (PageView na LP; Lead so na conclusao do formulario) -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -51,10 +51,10 @@ body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink)
 .section-title{ font-family:var(--serif); font-weight:450; font-size:clamp(30px, 3.8vw, 50px); line-height:1.1; letter-spacing:-0.014em; color:var(--ink); }
 .section-lead{ font-weight:300; font-size:16.5px; line-height:1.75; color:var(--muted); max-width:60ch; }
 
-.btn{ display:inline-flex; align-items:center; justify-content:center; gap:12px; font-family:var(--sans); font-size:15px; font-weight:500; letter-spacing:0.01em; padding:18px 36px; background:var(--ink); color:var(--paper); border:none; border-radius:999px; cursor:pointer; text-decoration:none; transition:transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease); }
-.btn::after{ content:"→"; font-weight:400; transition:transform .25s var(--ease); }
+.btn{ display:inline-flex; flex-direction:column; align-items:center; justify-content:center; gap:1px; font-family:var(--sans); padding:13px 36px; background:var(--ink); color:var(--paper); border:none; border-radius:999px; cursor:pointer; text-decoration:none; line-height:1.14; transition:transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease); }
+.btn .btn-main{ font-weight:600; font-size:15px; letter-spacing:0.01em; }
+.btn .btn-sub{ font-family:var(--serif); font-style:italic; font-weight:380; font-size:12px; color:rgba(253,252,248,0.74); }
 .btn:hover{ background:var(--coal-deep); transform:translateY(-2px) scale(1.015); box-shadow:0 14px 34px rgba(23,25,30,0.18); }
-.btn:hover::after{ transform:translateX(5px); }
 .btn:active{ transform:translateY(0) scale(0.99); }
 .btn:focus-visible{ outline:2.5px solid var(--gold); outline-offset:3px; }
 
@@ -66,7 +66,9 @@ body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink)
 .brand-name{ font-family:var(--serif); font-weight:560; font-size:19px; letter-spacing:0.26em; color:var(--ink); }
 .brand-name em{ font-style:normal; color:var(--gold); }
 .brand-tagline{ font-family:var(--mono); font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--faint); }
-.topbar .btn{ padding:12px 24px; font-size:13px; }
+.topbar .btn{ padding:9px 22px; }
+.topbar .btn .btn-main{ font-size:13px; }
+.topbar .btn .btn-sub{ font-size:10.5px; }
 
 /* HERO */
 .hero{ padding:116px 0 92px; }
@@ -96,7 +98,8 @@ body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink)
 .center .sec-head::before{ margin-left:auto; margin-right:auto; }
 .center .sec-head .section-lead{ margin-left:auto; margin-right:auto; }
 
-/* ESPELHO APROFUNDADO */
+/* LEITURA ONNA */
+.leitura .section-title{ max-width:17ch; }
 .leitura-body{ max-width:60ch; }
 .leitura-body p{ font-size:clamp(17px,1.9vw,20px); line-height:1.7; color:var(--ink-soft); margin-top:18px; }
 .leitura-body p:first-child{ margin-top:0; }
@@ -157,7 +160,9 @@ body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink)
 .fecho-title em{ font-style:italic; font-weight:380; color:var(--wine); }
 .fecho-sub{ margin-top:22px; font-weight:300; font-size:16px; color:var(--muted); }
 .fecho-cta{ margin-top:36px; }
-.fecho .btn{ padding:20px 44px; font-size:16px; }
+.fecho .btn{ padding:17px 44px; }
+.fecho .btn .btn-main{ font-size:16.5px; }
+.fecho .btn .btn-sub{ font-size:13px; }
 
 /* FOOTER */
 .footer{ background:var(--coal); color:#EDEBE4; padding:56px 0; border-radius:var(--r-sheet) var(--r-sheet) 0 0; }
@@ -215,7 +220,7 @@ body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink)
       <div class="brand-name">ONNA<em>.</em></div>
       <div class="brand-tagline">Margem · Gestão · Liderança</div>
     </div>
-    <a class="btn" href="https://form.typeform.com/to/prSxI2Rk" data-tf-popup="prSxI2Rk" data-tf-opacity="100" data-tf-iframe-props="title=Análise de Margem" data-tf-medium="snippet" target="_blank" rel="noopener">Quero enxergar meu lucro</a>
+    <a class="btn cta" href="https://form.typeform.com/to/prSxI2Rk" target="_blank" rel="noopener"><span class="btn-main">Quero enxergar meu lucro</span><span class="btn-sub">Análise de Margem</span></a>
   </div>
 </header>
 
@@ -226,7 +231,7 @@ body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink)
       <h1 class="reveal">Fatura alto, <em>lucra pouco</em>, e ninguém te mostrou por quê.</h1>
       <p class="hero-support reveal" data-delay="1">A Onna lê a sua operação com rigor de diagnóstico e mostra onde o lucro está vazando. A leitura chega no seu WhatsApp.</p>
       <div class="hero-cta reveal" data-delay="2">
-        <a class="btn" href="https://form.typeform.com/to/prSxI2Rk" data-tf-popup="prSxI2Rk" data-tf-opacity="100" data-tf-iframe-props="title=Análise de Margem" data-tf-medium="snippet" target="_blank" rel="noopener">Quero enxergar meu lucro</a>
+        <a class="btn cta" href="https://form.typeform.com/to/prSxI2Rk" target="_blank" rel="noopener"><span class="btn-main">Quero enxergar meu lucro</span><span class="btn-sub">Análise de Margem</span></a>
         <div class="hero-facts">Sem compromisso <span>|</span> Resposta no seu WhatsApp</div>
       </div>
       <div class="hero-alt reveal" data-delay="3">Prefere conversar antes? <a href="https://wa.me/5551991342122" target="_blank" rel="noopener">Fale com a Onna pelo WhatsApp.</a></div>
@@ -235,7 +240,7 @@ body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink)
 </section>
 
 <div class="sheet-wrap">
-  <section class="sheet">
+  <section class="sheet leitura">
     <div class="container">
       <div class="sec-head reveal">
         <div class="kicker">A leitura da Onna</div>
@@ -379,7 +384,7 @@ body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink)
     <h2 class="fecho-title reveal">Quanto do que você fatura <em>chega até você?</em></h2>
     <p class="fecho-sub reveal">A resposta começa com alguns minutos seus, e chega no seu WhatsApp.</p>
     <div class="fecho-cta reveal">
-      <a class="btn" href="https://form.typeform.com/to/prSxI2Rk" data-tf-popup="prSxI2Rk" data-tf-opacity="100" data-tf-iframe-props="title=Análise de Margem" data-tf-medium="snippet" target="_blank" rel="noopener">Quero enxergar meu lucro</a>
+      <a class="btn cta" href="https://form.typeform.com/to/prSxI2Rk" target="_blank" rel="noopener"><span class="btn-main">Quero enxergar meu lucro</span><span class="btn-sub">Análise de Margem</span></a>
     </div>
   </div>
 </section>
@@ -403,7 +408,7 @@ body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink)
 </footer>
 
 <div class="mcta" id="mcta">
-  <a class="btn" href="https://form.typeform.com/to/prSxI2Rk" data-tf-popup="prSxI2Rk" data-tf-opacity="100" data-tf-iframe-props="title=Análise de Margem" data-tf-medium="snippet" target="_blank" rel="noopener">Quero enxergar meu lucro</a>
+  <a class="btn cta" href="https://form.typeform.com/to/prSxI2Rk" target="_blank" rel="noopener"><span class="btn-main">Quero enxergar meu lucro</span><span class="btn-sub">Análise de Margem</span></a>
 </div>
 
 <script>
@@ -441,6 +446,27 @@ body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink)
     new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; update(); }, { threshold: 0.05 }).observe(hero);
     new IntersectionObserver(([e]) => { footerIn = e.isIntersecting; update(); }, { threshold: 0.05 }).observe(footer);
   }
+})();
+</script>
+
+<!-- Abertura do formulario + Lead SO na conclusao -->
+<script>
+(function(){
+  var FORM='prSxI2Rk', popup=null;
+  function open(e){
+    if (window.tf && window.tf.createPopup){
+      e.preventDefault();
+      if(!popup){
+        popup = window.tf.createPopup(FORM, {
+          opacity:100,
+          onSubmit:function(){ if(typeof fbq==='function'){ fbq('track','Lead'); } }
+        });
+      }
+      popup.open();
+    }
+    /* sem SDK: o href abre o formulario (fallback) */
+  }
+  document.querySelectorAll('.cta').forEach(function(el){ el.addEventListener('click', open); });
 })();
 </script>
 </body>
