@@ -14,7 +14,7 @@
 <!-- Typeform Embed SDK -->
 <script src="https://embed.typeform.com/next/embed.js"></script>
 
-<!-- Meta Pixel (PageView na LP; Lead so na conclusao do formulario) -->
+<!-- Meta Pixel (PageView na LP). Lead na conclusao: configurar no Typeform (Connect > Meta Pixel, evento Lead) -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -220,7 +220,7 @@ body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink)
       <div class="brand-name">ONNA<em>.</em></div>
       <div class="brand-tagline">Margem · Gestão · Liderança</div>
     </div>
-    <a class="btn cta" href="https://form.typeform.com/to/prSxI2Rk" target="_blank" rel="noopener"><span class="btn-main">Quero enxergar meu lucro</span><span class="btn-sub">Análise de Margem</span></a>
+    <a class="btn cta" href="https://form.typeform.com/to/prSxI2Rk" data-tf-popup="prSxI2Rk" data-tf-opacity="100" data-tf-iframe-props="title=Análise de Margem" data-tf-medium="snippet" target="_blank" rel="noopener"><span class="btn-main">Quero enxergar meu lucro</span><span class="btn-sub">Análise de Margem</span></a>
   </div>
 </header>
 
@@ -231,7 +231,7 @@ body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink)
       <h1 class="reveal">Fatura alto, <em>lucra pouco</em>, e ninguém te mostrou por quê.</h1>
       <p class="hero-support reveal" data-delay="1">A Onna lê a sua operação com rigor de diagnóstico e mostra onde o lucro está vazando. A leitura chega no seu WhatsApp.</p>
       <div class="hero-cta reveal" data-delay="2">
-        <a class="btn cta" href="https://form.typeform.com/to/prSxI2Rk" target="_blank" rel="noopener"><span class="btn-main">Quero enxergar meu lucro</span><span class="btn-sub">Análise de Margem</span></a>
+        <a class="btn cta" href="https://form.typeform.com/to/prSxI2Rk" data-tf-popup="prSxI2Rk" data-tf-opacity="100" data-tf-iframe-props="title=Análise de Margem" data-tf-medium="snippet" target="_blank" rel="noopener"><span class="btn-main">Quero enxergar meu lucro</span><span class="btn-sub">Análise de Margem</span></a>
         <div class="hero-facts">Sem compromisso <span>|</span> Resposta no seu WhatsApp</div>
       </div>
       <div class="hero-alt reveal" data-delay="3">Prefere conversar antes? <a href="https://wa.me/5551991342122" target="_blank" rel="noopener">Fale com a Onna pelo WhatsApp.</a></div>
@@ -384,7 +384,7 @@ body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink)
     <h2 class="fecho-title reveal">Quanto do que você fatura <em>chega até você?</em></h2>
     <p class="fecho-sub reveal">A resposta começa com alguns minutos seus, e chega no seu WhatsApp.</p>
     <div class="fecho-cta reveal">
-      <a class="btn cta" href="https://form.typeform.com/to/prSxI2Rk" target="_blank" rel="noopener"><span class="btn-main">Quero enxergar meu lucro</span><span class="btn-sub">Análise de Margem</span></a>
+      <a class="btn cta" href="https://form.typeform.com/to/prSxI2Rk" data-tf-popup="prSxI2Rk" data-tf-opacity="100" data-tf-iframe-props="title=Análise de Margem" data-tf-medium="snippet" target="_blank" rel="noopener"><span class="btn-main">Quero enxergar meu lucro</span><span class="btn-sub">Análise de Margem</span></a>
     </div>
   </div>
 </section>
@@ -408,7 +408,7 @@ body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink)
 </footer>
 
 <div class="mcta" id="mcta">
-  <a class="btn cta" href="https://form.typeform.com/to/prSxI2Rk" target="_blank" rel="noopener"><span class="btn-main">Quero enxergar meu lucro</span><span class="btn-sub">Análise de Margem</span></a>
+  <a class="btn cta" href="https://form.typeform.com/to/prSxI2Rk" data-tf-popup="prSxI2Rk" data-tf-opacity="100" data-tf-iframe-props="title=Análise de Margem" data-tf-medium="snippet" target="_blank" rel="noopener"><span class="btn-main">Quero enxergar meu lucro</span><span class="btn-sub">Análise de Margem</span></a>
 </div>
 
 <script>
@@ -446,27 +446,6 @@ body{ font-family:var(--sans); font-weight:400; font-size:16px; color:var(--ink)
     new IntersectionObserver(([e]) => { heroOut = !e.isIntersecting; update(); }, { threshold: 0.05 }).observe(hero);
     new IntersectionObserver(([e]) => { footerIn = e.isIntersecting; update(); }, { threshold: 0.05 }).observe(footer);
   }
-})();
-</script>
-
-<!-- Abertura do formulario + Lead SO na conclusao -->
-<script>
-(function(){
-  var FORM='prSxI2Rk', popup=null;
-  function open(e){
-    if (window.tf && window.tf.createPopup){
-      e.preventDefault();
-      if(!popup){
-        popup = window.tf.createPopup(FORM, {
-          opacity:100,
-          onSubmit:function(){ if(typeof fbq==='function'){ fbq('track','Lead'); } }
-        });
-      }
-      popup.open();
-    }
-    /* sem SDK: o href abre o formulario (fallback) */
-  }
-  document.querySelectorAll('.cta').forEach(function(el){ el.addEventListener('click', open); });
 })();
 </script>
 </body>
